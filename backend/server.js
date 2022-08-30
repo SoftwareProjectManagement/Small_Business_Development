@@ -12,6 +12,7 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(cors());
 
 const UserRouter = require("./routes/userrouter");
+const AdminRouter = require("./routes/adminrouter.js");
 
 //getting the database url
 const URL = process.env.MONGODB_URL;
@@ -32,6 +33,8 @@ connection.once("open", function () {
 
 //when http://localhost:8070/user ran it will execute userrouter.js file
 app.use("/user", UserRouter);
+//when http://localhost:8070/admin ran it will execute adminrouter.js file
+app.use("/admin",AdminRouter);
 
 //defining a port to run the application
 //use port 8070 or use any other port if the 8070 is unavailable 
