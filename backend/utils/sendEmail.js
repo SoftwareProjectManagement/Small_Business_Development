@@ -18,8 +18,8 @@ const sendEmail = (options) => {
         html: options.text,
     };
 
-    transporter.sendMail(mailOptions, function (error, info){
-        if(error) {
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
             console.log(error);
         }
     });
