@@ -46,11 +46,11 @@ const UserSchema = new Schema({
 })
 
 //this function run before saving data to database
-UserSchema.pre("save", async function(next){
+UserSchema.pre("save", async function (next) {
 
     //hashing the password
     //checking if the password is already hashed
-    if (!this.isModified("password")){
+    if (!this.isModified("password")) {
         next();
     }
 
@@ -62,15 +62,15 @@ UserSchema.pre("save", async function(next){
 //reset password token
 UserSchema.methods.getResetPasswordToken = function () {
     const resetToken = crypto.randomBytes(20).toString("hex");
-  
+
     // Hash token (private key) and save to database
     this.resetPasswordToken = crypto.createHash("sha256").update(resetToken).digest("hex");
-  
+
     // Set token expire date
     this.resetPasswordExpire = Date.now() + 10 * (60 * 1000); // Ten Minutes
-  
-    return resetToken;
-};  
 
-const User = mongoose.model("student",UserSchema)
+    return resetToken;
+};
+
+const User = mongoose.model("student", UserSchema)
 module.exports = User
