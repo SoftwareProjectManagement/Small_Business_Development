@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import IconButton from "@material-ui/core/IconButton";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Visibility from "@material-ui/icons/Visibility";
@@ -18,7 +18,7 @@ function SignUp() {
     const [password,setPassword] = useState("");
     const [confirmpassword,setConfirmPassword] = useState("");
     const [showPassword, setShowPassword] = useState();
-    const history = useHistory();
+    const navigate = useNavigate();
     const [showMessage, setShowMessage] = useState(false)
 
     const [fileInputState, setFileInputState] = useState('');
@@ -89,7 +89,7 @@ function SignUp() {
             try {
                 await axios.post("http://localhost:8070/user/signup", newUser , config)
                     alert("Registration Successful")
-                    history.push('/user/signin')
+                    navigate('/user/signin')
             } catch (error) {
                 if(error.response.status === 409){
                     alert(error.response.data.message)
@@ -247,7 +247,7 @@ function SignUp() {
                             </div>
                         </div>
                         
-                        <p>Already have an account? <Link to="/student/signin">Sign In</Link></p>
+                        <p>Already have an account? <a href="/student/signin">Sign In</a></p>
                     </form>             
                 </div>                   
             </div>
