@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import IconButton from "@material-ui/core/IconButton";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
@@ -13,7 +13,7 @@ function Login() {
     const [showPassword, setShowPassword] = useState()
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const history = useHistory();
+    const navigate = useNavigate();
 
     //show hide password
     function handleShowPassword(){
@@ -38,7 +38,7 @@ function Login() {
             //setting user
             localStorage.setItem("user", JSON.stringify(data.result))
             
-            history.push('/')
+            navigate('/')
         } catch (error) {
             if(error.response.status === 404){
                 alert("Invalid Email")
@@ -61,7 +61,7 @@ function Login() {
         //setting user
         localStorage.setItem("user", JSON.stringify(result))
 
-        history.push('/')
+        navigate('/')
     }
 
     const googleFailure = (error) => {
@@ -112,7 +112,7 @@ function Login() {
                     />
                     <br></br><br></br><br></br>
                     <div className="text-muted">
-                        <p>Don't have an account? <Link to="/user/signup">Sign Up</Link></p>
+                        <p>Don't have an account? <a href="/user/signup">Sign Up</a></p>
                     </div>
                 </form>
             </div>
