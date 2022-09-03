@@ -1,0 +1,45 @@
+.modalContainer1 {
+    width: 1000px;
+    height: 620px;
+    border-radius: 12px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .modalContainer1 .title {
+    display: inline-block;
+    text-align: center;
+    margin-top: 5px;
+  }
+
+  .modalContainer1 .title h1{
+    font-weight: 700;
+    color: #FF4F00;
+  }
+
+  .modalContainer1 .subtitle {
+    display: inline-block;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .modalContainer1 .subtitle h5{
+    font-weight: 500;
+    color: #000;
+  }
+
+.form-submit-btn{
+    background-color: #FF4F00;
+    width: 50%;
+    margin-left: 25%;
+    border-radius: 4px;
+    padding: 10px 20px;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: 700;
+    color: #fff;
+}

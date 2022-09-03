@@ -1,19 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import "./ChoosePaymentModal.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import MobilePayModal from "../PaymentManagement/MobilePayModal"
 
 function ChoosePaymentModal({ setOpenModal }) {
 
-  function cardPayView() {
-    alert('Card Pay');
-    setOpenModal(false);
-  }
-
-  function mobilePayView() {
-    alert('Mobile Pay');
-    setOpenModal(false);
-  }
+  const [openMobileModal, setOpenMobileModal] = useState(false);
 
   return (
+    <div>
     <div className="modalBackground">
       <div className="modalContainer">
         <div className="titleCloseBtn">
@@ -34,14 +29,17 @@ function ChoosePaymentModal({ setOpenModal }) {
         <div className="body">
             <div className="row">
                 <div className="column">
-                    <div className="card" onClick={cardPayView}>
+                    <div className="card">
                         <img src="/images/card.png"></img>
                         <p>Card Pay</p>
                     </div>
                 </div>
 
                 <div className="column">
-                    <div className="card" onClick={mobilePayView}>
+                    <div className="card"
+                    onClick={() => {
+                      setOpenMobileModal(true);
+                    }}>
                         <img src="/images/mobilePay.png"></img>
                         <p>Mobile Pay</p>
                     </div>
@@ -49,6 +47,8 @@ function ChoosePaymentModal({ setOpenModal }) {
             </div>
         </div>
       </div>
+    </div>
+    {openMobileModal && <MobilePayModal setOpenMobileModal={setOpenMobileModal} />}
     </div>
   );
 }
