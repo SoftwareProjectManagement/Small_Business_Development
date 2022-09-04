@@ -1,0 +1,117 @@
+.addsub {
+    width: 90%;
+    text-align: left;
+    padding: 40px;
+    background: rgb(255, 255, 255);
+    border-radius: 0 15px 15px 0;
+    box-shadow:0px 24px 48px 0 rgba(0,0,0,0.1);
+    position:relative;
+    border-left: 5px solid orange;
+    margin-left:75px;
+
+}
+.previewImgsub {
+    border-radius: 10px;
+    vertical-align: middle;
+    border-style: none;
+    position: relative;
+    max-width: 110%;
+    margin-bottom: 20px;
+    background-image: url("Logo.png");
+}
+
+.label1{
+    font-size: 18.5px;
+    font-weight: 500;
+    position:relative;
+    top:2px;
+    left:40px;
+
+}
+
+.label2{
+    font-size: 18.5px;
+    font-weight: 500;
+    position:relative;
+    top:32px;
+    left:-201px;
+
+}
+
+.form-group3{
+    position: relative;
+    left:210px;
+    top:-27px;
+}
+
+.form-group4{
+    position: relative;
+    left:-305px;
+    top:555px;
+}
+
+
+.form-group5{
+    position: relative;
+    left:700px;
+    top:15px;
+}
+
+.fill{
+    position:relative;
+    left:210px;
+    width:520px;
+    height:60px;
+    background-color: rgba(153, 153, 153, 0.616);
+    top:-30px;
+    border-radius: 10px 10px 0 0;
+}
+
+.icons{
+    position:relative;
+    left:40px;
+    top:17px;
+}
+
+.check{
+    position:relative;
+    left:280px;
+    top:-25px;
+}
+
+.aside{
+    width:520px;
+    height:1200px;
+    background-color: rgba(131, 120, 120, 0.829);
+    border-radius: 0;
+    float: right;
+    margin-top:-890px;
+}
+
+.vertical-menu {
+  width: 400px;
+  position: relative;
+  right:-65px;
+}
+
+.vertical-menu a {
+  background-color: #eee;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+
+.vertical-menu a:hover {
+  background-color: #ccc;
+  color:black;
+}
+
+.vertical-menu a.active {
+  background-color: orange;
+  color: white;
+  font-size: 19px;
+  font-weight: 500;
+
+}
+
