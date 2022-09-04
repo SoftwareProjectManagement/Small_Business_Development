@@ -1,41 +1,50 @@
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
+ 
+const RequestSchema = new Schema({      
+    name : {
+        type : String,
+        required : true
+    },
 
-const RequestSchema = new Schema({
-  userID: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'user',
-    required: true
-  },
+    address : {
+        type : String,
+        required : true
+    },
+    
+    nic : {
+        type : String,
+        required : true
+    },
 
-  address: {
-    type: String,
-    required: true
-  },
+    mobile : {
+        type : String,
+        required : true
+    },
 
-  nic: {
-    type: String,
-    required: true
-  },
+    email : {
+        type : String,
+        required : true
+    },
 
-  bussinessID: {
-    type: String,
-    required: true
-  },
+    reg : {
+        type : String,
+        required : true
+    },
 
-  proof: {
-    type: String,
-    required: true
-  },
+    proof : {
+        type : String,
+        required : true
+    },
 
-  rstatus: {
-    type: String,
-    default: "Pending"
-  }
+    jstatus: {
+        type : String,
+        default: 'In progress'
+    }
 
-
+    
 });
 
-const Request = mongoose.model("request", RequestSchema)
+const Request = mongoose.model("request",RequestSchema) 
 module.exports = Request
