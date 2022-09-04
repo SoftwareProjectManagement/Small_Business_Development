@@ -1,16 +1,13 @@
 const router = require("express").Router();
-const { addRequest, viewRequest , updateRequest} = require('../controllers/requestcontroller.js')
-const { viewOneRequest } = require('../controllers/requestcontroller.js')
-
-//add new Request
+const { addRequest, viewAllRequest, updateRequest } = require('../controllers/requestcontroller.js')
+ 
+//add new request
 router.post('/add', addRequest);
+ 
+//view all requests
+router.get('/',viewAllRequest);
 
-//view Request
-router.get('/show', viewRequest);
+router.put('/:id', updateRequest);
 
-//view one Request
-router.get('/view/:id', viewOneRequest);
-
-router.put('/show/:id', updateRequest);
-
+ 
 module.exports = router;
