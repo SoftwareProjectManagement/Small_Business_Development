@@ -28,7 +28,7 @@ exports.viewOneProduct = async (req, res) => {
     let productId = req.params.id;
 
     await Product.findById(productId).then((product) => {
-        res.status(200).json({ status : "Product Fetched Successfully"});
+        res.status(200).json({ status : "Product Fetched Successfully", product});
     }).catch((error) => {
         res.status(500).json({ status : "Error with Fetching the Product", error: error.message});
     });
