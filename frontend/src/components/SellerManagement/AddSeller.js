@@ -81,7 +81,7 @@ function AddSeller() {
         <div style={{ width: '1000px', height: '900px' }}>
         <div className="container" align="left" >
             <div className="row">
-                <div className="col-12" style={{marginTop:-100}}>
+                <div className="col-12" style={{marginTop:20}}>
                     <div className="pb-2 px-3 d-flex flex-wrap align-items-center justify-content-between">
                         <h2 style={{ fontSize: '26px' }}> <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Are You Willing to Join With Us ?</h2>
                         <p style={{ width:800,fontSize:18,marginLeft:200}}>Simply fill the below form details to join with us and get your products. Once you get the approval you will be add your products into our platform and enhance your market place.</p>
@@ -92,7 +92,7 @@ function AddSeller() {
                 </div>
             </div>
             <br></br>
-            <div className="create_sub" style={{marginLeft:130,width:750}}>
+            <div className="create_sub" style={{marginLeft:130,width:880}}>
                 <form onSubmit={add} className="addsub">
                     
                     <div className="row">
@@ -188,7 +188,7 @@ function AddSeller() {
                                             value={fileInputState}
                                         />
 
-                                        <Button  variant="contained" component="span" style={{position:"relative",top:30,left:-120}}>
+                                        <Button  variant="contained" component="span" style={{position:"relative",top:-25,left:100,width:250,fontSize:13}}>
                                             < FileUploadOutlinedIcon/> &nbsp; Upload document
                                         </Button>
                                     </label>
@@ -196,8 +196,8 @@ function AddSeller() {
                             </div>
                         </div>
 
-
-                        <div className='des' style={{position:"relative",top:20}}>
+<br/><br/><br/> <br/><br/>  <br/><br/> 
+                        <div className='des' style={{position:"relative",top:50,left:32}}>
                             <label className='label1'>I hereby accept the terms and conditions</label><br /><div className='check'><CheckBoxOutlinedIcon/></div>
                             </div>
 
@@ -214,7 +214,7 @@ function AddSeller() {
 
      
 </div>
-<br/><br/>   <br/><br/>  
+<br/><br/>   <br/><br/>   <br/><br/>  <br/><br/>  <br/><br/>  <br/><br/>  
 </div>
 
 

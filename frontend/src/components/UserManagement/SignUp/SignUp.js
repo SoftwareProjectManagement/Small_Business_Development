@@ -104,7 +104,7 @@ function SignUp() {
     }
 
     return (
-            <div className="container" align="center" id="regback">
+            <div align="center" id="regback">
                 <div className="card-form">
                 
                     <form onSubmit={register} className="boxSignUp">

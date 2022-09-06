@@ -70,7 +70,7 @@ function Login() {
  
 
     return (
-        <div className="container" align="center" id="loginback">
+        <div align="center" id="loginback">
             <div className="card-form">
                 
                 <form className="boxSignIn" onSubmit={signIn}>
