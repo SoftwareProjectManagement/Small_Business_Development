@@ -6,6 +6,7 @@ import SignUp from "./components/UserManagement/SignUp/SignUp";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Cart from "./components/CartManagement/Cart";
+import SingleItem from "./components/ProductManagement/SingleItem/SingleItem";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/user/signup" element={<SignUp />} />
                 <Route path="/admin/signin" element={<AdminLogin />} />
                 <Route path="/cart" element={<Cart/>} />
+                <Route path="/product/item/:id" element={<SingleItem/>}/>
             </Routes>
             <Footer/>
         </Router>
