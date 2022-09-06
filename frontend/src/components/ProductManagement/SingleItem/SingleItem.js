@@ -7,6 +7,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import Swal from 'sweetalert2'
 import ChoosePaymentModal from "../../PaymentManagement/ChoosePaymentModal"
+import {AddToCart} from '../../../Utils/CartUtils'
 
 function SingleItem(props) {
     const[id,setId]=useState("");
@@ -75,14 +76,59 @@ function SingleItem(props) {
                     <h5><span className="bold">Description :</span> {' '}{' '} {description}</h5>
                 </div>
                 <div className='ButtonContainer'>
-                    <button>Add To Cart <ShoppingCartIcon /></button>
-                    <button onClick={() => {
-                    setOpenModal(true);
-                }}>Buy Now <ShoppingBagIcon /></button>
+                    <button onClick={()=>AddToCart(id, price)}>
+                        Add To Cart <ShoppingCartIcon />
+                    </button>
+
+                    <button onClick={() => {setOpenModal(true);}}>
+                        Buy Now <ShoppingBagIcon />
+                    </button>
                 </div>
             </div>
             <div className="RelatedProductcontainer">
                 <h5>Related Products<hr /></h5>
+                <div className='relatedItemContainer'>
+                    <div className='blabla'>
+                        <div className='RelatedimageContainer'>
+                            <img src={`${imgUrl}`} alt="productImg" />
+                        </div>
+                        <div className='RelatedDescriptionContainer'>
+                            <h2>{name}</h2>
+                            <h5>Price : {' '}{' '} Rs.{price}.00</h5>
+                        </div>
+                    </div>
+
+                    <div className='blabla'>
+                        <div className='RelatedimageContainer'>
+                            <img src={`${imgUrl}`} alt="productImg" />
+                        </div>
+                        <div className='RelatedDescriptionContainer'>
+                            <h2>{name}</h2>
+                            <h5>Price : {' '}{' '} Rs.{price}.00</h5>
+                        </div>
+                    </div>
+
+                    <div className='blabla'>
+                        <div className='RelatedimageContainer'>
+                            <img src={`${imgUrl}`} alt="productImg" />
+                        </div>
+                        <div className='RelatedDescriptionContainer'>
+                            <h2>{name}</h2>
+                            <h5>Price : {' '}{' '} Rs.{price}.00</h5>
+                        </div>
+                    </div>
+
+                    <div className='blabla'>
+                        <div className='RelatedimageContainer'>
+                            <img src={`${imgUrl}`} alt="productImg" />
+                        </div>
+                        <div className='RelatedDescriptionContainer'>
+                            <h2>{name}</h2>
+                            <h5>Price : {' '}{' '} Rs.{price}.00</h5>
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
             {openModal && <ChoosePaymentModal setOpenModal={setOpenModal} />}
         </div>         
