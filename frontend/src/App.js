@@ -5,6 +5,7 @@ import Login from "./components/UserManagement/SignIn/SignIn";
 import SignUp from "./components/UserManagement/SignUp/SignUp";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
+import Cart from "./components/CartManagement/Cart";
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
                 <Route path="/user/signin" element={<Login />} />
                 <Route path="/user/signup" element={<SignUp />} />
                 <Route path="/admin/signin" element={<AdminLogin />} />
-                
+                <Route path="/cart" element={<Cart/>} />
             </Routes>
             <Footer/>
         </Router>
