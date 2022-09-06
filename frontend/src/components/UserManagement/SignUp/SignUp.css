@@ -1,5 +1,5 @@
 .boxSignUp {
-    width: 30%;
+    width: 50%;
     padding: 60px;
     background: rgb(255, 255, 255);
     border-radius: 15px;
@@ -44,7 +44,7 @@ top: 50px;
 
 #regback{
     background-image:url("./a2.jpg");
-    margin-top:-110px;
+    margin-top:80px;
     margin-left: -1px;
     background-repeat: no-repeat;
     background-size: cover;

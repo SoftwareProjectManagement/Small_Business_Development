@@ -47,15 +47,15 @@
 
 .form-group4{
     position: relative;
-    left:240px;
-    top:-45px;
+    left:-150px;
+    top:520px;
 }
 
 
 .form-group5{
     position: relative;
-    left:500px;
-    top:15px;
+    left:550px;
+    top:45px;
 }
 
 .fill{
@@ -77,7 +77,7 @@
 .check{
     position:relative;
     left:410px;
-    top:-20px;
+    top:-30px;
 }
 
 .aside{
