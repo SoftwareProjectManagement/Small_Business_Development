@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&family=Roboto:wght@400;700&display=swap');
+
+.Maincontainer{
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+}
+
+.Headercontainer{
+    margin: 15px;
+    height: 70px;
+    width: 70vw;
+    float: left;
+    position:absolute;
+}
+
+.Productcontainer{
+    margin-top: 100px;
+    margin-left: 15px;
+    width: 70vw;
+    height: 650px;
+    float: left;
+}
+
+.RelatedProductcontainer{
+    border-left: 3px solid #000;
+    margin: 15px;
+    width: 25vw;
+    height: 735px;
+    float: right;
+}
+
+.RelatedProductcontainer h5{
+    padding-left: 30px;
+    padding-top: 10px;
+    font-weight: 600;
+    font-size: 23px;
+}
+
+.Headercontainer h5{
+    padding: 20px;
+    font-weight: 600;
+    font-size: 23px;
+    float: left;
+}
+
+.Headercontainer button{
+    margin-right: 5%;
+    margin-top: 0.7%;
+    padding: 5px;
+    float: right;
+    width: 150px;
+    height: 50px;
+    font-weight: 700;
+    font-size: 20px;
+    background: #FF4F00;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 4px 0px 4px rgba(0, 0, 0, 0.25);
+}
+
+.imageContainer img{
+    width: 400px;
+    border-radius: 25px;
+    margin-left: 3%;
+    margin-top: 4%;
+    position: absolute;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 4px 0px 4px rgba(0, 0, 0, 0.25);
+}
+
+.DescriptionContainer{
+    width: 650px;
+    height: 400px;
+    float: right;
+    margin-right: 2%;
+    margin-top: 6%;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 4px 0px 4px rgba(0, 0, 0, 0.25);
+}
+
+.ButtonContainer{
+    width: 700px;
+    height: 80px;
+    position: absolute;
+    margin-top: 32%;
+    margin-left: 16%;
+}
+
+.checked {
+    color: orange;
+}
+
+.StarContainer{
+    padding-left: 25px;
+}
+
+.DescriptionContainer h2{
+    padding-left: 25px;
+    padding-top: 25px;
+    padding-bottom: 10px;
+}
+
+.DescriptionContainer h2 hr{
+    color: #FF4F00;
+    border: 2px solid #FF4F00;
+}
+
+.DescriptionContainer h4{
+    padding-left: 25px;
+    padding-top: 35px;
+    font-size: 20px;
+}
+
+.DescriptionContainer h5{
+    padding-left: 25px;
+    padding-top: 20px;
+}
+
+.DescriptionContainer h6{
+    padding-left: 25px;
+    padding-top: 20px;
+}
+
+.bold{
+    font-weight: 600;
+}
+
+.RelatedProductcontainer h5 hr{
+    color: #FF4F00;
+    border: 2px solid #FF4F00;
+}
+
+.ButtonContainer button{
+    width: 200px;
+    height: 50px;
+    font-weight: 700;
+    font-size: 20px;
+    background: #FF4F00;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    margin-left: 14%;
+    margin-top: 2%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 4px 0px 4px rgba(0, 0, 0, 0.25);
+}
