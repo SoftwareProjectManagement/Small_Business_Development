@@ -7,7 +7,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import Swal from 'sweetalert2'
 import ChoosePaymentModal from "../../PaymentManagement/ChoosePaymentModal"
-import {AddToCart} from '../../../Utils/CartUtils'
+//import {AddToCart} from '../../../Utils/CartUtils'
 
 function SingleItem(props) {
     const[id,setId]=useState("");
@@ -76,7 +76,7 @@ function SingleItem(props) {
                     <h5><span className="bold">Description :</span> {' '}{' '} {description}</h5>
                 </div>
                 <div className='ButtonContainer'>
-                    <button onClick={()=>AddToCart(id, price)}>
+                    <button>
                         Add To Cart <ShoppingCartIcon />
                     </button>
 

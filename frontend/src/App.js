@@ -7,6 +7,7 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Cart from "./components/CartManagement/Cart";
 import SingleItem from "./components/ProductManagement/SingleItem/SingleItem";
+import AddCategory from "./components/CategoryManagement/AddCategory/AddCategory";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
                 <Route path="/admin/signin" element={<AdminLogin />} />
                 <Route path="/cart" element={<Cart/>} />
                 <Route path="/product/item/:id" element={<SingleItem/>}/>
+                <Route path="/category/add" element={<AddCategory/>}/>
             </Routes>
             <Footer/>
         </Router>
