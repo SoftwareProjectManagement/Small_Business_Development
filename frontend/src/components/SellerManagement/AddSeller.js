@@ -81,22 +81,27 @@ function AddSeller() {
         <div style={{ width: '1000px', height: '900px' }}>
         <div className="container" align="left" >
             <div className="row">
-                <div className="col-12">
+                <div className="col-12" style={{marginTop:-100}}>
                     <div className="pb-2 px-3 d-flex flex-wrap align-items-center justify-content-between">
-                        <h2 style={{ fontSize: '26px' }}> <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Topic Document Submission</h2>
+                        <h2 style={{ fontSize: '26px' }}> <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Are You Willing to Join With Us ?</h2>
+                        <p style={{ width:800,fontSize:18,marginLeft:200}}>Simply fill the below form details to join with us and get your products. Once you get the approval you will be add your products into our platform and enhance your market place.</p>
+                    </div>
+                    <div style={{position:"absolute",marginTop:100,marginLeft:1030}}>
+                        <img src="/images/win.png"/>
                     </div>
                 </div>
             </div>
             <br></br>
-            <div className="create_sub">
+            <div className="create_sub" style={{marginLeft:130,width:750}}>
                 <form onSubmit={add} className="addsub">
+                    
                     <div className="row">
                         <div className="col-8">
                             <div className="row">
                                 <br /><br />
                                 <div>
                                     <label className='label1'>Full Name</label><br />
-                                    <div className="col-md-10 mb-4">
+                                    <div className="col-md-7 mb-3">
                                         <div className="form-group3">
                                             <OutlinedInput
                                                 type="group" id="group" placeholder="Full Name" required fullWidth
@@ -130,9 +135,9 @@ function AddSeller() {
                                     <div className="col-md-14 mb-4">
                                         <div className="form-group3">
                                             <OutlinedInput
-                                                type="details" id="details" required fullWidth
+                                                type="details" id="details" placeholder="Mobile Number" required fullWidth
                                                 onChange={(e) => setMobile(e.target.value)}
-                                                inputProps={{ style: { padding: 68 } }}
+                                                inputProps={{ style: { padding: 12 } }}
                                             />
                                         </div>
                                     </div>
@@ -141,20 +146,20 @@ function AddSeller() {
                                     <div className="col-md-14 mb-4">
                                         <div className="form-group3">
                                             <OutlinedInput
-                                                type="details" id="details" required fullWidth
+                                                type="details" id="details" placeholder="Email Address" required fullWidth
                                                 onChange={(e) => setEmail(e.target.value)}
-                                                inputProps={{ style: { padding: 68 } }}
+                                                inputProps={{ style: { padding: 12 } }}
                                             />
                                         </div>
                                     </div>
 
-                                    <label className='label1'>Bussiness Registration Number</label><br />
+                                    <label className='label1'>Bussiness ID</label><br />
                                     <div className="col-md-14 mb-4">
                                         <div className="form-group3">
                                             <OutlinedInput
-                                                type="details" id="details" required fullWidth
+                                                type="details" id="details" placeholder="Bussiness Registration Number" required fullWidth
                                                 onChange={(e) => setReg(e.target.value)}
-                                                inputProps={{ style: { padding: 68 } }}
+                                                inputProps={{ style: { padding:12 } }}
                                             />
                                         </div>
                                     </div>
@@ -171,7 +176,7 @@ function AddSeller() {
                                     <img className="previewImgsub"  />
                                 }
                                 <div className="form-group4">
-                                <label className='label2'>Upload Documents</label>
+                                <label className='label2'>Bussiness Registration Certificate</label>
                                     <label htmlFor="profilepic">
                                         <input
                                             style={{ display: 'none' }}
@@ -183,7 +188,7 @@ function AddSeller() {
                                             value={fileInputState}
                                         />
 
-                                        <Button color="primary" variant="contained" component="span">
+                                        <Button  variant="contained" component="span" style={{position:"relative",top:30,left:-120}}>
                                             < FileUploadOutlinedIcon/> &nbsp; Upload document
                                         </Button>
                                     </label>
@@ -192,7 +197,7 @@ function AddSeller() {
                         </div>
 
 
-                        <div className='des'>
+                        <div className='des' style={{position:"relative",top:20}}>
                             <label className='label1'>I hereby accept the terms and conditions</label><br /><div className='check'><CheckBoxOutlinedIcon/></div>
                             </div>
 
@@ -207,9 +212,11 @@ function AddSeller() {
             </div>
         </div>
 
-        
+     
 </div>
+<br/><br/>   <br/><br/>  
 </div>
+
 
     )
 }
