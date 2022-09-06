@@ -1,0 +1,16 @@
+footer{
+    width: 100%;
+    position: relative;
+    background-color:#3b3b3b ;
+    bottom: 0;
+    color: #fff;
+    padding: 20px 0 10px;
+}
+.logoFooter{
+    width: 150px;
+    margin-left: 35%;
+}
+footer ul li{
+    list-style: none;
+    color: #fff;
+}
