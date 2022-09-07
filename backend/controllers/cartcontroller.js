@@ -38,3 +38,27 @@ exports.viewCart = async(req,res) => {
         res.status(500).json({message: "Error with fetching product", error: error.message})
     }
 }
+
+//Update Products in the Cart
+exports.updateitem = async(req,res) => {
+    //get cart id
+    let cartId = req.params.id;
+
+    const quantity = Number(req.body.quantity);
+    const Price = Number(req.body.price);
+
+    let total = Price * quantity;
+
+    const updateCart = {quantity,total}
+    
+    try {
+        //Find a product by ID for update
+        await Cart.findByIdAndUpdate(cartId,updateCart);
+        //success message
+        res.status(200).json({success: true,message:"Quantity Updated"})
+
+    }catch(error){
+        //error message
+        res.status(500).json({message: "failed to update", error: error.message})
+    }
+}
