@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import { useNavigate,useLocation  } from 'react-router-dom'
-import './ViewCategory.css'
+import './ViewProdcuts.css'
 import axios from 'axios'
 import { orange,red,blue,green } from '@material-ui/core/colors';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
@@ -8,9 +8,9 @@ import AddIcon from '@material-ui/icons/Add';
 import { Button } from '@material-ui/core';
 import GetAppIcon from '@material-ui/icons/GetApp';
 
-function ViewCategory() {
+function ViewProdcuts() {
     const [isAdmin,setIsAdmin]= useState(false)
-    const [category, setCategory] = useState([])
+    const [products, setProducts] = useState([])
     const navigate = useNavigate()
     const location = useLocation()
     const [user, setUser] = useState("");
@@ -24,14 +24,14 @@ function ViewCategory() {
         setIsAdmin(true)
       }
 
-      async function getAllCategory() {
-        axios.get(`http://localhost:8070/category/`).then((res) => {
-          setCategory(res.data)  
+      async function getAllProducts() {
+        axios.get(`http://localhost:8070/product/`).then((res) => {
+          setProducts(res.data)  
         }).catch((error) => {
           alert("Failed to fetch Category")
         })
       }
-      getAllCategory();
+      getAllProducts();
       
     }, [location,isAdmin])
     
@@ -48,7 +48,7 @@ function ViewCategory() {
           <div className="row">
               <div className="col-4">
                 <div className="pb-2 px-3 d-flex flex-wrap align-items-center justify-content-between">
-                    <h2>Product Category</h2>
+                    <h2>Products</h2>
                 </div>
               </div>
               <div className="col-3">
@@ -71,20 +71,23 @@ function ViewCategory() {
             Add Product <AddIcon/>
             </Button>  
           }
-          {category.map((Category,key)=>( 
+          {products.map((Products,key)=>( 
                 <div key={key}> 
                     <div className="productCard" >
                         <div className="imgBx">
-                            <img  src={`${Category.imgUrl}`} alt="product" className="itemProduct"/>
+                            <img  src={`${Products.imgUrl}`} alt="product" className="itemProduct"/>
                         </div>
                         <div className="p-3">
-                            <h7>{Category.categoryname}</h7>
+                            <h7>{Products.name}</h7>
+                            <h7>{Products.category}</h7>
+                            <h7>{Products.price}</h7>
+                            <h7>{Products.description}</h7>
                            
                             <div align="right">
                               <span> 
                                   
                                   &nbsp;&nbsp;&nbsp;
-                                  <button className="productBtn" style={{backgroundColor:red[400]}} onClick={()=>view(Category._id)}> View Product </button>
+                                  <button className="productBtn" style={{backgroundColor:red[400]}} onClick={()=>view(Products._id)}> View </button>
                               </span> 
                             </div>
                         </div>
@@ -96,4 +99,4 @@ function ViewCategory() {
     )      
 }
 
-export default ViewCategory
+export default ViewProdcuts

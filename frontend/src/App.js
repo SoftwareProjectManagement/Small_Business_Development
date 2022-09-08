@@ -8,7 +8,8 @@ import Header from "./components/Header/Header";
 import Cart from "./components/CartManagement/Cart";
 import SingleItem from "./components/ProductManagement/SingleItem/SingleItem";
 import AddCategory from "./components/CategoryManagement/AddCategory/AddCategory";
-
+import ViewCategory from "./components/CategoryManagement/ViewCategory/ViewCategory";
+import ViewProdcuts from "./components/ProductManagement/ViewAllProdcuts/ViewProducts";
 
 function App() {
     return (
@@ -22,6 +23,8 @@ function App() {
                 <Route path="/cart" element={<Cart/>} />
                 <Route path="/product/item/:id" element={<SingleItem/>}/>
                 <Route path="/category/add" element={<AddCategory/>}/>
+                <Route path="/category/view" element={<ViewCategory/>}/>
+                <Route path="/products/view" element={<ViewProdcuts/>}/>
             </Routes>
             <Footer/>
         </Router>

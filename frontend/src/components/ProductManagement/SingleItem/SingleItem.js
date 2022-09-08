@@ -86,7 +86,7 @@ function SingleItem(props) {
                     <h5><span className="bold">Description :</span> {' '}{' '} {description}</h5>
                 </div>
                 <div className='ButtonContainer'>
-                    <button onClick={()=>AddToCart(id, user._id, category, price)}>
+                    <button >
                         Add To Cart <ShoppingCartIcon />
                     </button>
 
