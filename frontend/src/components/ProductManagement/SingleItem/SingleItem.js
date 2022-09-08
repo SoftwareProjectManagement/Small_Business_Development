@@ -7,9 +7,10 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import Swal from 'sweetalert2'
 import ChoosePaymentModal from "../../PaymentManagement/ChoosePaymentModal"
-import {AddToCart} from '../../../Utils/CartUtils'
+//import {AddToCart} from '../../../Utils/CartUtils'
 
 function SingleItem(props) {
+    const [isAdmin,setIsAdmin]=useState(false)
     const[id,setId]=useState("");
     const[name,setName]=useState("");
     const[category,setCategory]=useState("");
@@ -17,8 +18,18 @@ function SingleItem(props) {
     const[description,setDescription]=useState("");
     const[imgUrl,setImgUrl]=useState("");
     const navigate = useNavigate();
+    const [user, setUser] = useState("");
 
     useEffect(() => {
+
+        if(localStorage.getItem("user")){
+            setUser(JSON.parse(localStorage.getItem('user')))
+        }
+        
+        if(localStorage.getItem("adminAuthToken")){
+            setIsAdmin(true)
+        }
+
       async function getProductDetails() {
         axios.get(`http://localhost:8070/product/item/631446670e647d4bbc460185`).then((res) => {
           setId(res.data.product._id)  
@@ -30,8 +41,7 @@ function SingleItem(props) {
         }).catch((error) => {
             Swal.fire({
                 icon: 'error',
-                title: 'Oops...',
-                text: 'Failed to Fetch Products!'
+                title: 'Failed to Fetch Products!'
               }).then((result) => {
                 if (result.isConfirmed) {
                     navigate(`/cart`)
@@ -76,7 +86,7 @@ function SingleItem(props) {
                     <h5><span className="bold">Description :</span> {' '}{' '} {description}</h5>
                 </div>
                 <div className='ButtonContainer'>
-                    <button onClick={()=>AddToCart(id, price)}>
+                    <button >
                         Add To Cart <ShoppingCartIcon />
                     </button>
 
