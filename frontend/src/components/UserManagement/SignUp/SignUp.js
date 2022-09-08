@@ -115,9 +115,9 @@ function SignUp() {
                         </div>
                     </div><br/>
                         <div className="row">
-                            <div className="col-8">
+                            <div className="col-12">
                                 <div className="row">
-                                    <div className="col-md-6 mb-4">
+                                    <div className="col-md-18 mb-4">
                                         <div className="form-group">
                                             <OutlinedInput
                                                 type="text" id="firstname" placeholder="First Name" 
@@ -127,7 +127,7 @@ function SignUp() {
                                             />
                                         </div>
                                     </div><br/>
-                                    <div className="col-md-6 mb-4">
+                                    <div className="col-md-18 mb-4">
                                         <div className="form-group">
                                             <OutlinedInput  
                                                 type="text" id="lastname" placeholder="Last Name" 
@@ -138,7 +138,7 @@ function SignUp() {
                                         </div>
                                     </div><br/>
                                 
-                                    <div className="col-md-8 mb-4">
+                                    <div className="col-md-18 mb-4">
                                         <div className="form-group">
                                             <OutlinedInput  
                                                 type="email" id="email" placeholder="Email" 
@@ -148,10 +148,10 @@ function SignUp() {
                                             />
                                         </div>
                                     </div><br/>
-                                    <div className="col-md-6 mb-4">
+                                    <div className="col-md-18 mb-4">
                                         <div className="form-group">
                                             <OutlinedInput 
-                                                type="tel" id="phone" placeholder="phone" required fullWidth
+                                                type="tel" id="phone" placeholder="Phone Number"  required fullWidth
                                                 onChange={(event)=> {setPhone(event.target.value)}}
                                                 inputProps={{style: {padding: 12}, pattern: "[0-9]{10}"}}
                                             />
@@ -229,8 +229,8 @@ function SignUp() {
                                                 value={fileInputState}
                                             />
 
-                                            <Button color="rgb(253, 139, 8)" variant="contained" component="span" style={{fontSize:13}}>
-                                                <AddAPhotoIcon/> &nbsp; Upload Profile Picture
+                                            <Button color="rgb(253, 139, 8)" variant="contained" component="span" style={{fontSize:10,width:250}}>
+                                                <AddAPhotoIcon/> &nbsp;&nbsp;&nbsp; Upload Profile Picture
                                             </Button>
                                         </label>
                                     </div>
@@ -239,13 +239,13 @@ function SignUp() {
                         </div><br/>
                         <div className="row">
                             <div className="col-md-12">
-                                <div className="form-group">
+                                <div className="form-group" style={{marginTop:-190,marginLeft:370}}>
                                     <input className="regbtn" type="submit" value="Sign Up" />
                                 </div>
                             </div>
                         </div>
                         
-                        <p>Already have an account? <a href="/user/signin">Sign In</a></p>
+                        <p style={{marginTop:-120,marginLeft:340,width:250}}>Already have an account? <a href="/user/signin">Sign In</a></p>
                         </div>
                     </form>             
                 </div>                   

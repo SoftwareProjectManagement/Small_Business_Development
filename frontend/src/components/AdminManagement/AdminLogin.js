@@ -50,9 +50,9 @@ function AdminLogin() {
     }
 
     return (
-        <div className="container" align="center" id="loginback">
+        <div align="center" id="loginback">
             <div className="card-form">
-                <form className="boxSignIn" onSubmit={signIn} style={{position:'relative',top:70,width:500}}>
+                <form className="boxSignIn" onSubmit={signIn} style={{position:'relative',top:170,width:500}}>
                     <h1 className="form-h1">Sign In</h1><br/>
                     <p className="text-muted"> All your project needs at one place!</p> 
                     <input 
