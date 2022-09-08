@@ -1,8 +1,90 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate, useLocation } from 'react-router';
 import './ViewLoans.css'
 import axios from 'axios'
 
 function ViewLoans() {
+
+    const [isAdmin, setIsAdmin] = useState(false);
+    const [loans, setLoans] = useState([])
+    const navigate = useNavigate()
+    const location = useLocation()
+    const [user, setUser] = useState("");
+
+    useEffect(() => {
+        if (localStorage.getItem("user")) {
+            setUser(JSON.parse(localStorage.getItem('user')))
+        }
+
+        if (localStorage.getItem("adminAuthToken")) {
+            setIsAdmin(true)
+        }
+
+        async function getAllRequests() {
+            axios.get(`http://localhost:8070/loan`).then((res) => {
+                setLoans(res.data)
+            }).catch((error) => {
+                alert("Failed to fetch document")
+            })
+        }
+
+        getAllRequests();
+    }, [location, isAdmin])
+
+    function filterContent(data, searchTerm) {
+        const result = data.filter((loans) =>
+            loans.group.toLowerCase().includes(searchTerm)
+        )
+        setLoans(result)
+    }
+
+    function handleSearchAll(event) {
+        const searchTerm = event.currentTarget.value
+        axios.get(`http://localhost:8070/topic`).then((res) => {
+            filterContent(res.data, searchTerm.toLowerCase())
+        }).catch((error) => {
+            alert("Failed to fetch documents")
+        })
+    }
+
+    function add() {
+        navigate(`/`)
+    }
+
+    const setData = async (tstatus, id) => {
+
+        const value = {
+            tstatus,
+        };
+
+        await axios
+            .put(`http://localhost:8070/loan/${id}`, value)
+            .then(() => {
+                alert(`Loan is ${tstatus}ed`);
+                window.location.reload(false);
+            })
+            .catch((err) => {
+                alert(`Something went to wrong !!!`);
+            });
+    };
+
+    const setEvaluate = async (tstatus, id) => {
+
+        const value = {
+            tstatus,
+        };
+
+        await axios
+            .put(`http://localhost:8070/loan/${id}`, value)
+            .then(() => {
+                alert(`Loan is ${tstatus}ed`);
+                window.location.reload(false);
+            })
+            .catch((err) => {
+                alert(`Something went to wrong !!!`);
+            });
+    };
+
     return (
         <div className="container">
             <div className="row">
@@ -22,7 +104,7 @@ function ViewLoans() {
                             name="search"
                             id="search"
                             placeholder="Search"
-                            // onChange={handleSearchAll}
+                            onChange={handleSearchAll}
                             required
                         /><div style={{ position: 'relative', right: '510px', top: '-35px' }}>
                             {/* <SearchIcon /> */}
@@ -33,8 +115,8 @@ function ViewLoans() {
             <div className="row">
                 <div className="col-md-12">
                     <div className="productGrid"  >
-                        {/* {topics.map((Topic, key) => ( */}
-                            <div>
+                        {loans.map((Loan, key) => (
+                            <div key={key}>
                                 <div className="p-2">
                                     <table>
                                         <thead className="table-head">
@@ -48,61 +130,55 @@ function ViewLoans() {
                                         </thead>
                                         <tbody>
                                             <tr className="table-body">
-                                                <td className="text-l tb-border" style={{ width: 400, padding: '5px 15px'}}>dsaffads</td>
-                                                <td className="text-l tb-border" style={{ width: 260, padding: '5px 15px' }}>asdf</td>
-                                                <td className="text-l tb-border" style={{ width: 400, padding: '5px 15px' }}>asdf</td>
-                                                <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>asdf</td>
-                                                <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>asdf</td>
-                                                {/* <div>
-                                                    {isStaff === true ?
+                                                <td className="text-l tb-border" style={{ width: 400, padding: '5px 15px'}}>{Loan.name}</td>
+                                                <td className="text-l tb-border" style={{ width: 260, padding: '5px 15px' }}>{Loan.sellerID}</td>
+                                                <td className="text-l tb-border" style={{ width: 400, padding: '5px 15px' }}>{Loan.email}</td>
+                                                <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>{Loan.mobile}</td>
+                                                <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>
+                                                {isAdmin === true ?
                                                         <div style={{width:180}}>
                                                             <button
                                                                 className="btn btn-success"
-                                                                // disabled={
-                                                                //     Topic.tstatus === "Accepted" 
-                                                                // }
-                                                                // onClick={() => setData("Accepted", Topic._id)}
+                                                                disabled={
+                                                                    Loan.tstatus === "Accepted" 
+                                                                }
+                                                                onClick={() => setData("Accepted", Loan._id)}
                                                             >
                                                                 &nbsp;Approve
                                                             </button>
-
                                                             &nbsp;&nbsp;&nbsp;
                                                             <button
                                                                 class="btn btn-info"
-                                                                // disabled={
-                                                                //     Topic.tstatus === "Rejected" 
-                                                                // }
-                                                                // onClick={() => setEvaluate("Rejected", Topic._id)}
+                                                                disabled={
+                                                                    Loan.tstatus === "Rejected" 
+                                                                }
+                                                                onClick={() => setEvaluate("Rejected", Loan._id)}
                                                             >
                                                                 &nbsp;Reject
                                                             </button>
                                                         </div>
                                                         :
-
                                                         <div>
                                                             
                                                             <button
-                                                                // disabled={
-                                                                //     Topic.tstatus === "Submitted for grading" ||
-                                                                //     Topic.tstatus === "Rejected"
-                                                                // }
+                                                                disabled={
+                                                                    Loan.tstatus === "Submitted for grading" ||
+                                                                    Loan.tstatus === "Rejected"
+                                                                }
                                                                 className="btn btn-warning ms-3"
-                                                                // onClick={() => add()}
+                                                                onClick={() => add()}
                                                             >
                                                                 &nbsp;Document Upload
                                                             </button>
                                                         </div>
-
-
-
-                                                    }</div> */}
-
+                                                    }
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-                        {/* ))} */}
+                        ))} 
                     </div>
                 </div>
             </div>

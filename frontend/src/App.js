@@ -19,7 +19,7 @@ function App() {
                 <Route path="/user/signup" element={<SignUp />} />
                 <Route path="/admin/signin" element={<AdminLogin />} />
                 <Route path="/cart" element={<Cart/>} />
-                <Route path="/loan/form_1" element={<RequestForm1 />} />
+                <Route path="/loan/form1" element={<RequestForm1 />} />
                 <Route path="/loan/view_loan" element={<ViewLoans />} />
             </Routes>
             <Footer/>
