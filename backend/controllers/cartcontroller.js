@@ -54,11 +54,27 @@ exports.updateitem = async(req,res) => {
     try {
         //Find a product by ID for update
         await Cart.findByIdAndUpdate(cartId,updateCart);
-        //success message
+        //Success message
         res.status(200).json({success: true,message:"Quantity Updated"})
 
     }catch(error){
-        //error message
+        //Error message
         res.status(500).json({message: "failed to update", error: error.message})
+    }
+}
+
+//Delete Products in the Cart
+exports.deleteitem = async(req,res) => {
+    //get cart id
+    let cartId = req.params.id;
+
+    try {
+        //Find a product by ID for delete
+        await Cart.findByIdAndDelete(cartId);
+        //Success message
+        res.status(200).json({success: true,message:"Item Deleted"})
+    }catch(error){
+        //Error message
+        res.status(500).json({message: "failed to delete", error: error.message})
     }
 }
