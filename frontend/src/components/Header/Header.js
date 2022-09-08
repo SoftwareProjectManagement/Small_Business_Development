@@ -154,7 +154,7 @@ function Header() {
                         <ul>
                             {sidebar ? <IconButton><DehazeIcon fontSize="large" style={{ color: blue[0] }}/></IconButton> :
                             <IconButton onClick={showSidebar}>
-                                <DehazeIcon fontSize="large" style={{ color: "white",top:40,position:"relative",left:50}}/>
+                                <DehazeIcon fontSize="large" style={{ color: "white",top:20,position:"relative",left:50}}/>
                             </IconButton>
                             }      
                         </ul>
@@ -199,10 +199,10 @@ function Header() {
                                 </div>
                                 :
                                 <div>
-                                    <button className="signing" style={{position :'relative',left:1600,top:-80}} onClick={signin}>
+                                    <button className="signing" style={{position :'relative',top:40,right:-40}} onClick={signin}>
                                         Sign In
                                     </button>
-                                    <button className="signing" style={{position :'relative',left:1350,top:-80}} onClick={signup}>
+                                    <button className="signing" style={{position :'relative',right:90}} onClick={signup}>
                                         Sign Up
                                     </button>
                                 </div>
