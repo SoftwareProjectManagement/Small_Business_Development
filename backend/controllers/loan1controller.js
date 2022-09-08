@@ -37,17 +37,17 @@ exports.addRequest = async (req, res) => {
   }
    
 
-  exports.updateRequests = async(req,res) => {
+  exports.updateLoanRequest = async(req,res) => {
 
-    let requestID = req.params.id;
+    let loanID = req.params.id;
     const { tstatus } = req.body;
 
 
-    const updateRequest= { tstatus } 
+    const updateLoanReq= { tstatus } 
     
     try{
         //find request by ID  
-        await LoanReq1.findByIdAndUpdate(requestID ,updateRequest);
+        await LoanReq1.findByIdAndUpdate(loanID ,updateLoanReq);
 
         res.status(200).json({message:"request updated"})
     }catch(error){

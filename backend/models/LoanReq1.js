@@ -41,5 +41,5 @@ const LoanSchemaReq1 = new Schema({
     
 });
 
-const Req1 = mongoose.model("req1",LoanSchemaReq1) 
-module.exports = Req1
+const LoanReq1 = mongoose.model("req1",LoanSchemaReq1) 
+module.exports = LoanReq1
