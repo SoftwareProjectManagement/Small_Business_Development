@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import axios from 'axios';
-import './AddTopics.css'
+import './RequestForm1.css'
 import OutlinedInput from "@material-ui/core/OutlinedInput";
-import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
+import LoanImage from './loan.jpg';
 
 
-function AddTopics() {
+function RequestForm1() {
 
     const [group, setGroup] = useState("");
     const [topic, setTopic] = useState("");
@@ -34,112 +34,130 @@ function AddTopics() {
 
     return (
         <div>
-        <div style={{ width: '1000px', height: '900px' }}>
-        <div className="container" align="left" >
-            <div className="row">
-                <div className="col-12">
-                    <div className="pb-2 px-3 d-flex flex-wrap align-items-center justify-content-between">
-                        <h2 style={{ fontSize: '26px' }}> <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Topic Document Submission</h2>
-                    </div>
-                </div>
-            </div>
-            <br></br>
-            <div className="create_topic">
-                <form onSubmit={add} className="addtopic">
+            <div style={{ width: '1000px', height: '900px' }}>
+                <div className="container" align="left">
                     <div className="row">
-                        <div className="col-8">
-                            <div className="row">
-                                <br /><br />
-                                <div>
-                                    <label className='label11'>Group ID</label><br />
-                                    <div className="col-md-10 mb-4">
-                                        <div className="form-group30">
-                                            <OutlinedInput
-                                                type="group" id="group" placeholder="Group ID" required fullWidth
-                                                onChange={(e) => setGroup(e.target.value)}
-                                                inputProps={{ style: { padding: 12 } }}
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <label className='label11'>Research Criteria</label><br />
-                                    <div className="col-md-10 mb-4">
-                                        <div className="form-group30">
-                                            <OutlinedInput
-                                                type="details" id="details" placeholder="Select your research criteria from the given list" required fullWidth
-                                                onChange={(e) => setCategory(e.target.value)}
-                                                inputProps={{ style: { padding: 12 } }}
-                                            />
-                                        </div>
-                                    </div>
-                                    <label className='label11'>Research Topic</label><br />
-                                    <div className="col-md-10 mb-4">
-                                        <div className="form-group30">
-                                            <OutlinedInput
-                                                type="topic" id="topic" placeholder="Your Topic"
-                                                required fullWidth
-                                                onChange={(e) => setTopic(e.target.value)}
-                                                inputProps={{ style: { padding: 35 } }}
-                                            />
-                                        </div>
-                                    </div>
-                                    <label className='label11'>Group Leader</label><br />
-                                    <div className="col-md-10 mb-4">
-                                        <div className="form-group30">
-                                            <OutlinedInput
-                                                type="leader" id="leader" placeholder="Group Leader" required fullWidth
-                                                onChange={(e) => setLeader(e.target.value)}
-                                                inputProps={{ style: { padding: 12 } }}
-                                            />
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-
-                                <div className='des'>
-                            <label className='label11'>Discussion Subscription</label><br /><div className='check'><CheckBoxOutlinedIcon/></div>
+                        <div className="col-12">
+                            <div className="pb-2 px-3 d-flex flex-wrap align-items-center justify-content-between">
+                                <h2 style={{ fontSize: '26px' }}> <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome To The Loan Schema</h2>
+                                <p style={{ fontSize: '20px', float: 'left' }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                Simply fill the below form details to get a loan. Once you get the loan approval, 
+                                you will be able 
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                to get the loan from us.</p>
                             </div>
-                            </div>
-
-
-                           
                         </div>
-                        <div className="form-group50">
-                        <input className="btn" type="submit" value="Submit" style={{ padding: '5px 20px', borderRadius: '10px', background: 'orange', border: '2px solid orangered', color: 'white',fontSize:'18px' }}/>
                     </div>
+                    <br></br>
+                 
+                    <div className="row create_topic">
+                        <form onSubmit={add} className="request-form">
+                            <div className="row">
+                                <div className="col-8">
+                                    <div className="row">
+                                        <br /><br />
+                                        <div>
+                                            <label className='label11'>NAME</label><br />
+                                            <div className="col-md-10 mb-4">
+                                                <div className="form-group30">
+                                                    <OutlinedInput
+                                                        type="name" id="name" placeholder="Enter Name" required fullWidth
+                                                        onChange={(e) => setGroup(e.target.value)}
+                                                        inputProps={{ style: { padding: 12 } }}
+                                                    />
+                                                </div>
+                                            </div>
+
+                                            <label className='label11'>Address</label><br />
+                                            <div className="col-md-10 mb-4">
+                                                <div className="form-group30">
+                                                    <OutlinedInput
+                                                        type="address" id="address" placeholder="Enter Address" required fullWidth
+                                                        onChange={(e) => setCategory(e.target.value)}
+                                                        inputProps={{ style: { padding: 12 } }}
+                                                    />
+                                                </div>
+                                            </div>
+
+                                            <label className='label11'>NIC</label><br />
+                                            <div className="col-md-10 mb-4">
+                                                <div className="form-group30">
+                                                    <OutlinedInput
+                                                        type="nic" id="nic" placeholder="Enter NIC" required fullWidth
+                                                        onChange={(e) => setCategory(e.target.value)}
+                                                        inputProps={{ style: { padding: 12 } }}
+                                                    />
+                                                </div>
+                                            </div>
+
+                                            <label className='label11'>MOBILE</label><br />
+                                            <div className="col-md-10 mb-4">
+                                                <div className="form-group30">
+                                                    <OutlinedInput
+                                                        type="mobile" id="mobile" placeholder="Enter Mobile Number" required fullWidth
+                                                        onChange={(e) => setCategory(e.target.value)}
+                                                        inputProps={{ style: { padding: 12 } }}
+                                                    />
+                                                </div>
+                                            </div>
+
+                                            <label className='label11'>SELLER ID</label><br />
+                                            <div className="col-md-10 mb-4">
+                                                <div className="form-group30">
+                                                    <OutlinedInput
+                                                        type="sellerID" id="sellerID" placeholder="Enter Seller ID" required fullWidth
+                                                        onChange={(e) => setCategory(e.target.value)}
+                                                        inputProps={{ style: { padding: 12 } }}
+                                                    />
+                                                </div>
+                                            </div>
+
+                                            <label className='label11'>DESCRIPTION</label><br />
+                                            <div className="col-md-10 mb-4">
+                                                <div className="form-group30">
+                                                    <OutlinedInput
+                                                        type="description" id="description" placeholder="Enter Description" required fullWidth
+                                                        onChange={(e) => setCategory(e.target.value)}
+                                                        inputProps={{ style: { padding: 12 } }}
+                                                    />
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div className="form-group50">
+                                        <input className="btn form1-btn" type="submit" value="Submit"/>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        
+                        </form>
                     </div>
 
 
-                   
-                </form>
+                </div>    
             </div>
+            <aside className='aside'>
+                <div className="image-content">
+                    <img src={LoanImage} alt="loanImage" className="style-image"/>
+                </div>
+                <div className="image-description-content">
+                    <h2 className="font-image">We provide the loan facility to expand your business.</h2>
+                </div>
+            </aside>
         </div>
-
-        
-</div>
-<aside className='aside'>
-<div class="vertical-menu" align="center">
-  <a href="#" class="active">Research Criterias</a>
-  <a href="#"></a>
-  <a href="#">Distributed & Parallel Computing</a>
-  <a href="#">ICT for Development</a>
-  <a href="#">Data Communucation & Networking</a>
-  <a href="#">Robotics & Intelligent Systems</a>
-  <a href="#">Assistive Tecnology</a>
-  <a href="#">Human Computer Interaction</a>
-  <a href="#">Elearning and Education</a>
-  <a href="#">Computational Linguistics</a>
-  <a href="#">Visual Computing</a>
-  <a href="#">Digital Lab</a> 
-  <a href="#">Software Engineering</a>
-  <a href="#">Artificial Intelligence</a>
-  <a href="#">Internet Security</a>
-</div>
-
-        </aside>
-</div>
 
     )
 }
 
-export default AddTopics
+export default RequestForm1
