@@ -47,7 +47,7 @@ exports.addRequest = async (req, res) => {
     
     try{
         //find request by ID  
-         await LoanReq1.findByIdAndUpdate(requestID ,updateTopic);
+        await LoanReq1.findByIdAndUpdate(requestID ,updateRequest);
 
         res.status(200).json({message:"request updated"})
     }catch(error){
