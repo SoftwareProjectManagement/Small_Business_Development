@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
  
-const RequestSchema = new Schema({      
+const LoanSchemaReq1 = new Schema({      
     name : {
         type : String,
         required : true
@@ -23,28 +23,23 @@ const RequestSchema = new Schema({
         required : true
     },
 
-    email : {
+    sellerID : {
         type : String,
         required : true
     },
 
-    reg : {
+    description : {
         type : String,
         required : true
     },
 
-    proof : {
+    tstatus: {
         type : String,
-        required : true
-    },
-
-    jstatus: {
-        type : String,
-        default: 'In progress'
+        default: 'Pending'
     }
 
     
 });
 
-const Request = mongoose.model("request",RequestSchema) 
-module.exports = Request
+const LoanReq1 = mongoose.model("req1",LoanSchemaReq1) 
+module.exports = LoanReq1

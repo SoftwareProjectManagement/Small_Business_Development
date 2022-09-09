@@ -70,10 +70,12 @@ function Login() {
  
 
     return (
-        <div className="container" align="center">
+        <div align="center" id="loginback">
             <div className="card-form">
+                
                 <form className="boxSignIn" onSubmit={signIn}>
                     <h1 className="form-h1">Login</h1>
+                    <br/>
                     <input 
                         type="email" 
                         name="email" 
@@ -98,8 +100,8 @@ function Login() {
                         </IconButton>
                     </span>
 
-                    <Link className="forgot" to="/user/forgotpassword">Forgot password?</Link> 
-                    <input className="form-submit-btn" type="submit" value="Sign In" />
+                    <Link className="forgot" to="/user/forgotpassword">Forgot password?</Link> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input className="loginbtn" type="submit" value="Sign In" />
 
                     <p className="text-muted">or</p>
 

@@ -104,22 +104,20 @@ function SignUp() {
     }
 
     return (
-            <div className="container" align="center">
-                <div className="row">
-                    <div className="col-1">
-                    </div>
+            <div align="center" id="regback">
+                <div className="card-form">
+                
+                    <form onSubmit={register} className="boxSignUp">
+                        <div style={{position:"relative",top:-30}}>
                     <div className="col-11">
-                        <div className="pb-2 px-5 d-flex align-items-center justify-content-between">
+                        <div  align="center">
                             <h2>Sign Up</h2>
                         </div>
-                    </div>
-                </div>
-                <div className="card-form">
-                    <form onSubmit={register} className="boxSignUp">
+                    </div><br/>
                         <div className="row">
-                            <div className="col-8">
+                            <div className="col-12">
                                 <div className="row">
-                                    <div className="col-md-6 mb-4">
+                                    <div className="col-md-18 mb-4">
                                         <div className="form-group">
                                             <OutlinedInput
                                                 type="text" id="firstname" placeholder="First Name" 
@@ -128,8 +126,8 @@ function SignUp() {
                                                 inputProps={{style: {padding: 12}}}
                                             />
                                         </div>
-                                    </div>
-                                    <div className="col-md-6 mb-4">
+                                    </div><br/>
+                                    <div className="col-md-18 mb-4">
                                         <div className="form-group">
                                             <OutlinedInput  
                                                 type="text" id="lastname" placeholder="Last Name" 
@@ -138,9 +136,9 @@ function SignUp() {
                                                 inputProps={{style: {padding: 12}}}
                                             />
                                         </div>
-                                    </div>
+                                    </div><br/>
                                 
-                                    <div className="col-md-8 mb-4">
+                                    <div className="col-md-18 mb-4">
                                         <div className="form-group">
                                             <OutlinedInput  
                                                 type="email" id="email" placeholder="Email" 
@@ -149,16 +147,16 @@ function SignUp() {
                                                 inputProps={{style: {padding: 12}}}
                                             />
                                         </div>
-                                    </div>
-                                    <div className="col-md-6 mb-4">
+                                    </div><br/>
+                                    <div className="col-md-18 mb-4">
                                         <div className="form-group">
                                             <OutlinedInput 
-                                                type="tel" id="phone" placeholder="phone" required fullWidth
+                                                type="tel" id="phone" placeholder="Phone Number"  required fullWidth
                                                 onChange={(event)=> {setPhone(event.target.value)}}
                                                 inputProps={{style: {padding: 12}, pattern: "[0-9]{10}"}}
                                             />
                                         </div>
-                                    </div>
+                                    </div><br/>
               
                                     <div className="col-md-6">
                                         <div className="form-group">
@@ -178,7 +176,7 @@ function SignUp() {
                                                 onBlur={passwordOnBlur}
                                             />
                                         </div>
-                                    </div>
+                                    </div><br/>
                                     <div className="col-md-6">
                                         <div className="form-group">
                                             <OutlinedInput 
@@ -197,7 +195,7 @@ function SignUp() {
                                                 onBlur={passwordOnBlur}
                                             />
                                         </div>
-                                    </div>
+                                    </div><br/>
                                     <div className="col-xl-12 mb-4">
                                         {showMessage &&
                                             <div className="PWmessage">
@@ -212,7 +210,7 @@ function SignUp() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div><br/>
                             <div className="col-4 d-flex justify-content-center">
                                 <div>
                                     {previewSource ? 
@@ -231,23 +229,24 @@ function SignUp() {
                                                 value={fileInputState}
                                             />
 
-                                            <Button color="primary" variant="contained" component="span">
-                                                <AddAPhotoIcon/> &nbsp; Upload Profile Picture
+                                            <Button color="rgb(253, 139, 8)" variant="contained" component="span" style={{fontSize:10,width:250}}>
+                                                <AddAPhotoIcon/> &nbsp;&nbsp;&nbsp; Upload Profile Picture
                                             </Button>
                                         </label>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div><br/>
                         <div className="row">
                             <div className="col-md-12">
-                                <div className="form-group">
-                                    <input className="form-submit-btn" type="submit" value="Sign Up" />
+                                <div className="form-group" style={{marginTop:-190,marginLeft:370}}>
+                                    <input className="regbtn" type="submit" value="Sign Up" />
                                 </div>
                             </div>
                         </div>
                         
-                        <p>Already have an account? <a href="/student/signin">Sign In</a></p>
+                        <p style={{marginTop:-120,marginLeft:340,width:250}}>Already have an account? <a href="/user/signin">Sign In</a></p>
+                        </div>
                     </form>             
                 </div>                   
             </div>

@@ -50,9 +50,9 @@ function AdminLogin() {
     }
 
     return (
-        <div className="container" align="center">
+        <div align="center" id="loginback">
             <div className="card-form">
-                <form className="boxSignIn" onSubmit={signIn} style={{position:'relative',top:70,width:500}}>
+                <form className="boxSignIn" onSubmit={signIn} style={{position:'relative',top:170,width:500}}>
                     <h1 className="form-h1">Sign In</h1><br/>
                     <p className="text-muted"> All your project needs at one place!</p> 
                     <input 
@@ -79,11 +79,11 @@ function AdminLogin() {
                         </IconButton>
                     </span>
 <br/>
-                    <input className="form-submit-btn" type="submit" value="Sign In" />
+                    <input className="loginbtn" type="submit" value="Sign In" />
 
                     <br></br><br></br>
                     <div className="text-muted">
-                        <p>Are you a Staff Member? <Link to="/staff/login"> Click here</Link></p>
+                        
                     </div>
                 </form>
             </div>

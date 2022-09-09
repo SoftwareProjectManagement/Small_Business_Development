@@ -1,22 +1,37 @@
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
 import AdminLogin from "./components/AdminManagement/AdminLogin";
+import AddSeller from "./components/SellerManagement/AddSeller";
 import Login from "./components/UserManagement/SignIn/SignIn";
 import SignUp from "./components/UserManagement/SignUp/SignUp";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
 import Cart from "./components/CartManagement/Cart";
+<<<<<<< HEAD
 import SingleItem from "./components/ProductManagement/SingleItem/SingleItem";
 
+=======
+import RequestForm1 from "./components/LoanManagement/RequestForm1/RequestForm1";
+import ViewLoans from "./components/LoanManagement/ViewLoans/ViewLoans"
+>>>>>>> e8cf2c68516b0395ef93df8c55b4834f5322989b
 
 function App() {
     return (
         <Router>
+            <Header/>
             <Routes>
-
-                <Route path="/user/signin" element={<Login/>}/>
-                <Route path="/user/signup" element={<SignUp/>} />
-                <Route path="/admin/signin" element={<AdminLogin/>} />
+                <Route path="/request/add" element={<AddSeller />} />
+                <Route path="/user/signin" element={<Login />} />
+                <Route path="/user/signup" element={<SignUp />} />
+                <Route path="/admin/signin" element={<AdminLogin />} />
                 <Route path="/cart" element={<Cart/>} />
+<<<<<<< HEAD
                 <Route path="/product/item/:id" element={<SingleItem/>}/>
+=======
+                <Route path="/loan/form1" element={<RequestForm1 />} />
+                <Route path="/loan/view_loan" element={<ViewLoans />} />
+>>>>>>> e8cf2c68516b0395ef93df8c55b4834f5322989b
             </Routes>
+            <Footer/>
         </Router>
     );
 }
