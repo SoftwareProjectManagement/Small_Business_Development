@@ -6,7 +6,8 @@ import SignUp from "./components/UserManagement/SignUp/SignUp";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Cart from "./components/CartManagement/Cart";
-
+import RequestForm1 from "./components/LoanManagement/RequestForm1/RequestForm1";
+import ViewLoans from "./components/LoanManagement/ViewLoans/ViewLoans"
 
 function App() {
     return (
@@ -18,6 +19,8 @@ function App() {
                 <Route path="/user/signup" element={<SignUp />} />
                 <Route path="/admin/signin" element={<AdminLogin />} />
                 <Route path="/cart" element={<Cart/>} />
+                <Route path="/loan/form1" element={<RequestForm1 />} />
+                <Route path="/loan/view_loan" element={<ViewLoans />} />
             </Routes>
             <Footer/>
         </Router>
