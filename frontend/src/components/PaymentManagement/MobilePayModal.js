@@ -3,11 +3,14 @@ import "./MobilePayModal.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
+import Swal from 'sweetalert2'
+import { useNavigate } from 'react-router-dom';
 
 function MobilePay({ setOpenMobileModal }) {
   const [mobileNumber, setMobileNumber] = useState("");
   const [pinNo, setPinNo] = useState("");
   const [date, setDate] = useState("");
+  const navigate = useNavigate();
   
 
   const config = {
@@ -22,12 +25,21 @@ function MobilePay({ setOpenMobileModal }) {
     const newPayment = { mobileNumber, pinNo, date };
 
     try {
-      await axios.post(
-        "http://localhost:8070/",
-        newPayment,
-        config
-      );
-      alert("Payment Successfull");
+      // await axios.post(
+      //   "http://localhost:8070/",
+      //   newPayment,
+      //   config
+      // );
+      Swal.fire({
+        icon: 'success',
+        title: 'Payment Successful!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            navigate(`/`)
+        }else{
+            navigate(`/`)
+        }
+      });
     } catch (error) {
       if (error.response.status === 409) {
         alert(error.response.data.message);
@@ -72,7 +84,7 @@ function MobilePay({ setOpenMobileModal }) {
                         onChange={(event) => {
                           setMobileNumber(event.target.value);
                         }}
-                        inputProps={{ style: { padding: 12 } }}
+                        inputProps={{ style: { padding: 12 },pattern:"[0-9]{10}" }}
                       />
                     </div>
                   </div>
@@ -88,7 +100,7 @@ function MobilePay({ setOpenMobileModal }) {
                         onChange={(event) => {
                           setPinNo(event.target.value);
                         }}
-                        inputProps={{ style: { padding: 12 } }}
+                        inputProps={{ style: { padding: 12 },pattern:"[0-9]{6}" }}
                       />
                     </div>
                   </div>
