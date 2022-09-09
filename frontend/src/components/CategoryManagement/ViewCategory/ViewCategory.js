@@ -37,11 +37,11 @@ function ViewCategory() {
     
     
     function view(id){
-      navigate(`/pharmacy/item/${id}`)
+      navigate(`/product/item/${id}`)
     }
     
     function addProduct(){
-        navigate(`/pharmacy/addProduct`)
+        navigate(`/category/add`)
     }
     return (
         <div className="container">

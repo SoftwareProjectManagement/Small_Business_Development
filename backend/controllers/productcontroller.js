@@ -5,7 +5,7 @@ exports.addProduct = async (req, res) => {
 
     //Define Constant Variables for the attributes
     const {name, category, price, description, imgUrl} = req.body;
-
+    console.log(req.body);
     //Create New Object
     const newProduct = new Product({
         //Initializing the Properties of Object
