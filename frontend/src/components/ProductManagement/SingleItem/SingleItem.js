@@ -31,7 +31,7 @@ function SingleItem(props) {
         }
 
       async function getProductDetails() {
-        axios.get(`http://localhost:8070/product/item/631446670e647d4bbc460185`).then((res) => {
+        axios.get(`http://localhost:8070/product/item/${props.match.params.id}`).then((res) => {
           setId(res.data.product._id)  
           setName(res.data.product.name)
           setCategory(res.data.product.category)

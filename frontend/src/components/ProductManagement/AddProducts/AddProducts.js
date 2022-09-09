@@ -1,16 +1,24 @@
 import { useState } from "react";
+import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
+import Select from '@material-ui/core/Select';
 import axios from "axios";
-import "./AddCategory.css";
+import "./AddProducts.css";
 import Button from "@material-ui/core/Button";
 import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
+import Chip from '@material-ui/core/Chip';
+import MenuItem from '@material-ui/core/MenuItem';
 
-function AddCategory() {
+function AddProducts() {
   const [categoryname, setCategoryName] = useState("");
-
+  const [productname, setProductName] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
   const [previewSource, setPreviewSource] = useState();
   const [selectedFile, setSelectedFile] = useState();
   const [fileInputState, setFileInputState] = useState("");
+  const [availableDay,setDay] = useState([]);
 
   //handling the image uploading
   const handleFileInputChange = (event) => {
@@ -19,6 +27,14 @@ function AddCategory() {
     setSelectedFile(file);
     setFileInputState(event.target.value);
   };
+
+  const dates =[
+    'Footware','Ceramics','Apperal','Leather','Foods'
+]
+
+const handleChange = (event) => {
+  setDay(event.target.value);
+};
 
   //display a preview of uploaded image
   const previewFile = (file) => {
@@ -58,47 +74,115 @@ function AddCategory() {
       }
     }
 
-    const newCategory = { categoryname, imgUrl };
+    const newCategory = { productname,availableDay,price,description, imgUrl };
+    console.log(newCategory);
 
     try {
       await axios.post(
-        "http://localhost:8070/category/add",
+        "http://localhost:8070/product/add",
         newCategory,
         config
       );
-      alert("Category Added Successfully");
+      alert("Product Added Successfully");
       event.target.reset();
     } catch (error) {
-      alert("Category can't be Added");
+      alert("Product can't be Added");
     }
   }
 
+
   return (
-    <div className="container" align="center"><br/><br/><br/><br/>
+    <div className="container" align="center">
       <form onSubmit={add} className="addProduct">
-        <h1 className="headText">Add category</h1>
         <div className="row">
-          <div className="">
+         
+
+          <div className="col-8">
             <div className="row">
               <div className="col-md-8 mb-4">
                 <div className="form-name">
                   <OutlinedInput
                     type="text"
                     id="name"
-                    placeholder="Category Name"
+                    placeholder="Product Name"
                     required
                     fullWidth
-                    onChange={(e) => setCategoryName(e.target.value)}
+                    onChange={(e) => setProductName(e.target.value)}
                     inputProps={{ style: { padding: 12 } }}
                   />
                 </div>
               </div>
             </div>
           </div>
-          
+
           <div className="col-8">
             <div className="row">
               <div className="col-md-8 mb-4">
+                <div className="form-name">
+                  <OutlinedInput
+                    type="text"
+                    id="name"
+                    placeholder="Description"
+                    required
+                    fullWidth
+                    onChange={(e) => setDescription(e.target.value)}
+                    inputProps={{ style: { padding: 12 } }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-8">
+            <div className="row">
+              <div className="col-md-8 mb-4">
+                <div className="form-name">
+                  <OutlinedInput
+                    type="text"
+                    id="name"
+                    placeholder="Price"
+                    required
+                    fullWidth
+                    onChange={(e) => setPrice(e.target.value)}
+                    inputProps={{ style: { padding: 12 } }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-8">
+            <div className="row">
+              <div className="col-md-8 mb-4">
+                <div className="form-name">
+                        <InputLabel id="demo-mutiple-chip-label">Available Category</InputLabel>
+                            <Select
+                                id="demo-mutiple-chip"
+                                multiple fullWidth
+                                value={availableDay}
+                                onChange={handleChange}
+                                input={<Input id="select-multiple-chip"/>}
+                                renderValue={(selected) => (
+                                    <div >
+                                        {selected.map((value) => (
+                                            <Chip key={value} label={value}  />
+                                        ))}
+                                    </div>
+                                 )}
+                            >
+                            {dates.map((date) => (
+                                <MenuItem key={date} value={date} >
+                                    {date}
+                                </MenuItem>
+                            ))}
+                            </Select>
+                            </div>
+              </div>
+            </div>
+          </div>
+                  
+
+
           <div className="col-4 d-flex justify-content-center">
             <div>
               {previewSource ? (
@@ -132,10 +216,6 @@ function AddCategory() {
               </div>
             </div>
           </div>
-
-          </div>
-          </div>
-          </div>
         </div>
         <div className="row">
           <div className="col-md-12">
@@ -148,9 +228,9 @@ function AddCategory() {
             </div>
           </div>
         </div>
-      </form><br/><br/><br/><br/>
+      </form>
     </div>
   );
 }
 
-export default AddCategory;
+export default AddProducts;

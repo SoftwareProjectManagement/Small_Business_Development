@@ -1,0 +1,24 @@
+.addProduct {
+    width: 50%;
+    text-align: center;
+    padding: 40px;
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+    border:1px solid #FF4F00;
+    box-shadow:20px 24px 48px 0 rgba(0, 0, 0, 0.223);
+}
+.previewImgProduct {
+    border-radius: 5px;
+    vertical-align: middle;
+    border-style: none;
+    position: relative;
+    max-width: 110%;
+    margin-bottom: 20px;
+}
+
+.headText{
+    color: #FF4F00;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+}
