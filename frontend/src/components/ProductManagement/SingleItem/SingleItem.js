@@ -7,7 +7,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import Swal from 'sweetalert2'
 import ChoosePaymentModal from "../../PaymentManagement/ChoosePaymentModal"
-import {AddToCart} from '../../../Utils/CartUtils'
+//import {AddToCart} from '../../../Utils/CartUtils'
 
 function SingleItem(props) {
     const [isAdmin,setIsAdmin]=useState(false)
@@ -31,7 +31,7 @@ function SingleItem(props) {
         }
 
       async function getProductDetails() {
-        axios.get(`http://localhost:8070/product/item/631446670e647d4bbc460185`).then((res) => {
+        axios.get(`http://localhost:8070/product/item/${props.match.params.id}`).then((res) => {
           setId(res.data.product._id)  
           setName(res.data.product.name)
           setCategory(res.data.product.category)
@@ -86,7 +86,7 @@ function SingleItem(props) {
                     <h5><span className="bold">Description :</span> {' '}{' '} {description}</h5>
                 </div>
                 <div className='ButtonContainer'>
-                    <button onClick={()=>AddToCart(id, user._id, category, price)}>
+                    <button >
                         Add To Cart <ShoppingCartIcon />
                     </button>
 

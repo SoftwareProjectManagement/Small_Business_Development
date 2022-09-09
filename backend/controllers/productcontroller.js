@@ -5,7 +5,7 @@ exports.addProduct = async (req, res) => {
 
     //Define Constant Variables for the attributes
     const {name, category, price, description, imgUrl} = req.body;
-
+    console.log(req.body);
     //Create New Object
     const newProduct = new Product({
         //Initializing the Properties of Object
@@ -33,3 +33,14 @@ exports.viewOneProduct = async (req, res) => {
         res.status(500).json({ status : "Error with Fetching the Product", error: error.message});
     });
 }
+
+//view Product
+exports.viewAllProducts = async (req, res) => { 
+ 
+    //calling Product model
+    Product.find().then((product) => {
+      res.status(200).json(product)
+    }).catch((error) => {
+      res.status(500).json({ message: "Error with fetching Product", error: error.message });
+    })
+  }
