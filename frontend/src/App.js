@@ -6,13 +6,10 @@ import SignUp from "./components/UserManagement/SignUp/SignUp";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Cart from "./components/CartManagement/Cart";
-<<<<<<< HEAD
 import SingleItem from "./components/ProductManagement/SingleItem/SingleItem";
 
-=======
 import RequestForm1 from "./components/LoanManagement/RequestForm1/RequestForm1";
-import ViewLoans from "./components/LoanManagement/ViewLoans/ViewLoans"
->>>>>>> e8cf2c68516b0395ef93df8c55b4834f5322989b
+// import ViewLoans from "./components/LoanManagement/ViewLoans/ViewLoans"
 
 function App() {
     return (
@@ -23,13 +20,10 @@ function App() {
                 <Route path="/user/signin" element={<Login />} />
                 <Route path="/user/signup" element={<SignUp />} />
                 <Route path="/admin/signin" element={<AdminLogin />} />
-                <Route path="/cart" element={<Cart/>} />
-<<<<<<< HEAD
+                <Route path="/cart/:id" element={<Cart/>} />
                 <Route path="/product/item/:id" element={<SingleItem/>}/>
-=======
                 <Route path="/loan/form1" element={<RequestForm1 />} />
-                <Route path="/loan/view_loan" element={<ViewLoans />} />
->>>>>>> e8cf2c68516b0395ef93df8c55b4834f5322989b
+                {/* <Route path="/loan/view_loan" element={<ViewLoans />} /> */}
             </Routes>
             <Footer/>
         </Router>

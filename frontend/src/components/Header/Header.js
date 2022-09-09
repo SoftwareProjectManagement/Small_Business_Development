@@ -177,6 +177,9 @@ function Header() {
               <button className="home_button" >
               <a href="/module" className="home_button">Contact Us</a>
               </button>
+              <button className="home_button" >
+              <a href="/cart/6316f563912fd0f1eb0ef876" className="home_button">Cart</a>
+              </button>
                         </div>
                         {isSignedIn && (
                 <div  align="center" className="log_out_button" >

@@ -39,6 +39,22 @@ exports.viewCart = async(req,res) => {
     }
 }
 
+//View one Cart
+exports.viewOneCart = async(req,res) => {
+    //get cart id
+    let cartID = req.params.id;
+
+    try {
+        //find cart by User id and cart
+        const cart = await Cart.findById(cartID)            
+        //success message
+        res.status(200).json({success: true,result:cart})
+    }catch(error){
+        //error message
+        res.status(500).json({message: "Error with fetching cart", error: error.message})
+    }
+}
+
 //Update Products in the Cart
 exports.updateitem = async(req,res) => {
     //get cart id
