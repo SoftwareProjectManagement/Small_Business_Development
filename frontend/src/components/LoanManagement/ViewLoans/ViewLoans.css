@@ -1,0 +1,36 @@
+.heading {
+    top: 50px;
+    width: 500px;
+    left: 350px;
+    position: relative;
+    font-family: arial,sans-serif;
+}
+
+.search-box {
+    left: 100px;
+}
+
+.table-head {
+    color: #fff;
+    background-color: rgb(68, 66, 66);
+}
+
+.th-border {
+    border: 1px solid #fff;
+}
+
+.tb-border {
+    border: 1px solid #000;
+}
+
+.table-head-title {
+    padding: 1em;
+}
+
+.table-body {
+    padding-left: 1em;
+}
+
+.text-l {
+    text-align: left;
+}

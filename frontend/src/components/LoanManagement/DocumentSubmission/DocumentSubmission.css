@@ -42,20 +42,19 @@
     position: relative;
     left:210px;
     top:-27px;
-    width:400px;
 }
 
 .form-group4{
     position: relative;
-    left:-150px;
-    top:520px;
+    left:-305px;
+    top:555px;
 }
 
 
 .form-group5{
     position: relative;
-    left:550px;
-    top:45px;
+    left:700px;
+    top:15px;
 }
 
 .fill{
@@ -76,8 +75,8 @@
 
 .check{
     position:relative;
-    left:410px;
-    top:-30px;
+    left:280px;
+    top:-25px;
 }
 
 .aside{
