@@ -3,16 +3,18 @@ import axios from 'axios';
 import './RequestForm1.css'
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import LoanImage from './loan.jpg';
-
+import { useNavigate } from 'react-router-dom';
 
 function RequestForm1() {
 
     const [name, setName] = useState("");
     const [address, setAddress] = useState("");
+    const [email, setEmail] = useState("");
     const [nic, setNic] = useState("");
     const [mobile, setMobile] = useState("");
     const [sellerID, setSellerId] = useState("");
     const [description, setDescription] = useState("");
+    const navigate = useNavigate();
 
 
     async function add(event) {
@@ -23,19 +25,20 @@ function RequestForm1() {
             }
         };
 
-        const newFormRequest = { name, address, nic, mobile, sellerID, description}
+        const newFormRequest = { name, address,email, nic, mobile, sellerID, description}
 
         try {
             await axios.post("http://localhost:8070/loan/add", newFormRequest, config)
             alert("Request Sent Successfully!")
             event.target.reset();
+            navigate('/loan/view_loan')
         } catch (error) {
             alert("Request Failed!");
         }
     }
 
     return (
-        <div>
+        <div align="left">
             <div style={{ width: '1000px', height: '900px' }}>
                 <div className="container" align="left">
                     <div className="row">
@@ -89,6 +92,17 @@ function RequestForm1() {
                                                 </div>
                                             </div>
 
+                                            <label className='label11'>Email</label><br />
+                                            <div className="col-md-10 mb-4">
+                                                <div className="form-group30">
+                                                    <OutlinedInput
+                                                        type="email" id="email" placeholder="Enter Email" required fullWidth
+                                                        onChange={(e) => setEmail(e.target.value)}
+                                                        inputProps={{ style: { padding: 12 } }}
+                                                    />
+                                                </div>
+                                            </div>
+                                            
                                             <label className='label11'>NIC</label><br />
                                             <div className="col-md-10 mb-4">
                                                 <div className="form-group30">
@@ -96,6 +110,7 @@ function RequestForm1() {
                                                         type="nic" id="nic" placeholder="Enter NIC" required fullWidth
                                                         onChange={(e) => setNic(e.target.value)}
                                                         inputProps={{ style: { padding: 12 } }}
+                                                        length={ 12 }
                                                     />
                                                 </div>
                                             </div>

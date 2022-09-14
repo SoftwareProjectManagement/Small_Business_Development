@@ -115,8 +115,7 @@ function ViewLoans() {
             <div className="row">
                 <div className="col-md-12">
                     <div className="productGrid"  >
-                        {loans.map((Loan, key) => (
-                            <div key={key}>
+                            <div>
                                 <div className="p-2">
                                     <table>
                                         <thead className="table-head">
@@ -125,15 +124,22 @@ function ViewLoans() {
                                                 <th className="table-head-title th-border">Seller ID</th>
                                                 <th className="table-head-title th-border">Email</th>
                                                 <th className="table-head-title th-border">Mobile</th>
-                                                <th className="table-head-title th-border">Action</th>
+                                                <th className="table-head-title th-border">Status</th>
+                                                {isAdmin === true ?
+                                                        <th className="table-head-title th-border">Action</th>
+                                                        :
+                                                        <th className="table-head-title th-border"></th>
+                                                    }
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr className="table-body">
+                                        {loans.map((Loan, key) => (
+                                            <tr key={key} className="table-body">
                                                 <td className="text-l tb-border" style={{ width: 400, padding: '5px 15px'}}>{Loan.name}</td>
                                                 <td className="text-l tb-border" style={{ width: 260, padding: '5px 15px' }}>{Loan.sellerID}</td>
                                                 <td className="text-l tb-border" style={{ width: 400, padding: '5px 15px' }}>{Loan.email}</td>
                                                 <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>{Loan.mobile}</td>
+                                                <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>{Loan.tstatus}</td>
                                                 <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>
                                                 {isAdmin === true ?
                                                         <div style={{width:180}}>
@@ -148,7 +154,7 @@ function ViewLoans() {
                                                             </button>
                                                             &nbsp;&nbsp;&nbsp;
                                                             <button
-                                                                class="btn btn-info"
+                                                                class="btn btn-danger"
                                                                 disabled={
                                                                     Loan.tstatus === "Rejected" 
                                                                 }
@@ -160,7 +166,7 @@ function ViewLoans() {
                                                         :
                                                         <div>
                                                             
-                                                            <button
+                                                            {/* <button
                                                                 disabled={
                                                                     Loan.tstatus === "Submitted for grading" ||
                                                                     Loan.tstatus === "Rejected"
@@ -169,16 +175,16 @@ function ViewLoans() {
                                                                 onClick={() => add()}
                                                             >
                                                                 &nbsp;Document Upload
-                                                            </button>
+                                                            </button> */}
                                                         </div>
                                                     }
                                                 </td>
                                             </tr>
+                                            ))} 
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-                        ))} 
                     </div>
                 </div>
             </div>
