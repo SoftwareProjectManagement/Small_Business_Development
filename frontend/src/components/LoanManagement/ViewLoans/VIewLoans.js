@@ -93,10 +93,6 @@ function ViewLoans() {
                 </div>
             </div>
             <div className="row">
-                <div className="col-xl-10">
-                    <div className="pb-2 px-3 d-flex flex-wrap align-items-center justify-content-between">
-                    </div>
-                </div>
                 <div className="col-xl-2 search-box">
                     <div className="px-3 search" align="right" style={{ top: '10px', position: 'relative' }}>
                         <input style={{ color: "black", fontWeight: "500", borderRadius: "8px", border: "2px solid grey", padding: '6px 12px' }}
