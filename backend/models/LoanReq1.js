@@ -12,6 +12,11 @@ const LoanSchemaReq1 = new Schema({
         type : String,
         required : true
     },
+
+    email : {
+        type : String,
+        required : true
+    },
     
     nic : {
         type : String,
