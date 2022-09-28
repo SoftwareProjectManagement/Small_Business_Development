@@ -4,6 +4,8 @@ import './RequestForm2.css'
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import LoanImage from './loan.jpg';
 import { useNavigate } from 'react-router-dom';
+import Button from "@material-ui/core/Button";
+import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
 
 function RequestForm2() {
 
@@ -17,6 +19,26 @@ function RequestForm2() {
     const [businessRegistration, setBusinessRegistration] = useState("");
     const navigate = useNavigate();
 
+    const [previewSource, setPreviewSource] = useState();
+    const [selectedFile, setSelectedFile] = useState();
+    const [fileInputState, setFileInputState] = useState('');
+
+    //handling the image uploading
+        const handleFileInputChange = (event) => {
+            const file = event.target.files[0];
+            previewFile(file);
+            setSelectedFile(file);
+            setFileInputState(event.target.value);
+        };
+
+    //display a preview of uploaded image
+    const previewFile = (file) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file)
+        reader.onloadend = () => {
+            setPreviewSource(reader.result)
+        }
+    }
 
     async function add(event) {
         event.preventDefault();
@@ -136,17 +158,24 @@ function RequestForm2() {
                                                     />
                                                 </div>
                                             </div>
-                                            
+
                                             <label className='label11'>BUSINESS REGISTRATION</label><br />
-                                            <div className="col-md-10 mb-4">
-                                                <div className="form-group30">
-                                                    <OutlinedInput
-                                                        type="businessRegistration" id="businessRegistration" placeholder="Business Registration" required fullWidth
-                                                        onChange={(e) => setBusinessRegistration(e.target.value)}
-                                                        inputProps={{ style: { padding: 12 } }}
-                                                    />
-                                                </div>
-                                            </div>
+
+                                        <label htmlFor="profilepic">
+                                            <input
+                                                style={{ display: 'none' }}
+                                                id="profilepic"
+                                                name="profilepic"
+                                                type="file"
+                                                accept=".pdf"
+                                                onChange={handleFileInputChange}
+                                                value={fileInputState}
+                                            />
+
+                                            <Button color="primary" variant="contained" component="span">
+                                                < FileUploadOutlinedIcon/> Upload document
+                                            </Button>
+                                        </label>
                                             
                                         </div>
                                     </div>
