@@ -5,6 +5,7 @@ import axios from 'axios';
 import img1 from './loans1.jpg';
 import img2 from './loans2.jpg';
 import img3 from './loans3.jpg';
+import './Loan.css';
 
 
 function Loan() {
@@ -52,30 +53,30 @@ function Loan() {
                         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
                     </div>
                     <div className="carousel-inner">
-                        <div className="carousel-item active" data-bs-interval="10000">
-                        <img src={img1} className="d-block w-10" alt="img1"/>
-                        <div className="carousel-caption d-none d-md-block">
-                            <h5>First slide label</h5>
-                            <p>Some representative placeholder content for the first slide.</p>
-                        </div>
+                        <div className="carousel-item active" data-bs-interval="2000">
+                            <img src={img1} className="d-block w-10" alt="img1"/>
+                            <div className="corousal-shadow carousel-caption d-none d-md-block">
+                                <h1 className="corousal-text">Expand Your Business</h1>
+                                <h5 className="corousal-text">Do not worry about money, there are lots of people who want to help you!</h5>
+                            </div>
                         </div>
                         <div className="carousel-item" data-bs-interval="2000">
-                        <img src={img2} className="d-block w-10" alt="img2"/>
-                        <div className="carousel-caption d-none d-md-block">
-                            <h5>Second slide label</h5>
-                            <p>Some representative placeholder content for the second slide.</p>
+                            <img src={img2} className="d-block w-10" alt="img2"/>
+                            <div className="corousal-shadow carousel-caption d-none d-md-block">
+                                <h1 className="corousal-text">Request For A Loan</h1>
+                                <h5 className="corousal-text">Give a brief description about the loan.</h5>
+                            </div>
                         </div>
-                        </div>
-                        <div className="carousel-item">
-                        <img src={img3} className="d-block w-10" alt="img3"/>
-                        <div className="carousel-caption d-none d-md-block">
-                            <h5>Third slide label</h5>
-                            <p>Some representative placeholder content for the third slide.</p>
-                        </div>
+                        <div className="carousel-item" data-bs-interval="2000">
+                            <img src={img3} className="d-block w-10" alt="img3"/>
+                            <div className="corousal-shadow carousel-caption d-none d-md-block">
+                                <h1 className="corousal-text">Use Loan For Your Business</h1>
+                                <h5 className="corousal-text">After accepting the loan, you can whatever you want.</h5>
+                            </div>
                         </div>
                     </div>
-                    <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"  data-bs-slide="prev">
+                        <span className="carousel-control-prev-icon" aria-hidden="true" ></span>
                         <span className="visually-hidden">Previous</span>
                     </button>
                     <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
