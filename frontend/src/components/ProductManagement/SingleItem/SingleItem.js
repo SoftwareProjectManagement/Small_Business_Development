@@ -7,7 +7,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import Swal from 'sweetalert2'
 import ChoosePaymentModal from "../../PaymentManagement/ChoosePaymentModal"
-//import {AddToCart} from '../../../Utils/CartUtils'
+import {AddToCart} from '../../../Utils/CartUtils'
 
 function SingleItem(props) {
     const [isAdmin,setIsAdmin]=useState(false)
@@ -31,7 +31,7 @@ function SingleItem(props) {
         }
 
       async function getProductDetails() {
-        axios.get(`http://localhost:8070/product/item/${props.match.params.id}`).then((res) => {
+        axios.get(`http://localhost:8070/product/item/631446670e647d4bbc460185`).then((res) => {
           setId(res.data.product._id)  
           setName(res.data.product.name)
           setCategory(res.data.product.category)
@@ -86,7 +86,7 @@ function SingleItem(props) {
                     <h5><span className="bold">Description :</span> {' '}{' '} {description}</h5>
                 </div>
                 <div className='ButtonContainer'>
-                    <button >
+                <button onClick={()=>AddToCart(id, user._id, category, price)}>
                         Add To Cart <ShoppingCartIcon />
                     </button>
 
@@ -100,31 +100,31 @@ function SingleItem(props) {
                 <div className='relatedItemContainer'>
                     <div className='blabla'>
                         <div className='RelatedimageContainer'>
-                            <img src={`${imgUrl}`} alt="productImg" />
+                            <img src={`https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fae01.alicdn.com%2Fkf%2FUTB8eRp.XHnJXKJkSahGq6xhzFXaI%2FPortable-Linen-Cotton-Polka-Dot-Drawstring-Insulated-Food-Lunch-Box-Bag-Gift.jpg&f=1&nofb=1`} alt="productImg" />
                         </div>
                         <div className='RelatedDescriptionContainer'>
-                            <h2>{name}</h2>
-                            <h5>Price : {' '}{' '} Rs.{price}.00</h5>
+                            <h2>Box Bag</h2>
+                            <h5>Price : {' '}{' '} Rs.750.00</h5>
                         </div>
                     </div>
 
                     <div className='blabla'>
                         <div className='RelatedimageContainer'>
-                            <img src={`${imgUrl}`} alt="productImg" />
+                            <img src={`https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0092%2F4781%2F7813%2Fproducts%2Fimage_531721ae-2342-4d41-90ed-620c6e09414f_1024x1024.jpg%3Fv%3D1610239958&f=1&nofb=1`} alt="productImg" />
                         </div>
                         <div className='RelatedDescriptionContainer'>
-                            <h2>{name}</h2>
-                            <h5>Price : {' '}{' '} Rs.{price}.00</h5>
+                            <h2>Side Bag</h2>
+                            <h5>Price : {' '}{' '} Rs.450.00</h5>
                         </div>
                     </div>
 
                     <div className='blabla'>
                         <div className='RelatedimageContainer'>
-                            <img src={`${imgUrl}`} alt="productImg" />
+                            <img src={`https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.etsystatic.com%2F5717530%2Fr%2Fil%2F1c107c%2F2879144467%2Fil_fullxfull.2879144467_4934.jpg&f=1&nofb=1`} alt="productImg" />
                         </div>
                         <div className='RelatedDescriptionContainer'>
-                            <h2>{name}</h2>
-                            <h5>Price : {' '}{' '} Rs.{price}.00</h5>
+                            <h2>Ladies Bag</h2>
+                            <h5>Price : {' '}{' '} Rs.950.00</h5>
                         </div>
                     </div>
 
