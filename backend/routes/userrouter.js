@@ -22,7 +22,7 @@ router.post('/forgotpassword', forgotPassword);
 router.put('/resetpassword/:resetPasswordToken', resetPassword);
 
 //find all users
-router.get('/', fetchAll);
+router.get('/view', fetchAll);
 
 //find one user
 router.get('/:id', fetchOne);
