@@ -45,17 +45,16 @@
     width:400px;
 }
 
-.form-group4{
+/* .form-group4{
     position: relative;
-    left:-150px;
+    left:-200px;
     top:520px;
-}
+} */
 
 
 .form-group5{
-    position: relative;
-    left:550px;
-    top:45px;
+    margin-left:-110px;
+    margin-top:115px;
 }
 
 .fill{
@@ -75,9 +74,9 @@
 }
 
 .check{
-    position:relative;
-    left:410px;
-    top:-30px;
+    position:absolute;
+    margin-left:210px;
+    margin-top:-1px;
 }
 
 .aside{
