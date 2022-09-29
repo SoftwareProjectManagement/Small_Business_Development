@@ -13,7 +13,7 @@ import ViewCategory from "./components/CategoryManagement/ViewCategory/ViewCateg
 import ViewProdcuts from "./components/ProductManagement/ViewAllProdcuts/ViewProducts";
 
 import RequestForm1 from "./components/LoanManagement/RequestForm1/RequestForm1";
-import ViewLoans from "./components/LoanManagement/ViewLoans/ViewLoans";
+import ViewLoans from "./components/LoanManagement/ViewLoans/VIewLoans";
 import Loan from "./components/LoanManagement/LoanInterface/Loan";
 import RequestForm2 from "./components/LoanManagement/RequestForm2/RequestForm2";
 import ViewLoans2 from "./components/LoanManagement/ViewLoans2/ViewLoans2";

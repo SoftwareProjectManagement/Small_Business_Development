@@ -180,7 +180,7 @@ function AddSeller() {
                                     :
                                     <img className="previewImgsub"  />
                                 }
-                                <div className="form-group4">
+                                <div className="form-group4" style={{marginTop:-55,marginLeft:310}}>
                                 <label className='label2'>Bussiness Registration Certificate</label>
                                     <label htmlFor="profilepic">
                                         <input
@@ -193,7 +193,7 @@ function AddSeller() {
                                             value={fileInputState}
                                         />
 
-                                        <Button  variant="contained" component="span" style={{position:"relative",top:-25,left:100,width:250,fontSize:13}}>
+                                        <Button  variant="contained" component="span" style={{position:"relative",top:-15,left:110,width:250,fontSize:13}}>
                                             < FileUploadOutlinedIcon/> &nbsp; Upload document
                                         </Button>
                                     </label>
