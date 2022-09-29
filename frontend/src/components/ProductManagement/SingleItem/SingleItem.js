@@ -8,6 +8,7 @@ import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import Swal from 'sweetalert2'
 import ChoosePaymentModal from "../../PaymentManagement/ChoosePaymentModal"
 import {AddToCart} from '../../../Utils/CartUtils'
+import { useParams } from "react-router-dom";
 
 function SingleItem(props) {
     const [isAdmin,setIsAdmin]=useState(false)
@@ -19,6 +20,7 @@ function SingleItem(props) {
     const[imgUrl,setImgUrl]=useState("");
     const navigate = useNavigate();
     const [user, setUser] = useState("");
+    const params = useParams();
 
     useEffect(() => {
 
@@ -31,7 +33,8 @@ function SingleItem(props) {
         }
 
       async function getProductDetails() {
-        axios.get(`http://localhost:8070/product/item/631446670e647d4bbc460185`).then((res) => {
+        let id = params.id;
+        axios.get(`http://localhost:8070/product/item/${params.id}`).then((res) => {
           setId(res.data.product._id)  
           setName(res.data.product.name)
           setCategory(res.data.product.category)
