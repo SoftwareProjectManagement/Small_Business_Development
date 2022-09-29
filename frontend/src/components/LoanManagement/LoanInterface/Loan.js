@@ -91,9 +91,8 @@ function Loan() {
                 <div className="row" align="center">
                 {isAdmin === true?
                 <div>
-                    <button className="btn btn-success"
-                    onClick={navigateToView}>View Loan Request List</button>
-                    <button>Accepted Loan Requests</button>
+                    <button className="btn btn-info" style={{ marginRight:'5px',fontSize:'18px' }} onClick={navigateToView}>View Loan Request List</button>
+                    <button className="btn btn-success" style={{ marginRight:'5px',fontSize:'18px' }}>Accepted Loan Requests</button>
                 </div>
                     :
                 <div>

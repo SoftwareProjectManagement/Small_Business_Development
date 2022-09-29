@@ -11,6 +11,12 @@ function ViewLoans() {
     const location = useLocation()
     const [user, setUser] = useState("");
 
+    const config = {
+        headers: {
+            "content-Type": "application/json"
+        }
+    };
+
     useEffect(() => {
         if (localStorage.getItem("user")) {
             setUser(JSON.parse(localStorage.getItem('user')))
@@ -85,6 +91,16 @@ function ViewLoans() {
             });
     };
 
+    async function deleteRequest(id) {
+        console.log(id);
+        await axios.delete(`http://localhost:8070/loan/delete/${id}`, config).then(() => {
+            alert("Successfully Deleted")
+            navigate('/loan/view_loan')
+        }).catch((error) => {
+            alert(`Cancellation Failed\n${error.message}`)
+        })
+    }
+
     return (
         <div className="container">
             <div className="row">
@@ -93,6 +109,16 @@ function ViewLoans() {
                 </div>
             </div>
             <div className="row">
+                {isAdmin === true ?
+                <div>
+                    <button
+                        className="btn btn-warning ms-3">
+                        &nbsp;Generate Report
+                    </button>
+                </div>
+                :
+                <div></div>}
+
                 <div className="col-xl-2 search-box">
                     <div className="px-3 search" align="right" style={{ top: '10px', position: 'relative' }}>
                         <input style={{ color: "black", fontWeight: "500", borderRadius: "8px", border: "2px solid grey", padding: '6px 12px' }}
@@ -120,11 +146,11 @@ function ViewLoans() {
                                                 <th className="table-head-title th-border">Seller ID</th>
                                                 <th className="table-head-title th-border">Email</th>
                                                 <th className="table-head-title th-border">Mobile</th>
-                                                <th className="table-head-title th-border">Status</th>
+                                                <th className="table-head-title th-border" style={{ textAlign:'center' }}>Status</th>
                                                 {isAdmin === true ?
-                                                        <th className="table-head-title th-border">Action</th>
+                                                        <th className="table-head-title th-border" style={{ textAlign:'center' }}>Action</th>
                                                         :
-                                                        <th className="table-head-title th-border"></th>
+                                                        <div></div>
                                                     }
                                             </tr>
                                         </thead>
@@ -135,9 +161,22 @@ function ViewLoans() {
                                                 <td className="text-l tb-border" style={{ width: 260, padding: '5px 15px' }}>{Loan.sellerID}</td>
                                                 <td className="text-l tb-border" style={{ width: 400, padding: '5px 15px' }}>{Loan.email}</td>
                                                 <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>{Loan.mobile}</td>
-                                                <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>{Loan.tstatus}</td>
-                                                <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>
+                                                <td className="text-l tb-border" align="center"  style={{ width: 260, padding: '5px 15px',textAlign:'center' }}>{
+                                                Loan.tstatus === "Rejected" ? <span className="bg-danger rounded text-white p-1">Rejected</span>:
+                                                Loan.tstatus === "Accepted" ? <span className="bg-success rounded text-white p-1">Accepted</span>
+                                                :
+                                                <div>
+                                                <span className="bg-warning rounded text-black p-1" style={{ marginRight: '5px' }}>Pending</span>
+                                                <button
+                                                className="btn btn-danger"
+                                                onClick={() => deleteRequest(Loan._id)}
+                                            >Delete</button>
+                                            </div>
+                                                }
+                                                </td>
                                                 {isAdmin === true ?
+                                                <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px', textAlign:'center' }}>
+                                                
                                                         <div style={{width:180}}>
                                                             <button
                                                                 className="btn btn-success"
@@ -159,22 +198,12 @@ function ViewLoans() {
                                                                 &nbsp;Reject
                                                             </button>
                                                         </div>
+                                                </td>
                                                         :
                                                         <div>
-                                                            
-                                                            {/* <button
-                                                                disabled={
-                                                                    Loan.tstatus === "Submitted for grading" ||
-                                                                    Loan.tstatus === "Rejected"
-                                                                }
-                                                                className="btn btn-warning ms-3"
-                                                                onClick={() => add()}
-                                                            >
-                                                                &nbsp;Document Upload
-                                                            </button> */}
-                                                        </div>
-                                                    }
-                                                </td>
+
+                                                        </div>                                        
+                                                }
                                             </tr>
                                             ))} 
                                         </tbody>

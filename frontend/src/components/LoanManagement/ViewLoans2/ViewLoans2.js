@@ -120,7 +120,7 @@ function ViewLoans2() {
                                                 <th className="table-head-title th-border">NIC</th>
                                                 <th className="table-head-title th-border">Mobile</th>
                                                 <th className="table-head-title th-border">Email</th>
-                                                <th className="table-head-title th-border">Status</th>
+                                                <th className="table-head-title th-border" style={{ textAlign:'center' }}>Status</th>
                                                 {isAdmin === true ?
                                                         <th className="table-head-title th-border">Action</th>
                                                         :
@@ -135,7 +135,12 @@ function ViewLoans2() {
                                                 <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>{Loan.nic}</td>
                                                 <td className="text-l tb-border" style={{ width: 400, padding: '5px 15px' }}>{Loan.email}</td>
                                                 <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>{Loan.mobile}</td>
-                                                <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>{Loan.loanStatus}</td>
+                                                <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px', textAlign:'center' }}>{
+                                                Loan.loanStatus === "Rejected" ? <span className="bg-danger rounded text-white p-1">Rejected</span>:
+                                                Loan.loanStatus === "Accepted" ? <span className="bg-success rounded text-white p-1">Accepted</span>
+                                                :
+                                                <span className="bg-warning rounded text-black p-1">Pending</span>
+                                                }</td>
                                                 <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>
                                                 {isAdmin === true ?
                                                         <div style={{width:180}}>
@@ -162,16 +167,16 @@ function ViewLoans2() {
                                                         :
                                                         <div>
                                                             
-                                                            {/* <button
+                                                            <button
                                                                 disabled={
                                                                     Loan.loanStatus === "Submitted for grading" ||
-                                                                    Loan.loanStatus === "Rejected"
+                                                                    Loan.loanStatus === "Accepted"
                                                                 }
                                                                 className="btn btn-warning ms-3"
                                                                 onClick={() => add()}
                                                             >
                                                                 &nbsp;Document Upload
-                                                            </button> */}
+                                                            </button>
                                                         </div>
                                                     }
                                                 </td>
