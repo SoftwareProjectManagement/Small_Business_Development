@@ -56,6 +56,13 @@ function Header() {
             icon: <AssignmentIcon/>,
             cName: 'nav-text'
           },
+
+          {
+            title: 'Business Tips',
+            path: `/tips`,
+            icon: <HelpIcon/>,
+            cName: 'nav-text'
+          },
   
 
         {
