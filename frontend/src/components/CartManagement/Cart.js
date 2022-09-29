@@ -18,6 +18,7 @@ import Aos from "aos";
 import "aos/dist/aos.css"
 import './Cart.css';
 import Swal from 'sweetalert2'
+import { useParams } from "react-router-dom";
 
 function Cart(props) {
     const [openModal, setOpenModal] = useState(false);
@@ -26,6 +27,7 @@ function Cart(props) {
     const [isCheck, setIsCheck] = useState([]);
     const navigate = useNavigate();
     let finalTotal = 0;
+    const params = useParams();
 
     const config = {
         headers: {
@@ -38,7 +40,7 @@ function Cart(props) {
     useEffect(() => {   
         //Fetch Item 
         async function getData() {
-            await axios.get(`http://localhost:8070/cart/6318dda9ca4f244a3964c401`,config).then((res) => {
+            await axios.get(`http://localhost:8070/cart/${params.id}`,config).then((res) => {
                 setItems(res.data.result) 
             }).catch((error) => {
                 Swal.fire({
@@ -76,9 +78,9 @@ function Cart(props) {
 
     localStorage.setItem("selectedItem",JSON.stringify(isCheck))
 
-    async function getTotal() {
+    async function getTotal(id) {
         let iTotal
-        await axios.get(`http://localhost:8070/cart/6318dda9ca4f244a3964c401`,config).then((res) => {
+        await axios.get(`http://localhost:8070/cart/view/${id}`,config).then((res) => {
             iTotal = res.data.result.total 
             finalTotal = finalTotal + iTotal
             console.log(finalTotal);
@@ -172,9 +174,8 @@ function Cart(props) {
                 
             </div>
 
-            {/* <div className="row">
+            <div className="row">
                     <div className="col-12"> <br/>
-                    select all check box
                         <FormControlLabel
                             control={<Checkbox icon={<CheckRound/>}
                             checkedIcon={<CheckCircleIcon style={{color:orange[600]}}/>}
@@ -185,7 +186,7 @@ function Cart(props) {
                             label="Select All"
                         />            
                     </div>                    
-                </div> */}
+                </div>
 
             <div className="row">
                     <div className="col-xl-8"data-aos="slide-up">
@@ -250,7 +251,7 @@ function Cart(props) {
                     {/* Order Summary Card */}
                     <div className="col-xl-4" >
                         <div className="cardSummary shadow">
-                            <h5>Order Summary</h5>
+                            <h5>Delivery Details</h5>
                                 <br/>
                                 <div className="row">
                                     {/* Address */}
