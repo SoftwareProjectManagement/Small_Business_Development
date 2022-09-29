@@ -1,7 +1,10 @@
 const router = require("express").Router();
-const { addWorkshop } = require('../controllers/workshopcontroller.js')
+const { addWorkshop, viewAllWorkshop } = require('../controllers/workshopcontroller.js')
 
-//Add New Worksshop
+//Add New Workshop
 router.post('/add', addWorkshop);
+
+//view all Workshops
+router.get('/',viewAllWorkshop);
 
 module.exports = router;
