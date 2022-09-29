@@ -19,6 +19,7 @@ import RequestForm2 from "./components/LoanManagement/RequestForm2/RequestForm2"
 import ViewLoans2 from "./components/LoanManagement/ViewLoans2/ViewLoans2";
 import DocumentSubmission from "./components/LoanManagement/DocumentSubmission/DocumentSubmission";
 import AddProducts from "./components/ProductManagement/AddProducts/AddProducts";
+import ViewSeller from "./components/SellerManagement/ViewSeller";
 
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
 
                 <Route path="/loan/form1" element={<RequestForm1 />} />
                 <Route path="/products/add" element={<AddProducts/>} />
+                <Route path="/requests" element={<ViewSeller/>} />
 
 
             </Routes>
