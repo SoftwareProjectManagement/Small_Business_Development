@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { useHistory, useLocation,Link, useNavigate } from 'react-router-dom';
-import { IconButton } from '@material-ui/core';
+import { IconButton, ListItemIcon } from '@material-ui/core';
 import DehazeIcon from '@material-ui/icons/Dehaze';
 import HomeIcon from '@material-ui/icons/Home';
 import PersonIcon from '@material-ui/icons/Person';
@@ -42,46 +42,42 @@ function Header() {
           icon: <PersonIcon/>,
           cName: 'nav-text'
         },
-        {
-            title: 'Supervisours',
-            path: '/staff/all',
-            icon: <PeopleIcon/>,
-            cName: 'nav-text'
-        },
 
         {
-            title: 'Register Groups',
-            path: `/request/view`,
-            icon: <GroupsIcon/>,
+            title: 'Make Requests',
+            path: `/request/add`,
+            icon: <AssignmentIcon/>,
             cName: 'nav-text'
           },
 
+          {
+            title: 'My Requests',
+            path: `/requests`,
+            icon: <AssignmentIcon/>,
+            cName: 'nav-text'
+          },
+  
+
         {
-            title: 'Register Topics',
+            title: 'Loan Scheme',
             path: `/topic/add`,
             icon: <InsertCommentIcon/>,
             cName: 'nav-text'
           },
 
         {
-            title: 'Research Topics',
+            title: 'Categories',
             path: `/topic/view`,
-            icon: <TopicIcon/>,
+            icon: <InsertCommentIcon/>,
             cName: 'nav-text'
           },
         {
-          title: 'Topic Doc',
+          title: 'Payments',
           path: `/tdocView`,
-          icon: <ArticleIcon/>,
+          icon: <InsertCommentIcon/>,
           cName: 'nav-text'
         },
-        {
-          title: 'View Requests',
-          path: `/request/view`,
-          icon: <AssignmentIcon/>,
-          cName: 'nav-text'
-        },
-
+       
         
 
           {
