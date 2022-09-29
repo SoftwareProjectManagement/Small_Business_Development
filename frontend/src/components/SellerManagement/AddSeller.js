@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
+import Swal from 'sweetalert2';
 
 
 function AddSeller() {
@@ -69,7 +70,11 @@ function AddSeller() {
 
         try {
             await axios.post("http://localhost:8070/request/add", newRequest, config)
-            alert("Request Added Successfully")
+            Swal.fire({
+                icon: 'success',
+                text: 'Request Added Successfuly',
+                showConfirmButton: false,
+              })
             event.target.reset();
         } catch (error) {
             alert("Request can't be Added");
