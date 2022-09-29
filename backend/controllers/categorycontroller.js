@@ -22,15 +22,17 @@ exports.addCategory = async (req, res) => {
 }
 
 
-//view Product
+//view Category
 exports.viewAllCategory = async (req, res) => { 
  
   //calling Product model
-  Product.find().then((product) => {
-    res.status(200).json(product)
+  Category.find().then((category) => {
+    res.status(200).json(category)
   }).catch((error) => {
-    res.status(500).json({ message: "Error with fetching Product", error: error.message });
+    res.status(500).json({ message: "Error with fetching Category", error: error.message });
   })
 }
+
+
 
 
