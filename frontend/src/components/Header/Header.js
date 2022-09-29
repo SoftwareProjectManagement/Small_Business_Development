@@ -96,7 +96,14 @@ function Header() {
             path: `/student/review/${user._id}`,
             icon: <FeedbackIcon />,
             cName: 'nav-text'
-        }
+        },
+
+        {
+            title: 'Loan Service',
+            path: `/loan`,
+            icon: <HelpIcon/>,
+            cName: 'nav-text'
+          },
     ];
 
     useEffect(() => {

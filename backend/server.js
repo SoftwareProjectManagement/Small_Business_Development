@@ -16,18 +16,12 @@ const AdminRouter = require("./routes/adminrouter.js");
 const RequestRouter = require("./routes/requestrouter.js");
 const WorkshopRouter = require("./routes/workshoprouter.js");
 const CategoryRouter = require("./routes/categoryrouter.js");
-<<<<<<< HEAD
+
 const ProductRouter = require("./routes/productrouter.js");
 const CartRouter = require("./routes/cartrouter");
 const LoanRouter = require("./routes/loanrouter");
-=======
-<<<<<<< HEAD
-const ProductRouter = require("./routes/productrouter.js");
-const CartRouter = require("./routes/cartrouter");
-=======
-const LoanRouter = require("./routes/loanrouter");
->>>>>>> e8cf2c68516b0395ef93df8c55b4834f5322989b
->>>>>>> 9102472422cfdad182ef80f3b1cc0dcdfd1b1969
+const LoanRouter2 = require("./routes/loanrouter2");
+
 
 //getting the database url
 const URL = process.env.MONGODB_URL;
@@ -54,25 +48,18 @@ app.use("/admin",AdminRouter);
 app.use("/request",RequestRouter);
 //when http://localhost:8070/workshop ran it will execute workshoprouter.js file
 app.use("/workshop",WorkshopRouter);
-//when http://localhost:8070/request ran it will execute requestrouter.js file
+//when http://localhost:8070/category ran it will execute categoryrouter.js file
 app.use("/category",CategoryRouter);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 9102472422cfdad182ef80f3b1cc0dcdfd1b1969
+//when http://localhost:8070/loan ran it will execute loanrouter.js file
+app.use("/loan",LoanRouter);
+//when http://localhost:8070/loan2 ran it will execute loanrouter2.js file
+app.use("/loan2",LoanRouter2);
 //when http://localhost:8070/product ran it will execute productrouter.js file
 app.use("/product",ProductRouter);
 //when http://localhost:8070/cart ran it will execute cartrouter.js file
 app.use("/cart",CartRouter);
-<<<<<<< HEAD
-//when http://localhost:8070/request ran it will execute requestrouter.js file
-app.use("/loan",LoanRouter);
-=======
-=======
-//when http://localhost:8070/request ran it will execute requestrouter.js file
-app.use("/loan",LoanRouter);
->>>>>>> e8cf2c68516b0395ef93df8c55b4834f5322989b
->>>>>>> 9102472422cfdad182ef80f3b1cc0dcdfd1b1969
+
+
 
 //defining a port to run the application
 //use port 8070 or use any other port if the 8070 is unavailable 
