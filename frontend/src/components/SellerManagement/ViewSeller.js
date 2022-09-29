@@ -105,7 +105,7 @@ navigate("/add")
                 <div className="col-3">
                 </div>
                 <div className="col-5">
-                    <div className="px-3 search" align="right" style={{ top: '40px', position: 'relative', right: '30px' }}>
+                    <div className="px-3 search" align="right" style={{ top: '60px', position: 'relative', right: '0px' }}>
                         <input style={{ color: "black", fontWeight: "500", borderRadius: "8px", border: "2px solid grey", padding: '6px 123px' }}
                             type="text"
                             name="search"
@@ -122,7 +122,7 @@ navigate("/add")
             <div className="product"  >
                 {sellers.map((Seller, key) => (
                     <div key={key}>
-                        <div className="p-3" style={{ overflowX: 'auto', width: 1500,marginLeft:-50 }}>
+                        <div className="p-3" style={{ overflowX: 'auto', width: 1500,marginLeft:-70 }}>
                             <table>
                                 <tbody>
                                     <tr>
@@ -163,7 +163,7 @@ navigate("/add")
                                                 </div>
                                                 :
 
-                                                <div>
+                                                <div style={{width:180}}>
                                                     
                                                     <button
                                                         disabled={
@@ -173,7 +173,7 @@ navigate("/add")
                                                         className="btn btn-warning ms-3"
                                                         onClick={() => add()}
                                                     >
-                                                        &nbsp;Document Upload
+                                                        &nbsp;Sell Products
                                                     </button>
                                                 </div>
 
