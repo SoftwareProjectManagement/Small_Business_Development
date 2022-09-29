@@ -10,6 +10,6 @@ router.put('/update/:id', userauth, updateitem);
 
 router.delete('/delete/:id',userauth, deleteitem);
 
-router.get('/:id', viewOneCart);
+router.get('/view/:id', viewOneCart);
 
 module.exports = router;
