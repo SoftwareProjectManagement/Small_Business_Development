@@ -1,13 +1,16 @@
 import { useState } from "react";
+import { useNavigate,useLocation  } from 'react-router-dom'
 import axios from "axios";
 import "./AddCategory.css";
 import Button from "@material-ui/core/Button";
 import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
+import Swal from "sweetalert2";
 
 function AddCategory() {
-  const [categoryname, setCategoryName] = useState("");
 
+  const navigate = useNavigate();
+  const [categoryname, setCategoryName] = useState("");
   const [previewSource, setPreviewSource] = useState();
   const [selectedFile, setSelectedFile] = useState();
   const [fileInputState, setFileInputState] = useState("");
@@ -66,10 +69,15 @@ function AddCategory() {
         newCategory,
         config
       );
-      alert("Category Added Successfully");
+      Swal.fire({
+        icon: "success",
+        title: "Category Added Successfully!",
+      });
       event.target.reset();
+      navigate(`/category/view`);
     } catch (error) {
       alert("Category can't be Added");
+      navigate(`/category/view`);
     }
   }
 
@@ -80,7 +88,7 @@ function AddCategory() {
         <div className="row">
           <div className="">
             <div className="row">
-              <div className="col-md-8 mb-4">
+              <div className="col-md-12 mb-4">
                 <div className="form-name">
                   <OutlinedInput
                     type="text"
@@ -109,9 +117,9 @@ function AddCategory() {
                 />
               ) : (
                 <img
-                  src="/images/product.png"
+                  src="/images/imageIcon.png"
                   className="previewImgProduct"
-                  alt="product pic"
+                  alt="Image"
                 />
               )}
               <div className="form-group">
@@ -123,9 +131,10 @@ function AddCategory() {
                     type="file"
                     onChange={handleFileInputChange}
                     value={fileInputState}
+                    required
                   />
 
-                  <Button color="primary" variant="contained" component="span">
+                  <Button className="image_upload_button" variant="contained" component="span">
                     <AddAPhotoIcon /> &nbsp; Upload Image
                   </Button>
                 </label>
@@ -141,9 +150,9 @@ function AddCategory() {
           <div className="col-md-12">
             <div className="form-group">
               <input
-                className="form-submit-btn"
+                className="form-submit-btn submit_button"
                 type="submit"
-                value="Add product"
+                value="Add Category"
               />
             </div>
           </div>
