@@ -17,7 +17,7 @@ function Footer() {
                 <div className="row">
                     <div className="col-xl-1" style={{float:"left"}}>
                         <br/>
-                        <img src="/images/Logo.png" className="logoFooter" alt="logo"/>
+                        {/* <img src="/images/Logo.png" className="logoFooter" alt="logo"/> */}
                     </div>
                     <div className="col-xl-3" style={{float:"left",width:300,paddingLeft:100}}>
                         <br/>
@@ -30,7 +30,7 @@ function Footer() {
                         <h3>Links</h3>
                         <ul className="list-group">
                             <li><Link to="/" style={{ color: '#FFF' }}>Home</Link></li>
-                            <li><Link to="/pharmacy/items"  style={{ color: '#FFF' }}>Pharmacy</Link></li>
+                            {/* <li><Link to="/pharmacy/items"  style={{ color: '#FFF' }}>Pharmacy</Link></li> */}
                             <li><Link to=""  style={{ color: '#FFF' }}>About Us</Link></li>
                             <li><Link to=""  style={{ color: '#FFF' }}>Contacts</Link></li>
                             <li><Link to="/admin/signin"  style={{ color: '#FFF' }}>Admin</Link></li>
@@ -40,7 +40,7 @@ function Footer() {
                         <h3>&nbsp;Reach Us On </h3>
                         <br/>
                         <p><LocationOnIcon fontSize="small"/>&nbsp;Petta Road, Maradana, colombo 10</p>
-                        <p><EmailIcon fontSize="small"/>&nbsp; info.aspirushealthcare@gmail.com</p>
+                        <p><EmailIcon fontSize="small"/>&nbsp; info.smallbusiness@gmail.com</p>
                         <p><PhoneIcon fontSize="small"/>&nbsp;011 - 277202099</p>
                     </div>
                     <div className="col-xl-3"align="center">
@@ -60,7 +60,7 @@ function Footer() {
                     </div>
                 </div><br/><br/>
                 <div className="col-xl-12 text-center " align="center"> 
-                    <p className ="mb-0"> ASPIRUS Health Care © 2021 - All Rights Reserved</p>
+                    <p className ="mb-0">  2021 - All Rights Reserved</p>
                 </div>
             </div>
         </footer>
