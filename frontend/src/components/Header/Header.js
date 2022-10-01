@@ -176,7 +176,7 @@ function Header() {
                 <a href="/" className="home_button">Home</a>
               </button>
               <button className="home_button">
-                <a href="/staff/all" className="home_button">Products</a>
+                <a href="/category/view" className="home_button">Category</a>
               </button>
               <button className="home_button">
                 <a href="/request/add" className="home_button">Requests</a>
@@ -212,10 +212,10 @@ function Header() {
                                 </div>
                                 :
                                 <div>
-                                    <button className="signing" style={{position :'relative',top:40,right:-40}} onClick={signin}>
+                                    <button className="signing" style={{position :'relative',top:10,right:-40}} onClick={signin}>
                                         Sign In
                                     </button>
-                                    <button className="signing" style={{position :'relative',right:90}} onClick={signup}>
+                                    <button className="signing" style={{position :'relative',top:-28,right:90}} onClick={signup}>
                                         Sign Up
                                     </button>
                                 </div>
