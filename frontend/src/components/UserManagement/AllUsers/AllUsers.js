@@ -79,18 +79,20 @@ function ViewUser() {
             </div>
 
             <br /><br /><br />
+            <img src="/images/all.png" style={{width:800,height:600,marginLeft:700,marginTop:-50,position:"absolute"}}/>
             <div className="product"  >
                 {users.map((Users, key) => (
                     <div key={key}>
-                        <div className="p-3" style={{ overflowX: 'auto', width: 1500,marginLeft:-70 }}>
+                        <div className="p-3" style={{ overflowX: 'auto', width: 800,marginLeft:-70 }}>
                             <table>
                                 <tbody>
                                     <tr>
-                                        <td style={{ width: 560 }}>{Users.firstname}</td>
-                                        <td style={{ width: 400 }}>{Users.lastname}</td>
-                                        <td style={{ width: 400 }}>{Users.imgUrl}</td>
-                                        <td style={{ width: 400 }}>{Users.phone}</td>
-                                        <td style={{ width: 400 }}>{Users.email}</td>
+                                        <td style={{ width: 260 }}>{Users.firstname}&nbsp;&nbsp;{Users.lastname}</td>
+                                        <td style={{ width: 200 }}>
+                                            <img src={Users.imgUrl} style={{width:80,height:80,borderRadius:"50%"}}/>
+                                        </td>
+                                        <td style={{ width: 200 }}>{Users.phone}</td>
+                                        <td style={{ width: 200 }}>{Users.email}</td>
                             
                                     </tr>
                                 </tbody>
