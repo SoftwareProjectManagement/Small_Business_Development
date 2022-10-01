@@ -7,10 +7,12 @@ import LoanImage from './loan.jpg';
 
 function RequestForm1() {
 
-    const [group, setGroup] = useState("");
-    const [topic, setTopic] = useState("");
-    const [leader, setLeader] = useState("");
-    const [category, setCategory] = useState("");
+    const [name, setName] = useState("");
+    const [address, setAddress] = useState("");
+    const [nic, setNic] = useState("");
+    const [mobile, setMobile] = useState("");
+    const [sellerID, setSellerId] = useState("");
+    const [description, setDescription] = useState("");
 
 
     async function add(event) {
@@ -21,14 +23,14 @@ function RequestForm1() {
             }
         };
 
-        const newTopic = { group, topic, leader, category}
+        const newFormRequest = { name, address, nic, mobile, sellerID, description}
 
         try {
-            await axios.post("http://localhost:8070/topic/add", newTopic, config)
-            alert("Topic Registration Successfull")
+            await axios.post("http://localhost:8070/loan/add", newFormRequest, config)
+            alert("Request Sent Successfully!")
             event.target.reset();
         } catch (error) {
-            alert("Topic registration Failed");
+            alert("Request Failed!");
         }
     }
 
@@ -58,7 +60,7 @@ function RequestForm1() {
                     </div>
                     <br></br>
                  
-                    <div className="row create_topic">
+                    <div className="row">
                         <form onSubmit={add} className="request-form">
                             <div className="row">
                                 <div className="col-8">
@@ -70,7 +72,7 @@ function RequestForm1() {
                                                 <div className="form-group30">
                                                     <OutlinedInput
                                                         type="name" id="name" placeholder="Enter Name" required fullWidth
-                                                        onChange={(e) => setGroup(e.target.value)}
+                                                        onChange={(e) => setName(e.target.value)}
                                                         inputProps={{ style: { padding: 12 } }}
                                                     />
                                                 </div>
@@ -81,7 +83,7 @@ function RequestForm1() {
                                                 <div className="form-group30">
                                                     <OutlinedInput
                                                         type="address" id="address" placeholder="Enter Address" required fullWidth
-                                                        onChange={(e) => setCategory(e.target.value)}
+                                                        onChange={(e) => setAddress(e.target.value)}
                                                         inputProps={{ style: { padding: 12 } }}
                                                     />
                                                 </div>
@@ -92,7 +94,7 @@ function RequestForm1() {
                                                 <div className="form-group30">
                                                     <OutlinedInput
                                                         type="nic" id="nic" placeholder="Enter NIC" required fullWidth
-                                                        onChange={(e) => setCategory(e.target.value)}
+                                                        onChange={(e) => setNic(e.target.value)}
                                                         inputProps={{ style: { padding: 12 } }}
                                                     />
                                                 </div>
@@ -103,7 +105,7 @@ function RequestForm1() {
                                                 <div className="form-group30">
                                                     <OutlinedInput
                                                         type="mobile" id="mobile" placeholder="Enter Mobile Number" required fullWidth
-                                                        onChange={(e) => setCategory(e.target.value)}
+                                                        onChange={(e) => setMobile(e.target.value)}
                                                         inputProps={{ style: { padding: 12 } }}
                                                     />
                                                 </div>
@@ -114,7 +116,7 @@ function RequestForm1() {
                                                 <div className="form-group30">
                                                     <OutlinedInput
                                                         type="sellerID" id="sellerID" placeholder="Enter Seller ID" required fullWidth
-                                                        onChange={(e) => setCategory(e.target.value)}
+                                                        onChange={(e) => setSellerId(e.target.value)}
                                                         inputProps={{ style: { padding: 12 } }}
                                                     />
                                                 </div>
@@ -125,7 +127,7 @@ function RequestForm1() {
                                                 <div className="form-group30">
                                                     <OutlinedInput
                                                         type="description" id="description" placeholder="Enter Description" required fullWidth
-                                                        onChange={(e) => setCategory(e.target.value)}
+                                                        onChange={(e) => setDescription(e.target.value)}
                                                         inputProps={{ style: { padding: 12 } }}
                                                     />
                                                 </div>
@@ -138,13 +140,8 @@ function RequestForm1() {
                                     </div>
                                 </div>
                             </div>
-
-
-                        
                         </form>
                     </div>
-
-
                 </div>    
             </div>
             <aside className='aside'>
