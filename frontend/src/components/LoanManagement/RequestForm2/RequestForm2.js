@@ -1,21 +1,44 @@
 import { useState } from 'react';
 import axios from 'axios';
-import './RequestForm1.css'
+import './RequestForm2.css'
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import LoanImage from './loan.jpg';
 import { useNavigate } from 'react-router-dom';
+import Button from "@material-ui/core/Button";
+import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
 
-function RequestForm1() {
+function RequestForm2() {
 
     const [name, setName] = useState("");
     const [address, setAddress] = useState("");
-    const [email, setEmail] = useState("");
     const [nic, setNic] = useState("");
     const [mobile, setMobile] = useState("");
-    const [sellerID, setSellerId] = useState("");
+    const [email, setEmail] = useState("");
     const [description, setDescription] = useState("");
+    const [incomeReport, setIncomeReport] = useState("");
+    const [businessRegistration, setBusinessRegistration] = useState("");
     const navigate = useNavigate();
 
+    const [previewSource, setPreviewSource] = useState();
+    const [selectedFile, setSelectedFile] = useState();
+    const [fileInputState, setFileInputState] = useState('');
+
+    //handling the image uploading
+        const handleFileInputChange = (event) => {
+            const file = event.target.files[0];
+            previewFile(file);
+            setSelectedFile(file);
+            setFileInputState(event.target.value);
+        };
+
+    //display a preview of uploaded image
+    const previewFile = (file) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file)
+        reader.onloadend = () => {
+            setPreviewSource(reader.result)
+        }
+    }
 
     async function add(event) {
         event.preventDefault();
@@ -25,13 +48,13 @@ function RequestForm1() {
             }
         };
 
-        const newFormRequest = { name, address,email, nic, mobile, sellerID, description}
+        const newFormRequest = { name, address,email, nic, mobile, description, incomeReport, businessRegistration}
 
         try {
-            await axios.post("http://localhost:8070/loan/add", newFormRequest, config)
+            await axios.post("http://localhost:8070/loan2/add", newFormRequest, config)
             alert("Request Sent Successfully!")
             event.target.reset();
-            navigate('/loan/view_loan')
+            navigate('/loan/view_loan2')
         } catch (error) {
             alert("Request Failed!");
         }
@@ -68,7 +91,7 @@ function RequestForm1() {
                                                 </div>
                                             </div>
 
-                                            <label className='label11'>Address</label><br />
+                                            <label className='label11'>ADDRESS</label><br />
                                             <div className="col-md-10 mb-4">
                                                 <div className="form-group30">
                                                     <OutlinedInput
@@ -79,17 +102,6 @@ function RequestForm1() {
                                                 </div>
                                             </div>
 
-                                            <label className='label11'>Email</label><br />
-                                            <div className="col-md-10 mb-4">
-                                                <div className="form-group30">
-                                                    <OutlinedInput
-                                                        type="email" id="email" placeholder="Enter Your Email" required fullWidth
-                                                        onChange={(e) => setEmail(e.target.value)}
-                                                        inputProps={{ style: { padding: 12 } }}
-                                                    />
-                                                </div>
-                                            </div>
-                                            
                                             <label className='label11'>NIC</label><br />
                                             <div className="col-md-10 mb-4">
                                                 <div className="form-group30">
@@ -113,12 +125,12 @@ function RequestForm1() {
                                                 </div>
                                             </div>
 
-                                            <label className='label11'>SELLER ID</label><br />
+                                            <label className='label11'>EMAIL</label><br />
                                             <div className="col-md-10 mb-4">
                                                 <div className="form-group30">
                                                     <OutlinedInput
-                                                        type="sellerID" id="sellerID" placeholder="Enter Your Seller ID" required fullWidth
-                                                        onChange={(e) => setSellerId(e.target.value)}
+                                                        type="email" id="email" placeholder="Enter Your Email" required fullWidth
+                                                        onChange={(e) => setEmail(e.target.value)}
                                                         inputProps={{ style: { padding: 12 } }}
                                                     />
                                                 </div>
@@ -135,6 +147,35 @@ function RequestForm1() {
                                                     />
                                                 </div>
                                             </div>
+
+                                            <label className='label11'>INCOME REPORT</label><br />
+                                            <div className="col-md-10 mb-4">
+                                                <div className="form-group30">
+                                                    <OutlinedInput
+                                                        type="incomeReport" id="incomeReport" placeholder="Income Report" required fullWidth
+                                                        onChange={(e) => setIncomeReport(e.target.value)}
+                                                        inputProps={{ style: { padding: 12 } }}
+                                                    />
+                                                </div>
+                                            </div>
+
+                                            <label className='label11'>BUSINESS REGISTRATION</label><br />
+
+                                        <label htmlFor="profilepic">
+                                            <input
+                                                style={{ display: 'none' }}
+                                                id="profilepic"
+                                                name="profilepic"
+                                                type="file"
+                                                accept=".pdf"
+                                                onChange={handleFileInputChange}
+                                                value={fileInputState}
+                                            />
+
+                                            <Button color="primary" variant="contained" component="span">
+                                                < FileUploadOutlinedIcon/> Upload document
+                                            </Button>
+                                        </label>
                                             
                                         </div>
                                     </div>
@@ -159,4 +200,4 @@ function RequestForm1() {
     )
 }
 
-export default RequestForm1
+export default RequestForm2

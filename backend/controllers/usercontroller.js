@@ -177,14 +177,12 @@ exports.resetPassword = async (req, res) => {
 //fetch users controller
 exports.fetchAll = async (req, res) => {
 
-    try {
-        //find all users in the database
-        const users = await User.find();
-
-        res.status(200).json({ success: true, result: users })
-    } catch (error) {
-        res.status(500).json({ success: false, message: "Something went wrong", error: error.message });
-    }
+    //calling User model
+    User.find().then((user) => {
+        res.status(200).json(user)
+      }).catch((error) => {
+        res.status(500).json({ message: "Error with fetching users", error: error.message });
+      })
 }
 
 //fetch one user controller

@@ -38,7 +38,7 @@ function Login() {
             //setting user
             localStorage.setItem("user", JSON.stringify(data.result))
             
-            navigate('/')
+            navigate('/request/add')
         } catch (error) {
             if(error.response.status === 404){
                 alert("Invalid Email")

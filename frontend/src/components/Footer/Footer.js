@@ -19,7 +19,7 @@ function Footer() {
                         <br/>
                         {/* <img src="/images/Logo.png" className="logoFooter" alt="logo"/> */}
                     </div>
-                    <div className="col-xl-3" style={{float:"left",width:300,paddingLeft:100}}>
+                    <div className="col-xl-3" style={{float:"left",width:500,paddingLeft:100}}>
                         <br/>
                         <p>
                             This website is mainly focused on the current pandemic  situation of our country.
@@ -30,7 +30,7 @@ function Footer() {
                         <h3>Links</h3>
                         <ul className="list-group">
                             <li><Link to="/" style={{ color: '#FFF' }}>Home</Link></li>
-                            {/* <li><Link to="/pharmacy/items"  style={{ color: '#FFF' }}>Pharmacy</Link></li> */}
+
                             <li><Link to=""  style={{ color: '#FFF' }}>About Us</Link></li>
                             <li><Link to=""  style={{ color: '#FFF' }}>Contacts</Link></li>
                             <li><Link to="/admin/signin"  style={{ color: '#FFF' }}>Admin</Link></li>

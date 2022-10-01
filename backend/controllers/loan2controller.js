@@ -1,25 +1,27 @@
-const LoanReq1 = require("../models/LoanReq1");
+const LoanReq2 = require("../models/LoanReq2");
 
 //add new doc
 exports.addRequest = async (req, res) => {
  
     //constant variables for the attributes
-    const {name,address,email,nic,mobile,sellerID,description} = req.body;
+    const {name,address,nic,mobile,email,description,incomeReport,businessRegistration,loanStatus} = req.body;
    
     //object
-    const newRequest= new LoanReq1({
+    const newLoanRequest= new LoanReq2({
       name,
       address,
-      email,
       nic,
       mobile,
-      sellerID,
-      description
+      email,
+      description,
+      incomeReport,
+      businessRegistration,
+      loanStatus
     })
    
     //saving the object to the db 
-    newRequest.save().then(() => {
-      res.status(200).json({ status: "New Loan Added" });
+    newLoanRequest.save().then(() => {
+      res.status(200).json({ status: "New Loan Request Added Successfully!" });
     }).catch((error) => {
       res.status(500).json({message:"Fail to send request",error:error.message})
     })
@@ -30,7 +32,7 @@ exports.addRequest = async (req, res) => {
   exports.viewAllRequests = async (req, res) => { 
    
     //calling model
-    LoanReq1.find().then((request) => {
+    LoanReq2.find().then((request) => {
       res.status(200).json(request)
     }).catch((error) => {
       res.status(500).json({ message: "Error with fetching details", error: error.message });
@@ -41,18 +43,18 @@ exports.addRequest = async (req, res) => {
   exports.updateLoanRequest = async(req,res) => {
 
     let loanID = req.params.id;
-    const { tstatus } = req.body;
+    const { loanStatus } = req.body;
 
 
-    const updateLoanReq= { tstatus } 
+    const updateLoanReq= { loanStatus } 
     
     try{
         //find request by ID  
-        await LoanReq1.findByIdAndUpdate(loanID ,updateLoanReq);
+        await LoanReq2.findByIdAndUpdate(loanID ,updateLoanReq);
 
-        res.status(200).json({message:"request updated"})
+        res.status(200).json({message:"Request Updated"})
     }catch(error){
-        res.status(500).json({message:"Error with updating details",error:error.message});
+        res.status(500).json({message:"Error With Updating Details",error:error.message});
     }
 
 }
