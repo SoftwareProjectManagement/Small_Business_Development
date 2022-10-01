@@ -11,7 +11,6 @@ import AddCategory from "./components/CategoryManagement/AddCategory/AddCategory
 import ViewCategory from "./components/CategoryManagement/ViewCategory/ViewCategory";
 import ViewProdcuts from "./components/ProductManagement/ViewAllProdcuts/ViewProducts";
 import RequestForm1 from "./components/LoanManagement/RequestForm1/RequestForm1";
-//import ViewLoans from "./components/LoanManagement/ViewLoans/ViewLoans"
 import AddProducts from "./components/ProductManagement/AddProducts/AddProducts";
 
 function App() {
@@ -27,7 +26,9 @@ function App() {
                 <Route path="/product/item/:id" element={<SingleItem/>}/>
                 <Route path="/category/add" element={<AddCategory/>}/>
                 <Route path="/category/view" element={<ViewCategory/>}/>
-                <Route path="/products/view" element={<ViewProdcuts/>}/>
+                <Route path="/products/view/:id" element={<ViewProdcuts/>}/>
+                <Route path="/loan/form1" element={<RequestForm1 />} />
+                {/* <Route path="/loan/view_loan" element={<ViewLoans />} /> */}
                 <Route path="/loan/form_1" element={<RequestForm1 />} />
                 {/* <Route path="/loan/view_loan" element={<ViewLoans />} /> */}
                 <Route path="/products/add" element={<AddProducts/>} />
