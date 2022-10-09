@@ -20,6 +20,8 @@ import AddProducts from "./components/ProductManagement/AddProducts/AddProducts"
 import ViewSeller from "./components/SellerManagement/ViewSeller";
 import ViewUsers from "./components/UserManagement/AllUsers/AllUsers";
 import ReportSeller from "./components/SellerManagement/ReportSeller";
+import Home from "./components/Home/Home";
+
 
 
 function App() {
@@ -55,6 +57,7 @@ function App() {
                 <Route path="/requests" element={<ViewSeller/>} />
                 <Route path="/all" element={<ViewUsers/>} />
                 <Route path="/sellerR" element={<ReportSeller/>} />
+                <Route path="/" element={<Home/>} />
 
 
             </Routes>
