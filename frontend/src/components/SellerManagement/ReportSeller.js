@@ -48,7 +48,7 @@ function ReportSeller() {
                                             <img src="/images/Logo.png" width="100px" alt="logo" />
                                         </div>
                                         <div className="col-xl-8" align='center'>
-                                            <h3>DIHP Capital Crop</h3>
+                                            <h3>Ceylon Capital Crop</h3>
                                             <h6 >Digitally Generated Seller Details Report</h6>
                                         </div>
                                         <div className="col-xl-2" align='right'>
