@@ -169,7 +169,7 @@ function Header() {
                             }      
                         </ul>
                         <div className="header-title">
-                            <h3 onClick={home}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DIHP &nbsp; Capital &nbsp; Corp</h3>
+                            <h3 onClick={home}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ceylon &nbsp; Capital &nbsp; Corp</h3>
 
                             <button className="home_button">
                 {" "}
