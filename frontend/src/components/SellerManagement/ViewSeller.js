@@ -108,6 +108,7 @@ navigate("/add")
             alert(`Failed to delete the request\n${error.message}`);
           });
       }
+      
 
     return (
         <div className="container">
