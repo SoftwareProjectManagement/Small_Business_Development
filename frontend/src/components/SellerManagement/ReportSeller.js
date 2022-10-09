@@ -1,14 +1,23 @@
+import { useReactToPrint } from "react-to-print";
+import {useRef} from 'react'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router';
 import './ReportSeller.css'
 import axios from 'axios'
+import GetAppIcon from '@material-ui/icons/GetApp';
+import Button from '@material-ui/core/Button';
+import { green} from '@material-ui/core/colors';
 
 
 function ReportSeller() {
     const [sellers, setSellers] = useState([])
     const navigate = useNavigate()
     const location = useLocation()
-    const [user, setUser] = useState("");
+
+    let newDate = new Date()
+    let date = newDate.getDate();
+    let month = newDate.getMonth() + 1;
+    let year = newDate.getFullYear();
 
     useEffect(() => {
 
@@ -23,20 +32,33 @@ function ReportSeller() {
         getAllSellers();
     }, [location])
 
-    function print(){
-        window.print();
-    }
-
+    const componentRef = useRef();
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
+    });
+  
 
 
     return (
         <div className="container">
-<button style={{width:100,height:100}} onClick={() => print()}>Print</button>
+             <div ref={componentRef}>
             <br /><br /><br />
+            <div className="row">
+                                        <div className="col-xl-2" align='center'>
+                                            <img src="/images/Logo.png" width="100px" alt="logo" />
+                                        </div>
+                                        <div className="col-xl-8" align='center'>
+                                            <h3>DIHP Capital Crop</h3>
+                                            <h6 >Digitally Generated Seller Details Report</h6>
+                                        </div>
+                                        <div className="col-xl-2" align='right'>
+                                            <p>{date}/{month}/{year}</p>
+                                        </div>
+                                    </div>
             <div className="product"  >
                 {sellers.map((Seller, key) => (
                     <div key={key}>
-                        <div className="p-3" align="center" style={{ overflowX: 'auto', width: 1500 }}>
+                        <div className="p-3" align="center" style={{ overflowX: 'auto' }}>
                             <table style={{ border: "4px solid black"}}>
                                 <thead align="center" style={{height:70,background:"black",color:"white"}}>
                                     <tr>
@@ -66,6 +88,22 @@ function ReportSeller() {
                     </div>
                 ))}
             </div>
+            </div>
+            <center><div className="w-25 p-3" align='center'>
+                        <Button
+                        className="print__button"
+                        variant="contained"
+                        color="secondary"
+                        endIcon={<GetAppIcon />}
+                        style={{ backgroundColor: green[700], color: 'white'}}
+                        disableElevation
+                        onClick={handlePrint}
+                        fullWidth
+                    >
+                        Download Details 
+                    </Button>
+                    </div></center>
+        
         </div>
     )
 }
