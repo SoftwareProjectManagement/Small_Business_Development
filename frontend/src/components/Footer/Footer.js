@@ -17,7 +17,7 @@ function Footer() {
                 <div className="row">
                     <div className="col-xl-1" style={{float:"left"}}>
                         <br/>
-                        {/* <img src="/images/Logo.png" className="logoFooter" alt="logo"/> */}
+                        <img src="/images/Logo.png" className="logoFooter" alt="logo"/>
                     </div>
                     <div className="col-xl-3" style={{float:"left",width:500,paddingLeft:100}}>
                         <br/>
