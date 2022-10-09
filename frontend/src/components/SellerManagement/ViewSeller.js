@@ -134,7 +134,13 @@ navigate("/add")
                         /><div style={{ position: 'relative', right: '10px', top: '-35px' }}><SearchIcon /></div>
                     </div>
                 </div>
+                {isAdmin == true?
+                <div>
                 <button style={{padding:"10px 15px",background:"orange",width:200,borderRadius:"10px",border:"2px solid white",fontWeight:500}} onClick={()=>generate()}>Genarate Report</button>
+                </div>
+                :
+                <div></div>
+}
             </div>
 
             <br />
