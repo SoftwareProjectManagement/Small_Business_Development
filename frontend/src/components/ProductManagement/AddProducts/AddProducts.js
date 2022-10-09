@@ -1,24 +1,27 @@
-import { useState } from "react";
-import InputLabel from '@material-ui/core/InputLabel';
-import Input from '@material-ui/core/Input';
-import Select from '@material-ui/core/Select';
+import { useState, useEffect } from "react";
+import { useNavigate,useLocation  } from 'react-router-dom'
+import InputLabel from "@material-ui/core/InputLabel";
+import Input from "@material-ui/core/Input";
+import Select from "@material-ui/core/Select";
 import axios from "axios";
 import "./AddProducts.css";
 import Button from "@material-ui/core/Button";
 import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
-import Chip from '@material-ui/core/Chip';
-import MenuItem from '@material-ui/core/MenuItem';
+import Chip from "@material-ui/core/Chip";
+import MenuItem from "@material-ui/core/MenuItem";
+import Swal from "sweetalert2";
 
 function AddProducts() {
-  const [categoryname, setCategoryName] = useState("");
-  const [productname, setProductName] = useState("");
+  const navigate = useNavigate();
+  const [name, setProductName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [previewSource, setPreviewSource] = useState();
   const [selectedFile, setSelectedFile] = useState();
   const [fileInputState, setFileInputState] = useState("");
-  const [availableDay,setDay] = useState([]);
+  const [category, setCategory] = useState();
+  const [categoryList, setCategoryList] = useState([]);
 
   //handling the image uploading
   const handleFileInputChange = (event) => {
@@ -28,13 +31,9 @@ function AddProducts() {
     setFileInputState(event.target.value);
   };
 
-  const dates =[
-    'Footware','Ceramics','Apperal','Leather','Foods'
-]
-
-const handleChange = (event) => {
-  setDay(event.target.value);
-};
+  const handleChange = (event) => {
+    setCategory(event.target.value);
+  };
 
   //display a preview of uploaded image
   const previewFile = (file) => {
@@ -74,32 +73,62 @@ const handleChange = (event) => {
       }
     }
 
-    const newCategory = { productname,availableDay,price,description, imgUrl };
-    console.log(newCategory);
+    const payload = {
+      name,
+      category,
+      price,
+      description,
+      imgUrl,
+    };
 
     try {
-      await axios.post(
+      const res = await axios.post(
         "http://localhost:8070/product/add",
-        newCategory,
+        payload,
         config
       );
-      alert("Product Added Successfully");
-      event.target.reset();
+      if (res.status === 200) {
+        Swal.fire({
+          icon: "success",
+          title: "Product Added Successfully!",
+        });
+        event.target.reset();
+        navigate(`/category/view`);
+      }
     } catch (error) {
-      alert("Product can't be Added");
+      Swal.fire({
+        icon: "error",
+        title: "Product Can Not be Added!",
+      });
     }
   }
 
+  async function getAllCategory() {
+    await axios
+      .get(`http://localhost:8070/category/`)
+      .then((res) => {
+        setCategoryList(res.data);
+      })
+      .catch((error) => {
+        alert("Failed to fetch Category");
+      });
+  }
+
+  useEffect(() => {
+    getAllCategory();
+  }, []);
 
   return (
     <div className="container" align="center">
+      <br />
+      <br />
+      <br />
       <form onSubmit={add} className="addProduct">
+        <h1 className="headText">Add Product</h1>
         <div className="row">
-         
-
-          <div className="col-8">
+          <div className="">
             <div className="row">
-              <div className="col-md-8 mb-4">
+              <div className="col-md-12 mb-4">
                 <div className="form-name">
                   <OutlinedInput
                     type="text"
@@ -115,9 +144,9 @@ const handleChange = (event) => {
             </div>
           </div>
 
-          <div className="col-8">
+          <div className="">
             <div className="row">
-              <div className="col-md-8 mb-4">
+              <div className="col-md-12 mb-4">
                 <div className="form-name">
                   <OutlinedInput
                     type="text"
@@ -133,9 +162,9 @@ const handleChange = (event) => {
             </div>
           </div>
 
-          <div className="col-8">
+          <div className="">
             <div className="row">
-              <div className="col-md-8 mb-4">
+              <div className="col-md-12 mb-4">
                 <div className="form-name">
                   <OutlinedInput
                     type="text"
@@ -151,37 +180,30 @@ const handleChange = (event) => {
             </div>
           </div>
 
-          <div className="col-8">
+          <div className="">
             <div className="row">
-              <div className="col-md-8 mb-4">
+              <div className="col-md-12 mb-4">
                 <div className="form-name">
-                        <InputLabel id="demo-mutiple-chip-label">Available Category</InputLabel>
-                            <Select
-                                id="demo-mutiple-chip"
-                                multiple fullWidth
-                                value={availableDay}
-                                onChange={handleChange}
-                                input={<Input id="select-multiple-chip"/>}
-                                renderValue={(selected) => (
-                                    <div >
-                                        {selected.map((value) => (
-                                            <Chip key={value} label={value}  />
-                                        ))}
-                                    </div>
-                                 )}
-                            >
-                            {dates.map((date) => (
-                                <MenuItem key={date} value={date} >
-                                    {date}
-                                </MenuItem>
-                            ))}
-                            </Select>
-                            </div>
+                  <InputLabel id="demo-mutiple-chip-label">
+                    Available Category
+                  </InputLabel>
+                  <Select
+                    id="demo-mutiple-chip"
+                    fullWidth
+                    value={category}
+                    onChange={handleChange}
+                    input={<Input id="select-multiple-chip" />}
+                  >
+                    {categoryList.map((category) => (
+                      <MenuItem key={category._id} value={category._id}>
+                        {category.categoryname}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </div>
               </div>
             </div>
           </div>
-                  
-
 
           <div className="col-4 d-flex justify-content-center">
             <div>
@@ -193,7 +215,7 @@ const handleChange = (event) => {
                 />
               ) : (
                 <img
-                  src="/images/product.png"
+                  src="/images/imageIcon.png"
                   className="previewImgProduct"
                   alt="product pic"
                 />
@@ -209,7 +231,11 @@ const handleChange = (event) => {
                     value={fileInputState}
                   />
 
-                  <Button color="primary" variant="contained" component="span">
+                  <Button
+                    className="image_upload_button"
+                    variant="contained"
+                    component="span"
+                  >
                     <AddAPhotoIcon /> &nbsp; Upload Image
                   </Button>
                 </label>
@@ -221,7 +247,7 @@ const handleChange = (event) => {
           <div className="col-md-12">
             <div className="form-group">
               <input
-                className="form-submit-btn"
+                className="form-submit-btn submit_button"
                 type="submit"
                 value="Add product"
               />
@@ -229,6 +255,9 @@ const handleChange = (event) => {
           </div>
         </div>
       </form>
+      <br />
+      <br />
+      <br />
     </div>
   );
 }

@@ -6,12 +6,10 @@ import SignUp from "./components/UserManagement/SignUp/SignUp";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Cart from "./components/CartManagement/Cart";
-
 import SingleItem from "./components/ProductManagement/SingleItem/SingleItem";
 import AddCategory from "./components/CategoryManagement/AddCategory/AddCategory";
 import ViewCategory from "./components/CategoryManagement/ViewCategory/ViewCategory";
-import ViewProdcuts from "./components/ProductManagement/ViewAllProdcuts/ViewProducts";
-
+import ViewProdcuts from "./components/ProductManagement/ViewAllProdcuts/ViewProducts"
 import RequestForm1 from "./components/LoanManagement/RequestForm1/RequestForm1";
 import ViewLoans from "./components/LoanManagement/ViewLoans/VIewLoans";
 import Loan from "./components/LoanManagement/LoanInterface/Loan";
@@ -36,9 +34,9 @@ function App() {
  <Route path="/cart/:id" element={<Cart/>} />
                 <Route path="/product/item/:id" element={<SingleItem/>}/>
                 <Route path="/loan/form1" element={<RequestForm1 />} />
-                {/* <Route path="/loan/view_loan" element={<ViewLoans />} /> */}
+                <Route path="/loan/view_loan" element={<ViewLoans />} />
 
-                <Route path="/cart" element={<Cart/>} />
+                <Route path="/cart" element={<Cart/>} /
 
                 {/* loan schema */}
                 <Route path="/loan" element={<Loan />} />
@@ -54,13 +52,15 @@ function App() {
                 <Route path="/category/view" element={<ViewCategory/>}/>
                 <Route path="/products/view" element={<ViewProdcuts/>}/>
 
-
-                <Route path="/loan/form1" element={<RequestForm1 />} />
                 <Route path="/products/add" element={<AddProducts/>} />
                 <Route path="/requests" element={<ViewSeller/>} />
                 <Route path="/all" element={<ViewUsers/>} />
                 <Route path="/sellerR" element={<ReportSeller/>} />
 
+             
+                <Route path="/loan/form_1" element={<RequestForm1 />} />
+     
+                <Route path="/products/add" element={<AddProducts/>} />
 
             </Routes>
             <Footer/>

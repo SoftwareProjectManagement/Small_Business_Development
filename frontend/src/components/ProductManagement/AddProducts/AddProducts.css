@@ -1,0 +1,38 @@
+.addProduct {
+    width: 50%;
+    text-align: center;
+    padding: 40px;
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+    box-shadow:20px 14px 28px 20px rgba(0, 0, 0, 0.227);
+}
+.previewImgProduct {
+    border-radius: 5px;
+    vertical-align: middle;
+    border-style: none;
+    position: relative;
+    width: 180px;
+    height: 160px;
+    opacity: 0.8;
+    margin-bottom: 20px;
+    left:92%;
+}
+
+.headText{
+    color: #FF4F00;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.image_upload_button{
+    background-color: #FF4F00;
+    width: 200px;
+    height: 40px;
+    color: #ffffff;
+    left: 95%;
+}
+
+.submit_button{
+    margin-left: 20px;
+}
