@@ -36,7 +36,6 @@ function App() {
                 <Route path="/loan/form1" element={<RequestForm1 />} />
                 <Route path="/loan/view_loan" element={<ViewLoans />} />
 
-                <Route path="/cart" element={<Cart/>} /
 
                 {/* loan schema */}
                 <Route path="/loan" element={<Loan />} />
@@ -57,10 +56,6 @@ function App() {
                 <Route path="/all" element={<ViewUsers/>} />
                 <Route path="/sellerR" element={<ReportSeller/>} />
 
-             
-                <Route path="/loan/form_1" element={<RequestForm1 />} />
-     
-                <Route path="/products/add" element={<AddProducts/>} />
 
             </Routes>
             <Footer/>
