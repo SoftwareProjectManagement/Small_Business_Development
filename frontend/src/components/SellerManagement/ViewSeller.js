@@ -93,7 +93,21 @@ navigate("/add")
     };
 
 
+    function Pdf(proof) {
+        window.open(proof);
+    }
 
+    async function deleteSeller(id) {
+        await axios
+          .delete(`http://localhost:8070/request/${id}`)
+          .then(() => {
+            alert("Request deleted successfully");
+            window.location.reload(false);
+          })
+          .catch((error) => {
+            alert(`Failed to delete the request\n${error.message}`);
+          });
+      }
 
     return (
         <div className="container">
@@ -133,13 +147,13 @@ navigate("/add")
                                         <td style={{ width: 400 }}>{Seller.email}</td>
                                         <td style={{ width: 400 }}>{Seller.reg}</td>
                                         
-                                        <td style={{ width: 300 }}> <IconButton>
+                                        <td style={{ width: 300 }}> <IconButton onClick={() => Pdf(`${Seller.proof}`)}>
                     <PictureAsPdfIcon style={{ color: red[500], backgroundPosition: 'center' }} ></PictureAsPdfIcon>
                   </IconButton></td>
                                         <td style={{ width: 450, color: blue[300] }}>{Seller.jstatus}</td>
                                         <div>
                                             {isAdmin === true ?
-                                                <div style={{width:180}}>
+                                                <div style={{width:280}}>
                                                     <button
                                                         className="btn btn-success"
                                                         disabled={
@@ -159,6 +173,14 @@ navigate("/add")
                                                         onClick={() => setEvaluate("Rejected", Seller._id)}
                                                     >
                                                         &nbsp;Reject
+                                                    </button>
+
+                                                    &nbsp;&nbsp;&nbsp;
+                                                    <button style={{fontSize:15,fontWeight:"500",borderRadius:"50%",border:"none",backgroundColor:"red",width:40,height:40,color:"white"}}
+                                                       
+                                                        onClick={() => deleteSeller(Seller._id)}
+                                                    >
+                                                        &nbsp;X
                                                     </button>
                                                 </div>
                                                 :

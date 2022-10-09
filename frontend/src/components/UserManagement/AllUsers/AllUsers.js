@@ -56,7 +56,7 @@ function ViewUser() {
 
 
     return (
-        <div className="container">
+        <div className="container" style={{height:700}}>
             <div className="row">
                 <div className="col-4">
                     <div className="pb-2 px-3 d-flex flex-wrap align-items-center justify-content-between">
