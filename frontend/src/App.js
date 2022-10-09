@@ -19,7 +19,8 @@ import DocumentSubmission from "./components/LoanManagement/DocumentSubmission/D
 import AddProducts from "./components/ProductManagement/AddProducts/AddProducts";
 import ViewSeller from "./components/SellerManagement/ViewSeller";
 import ViewUsers from "./components/UserManagement/AllUsers/AllUsers";
-import AddProducts from "./components/ProductManagement/AddProducts/AddProducts"
+import ReportSeller from "./components/SellerManagement/ReportSeller";
+
 
 function App() {
     return (
@@ -54,6 +55,7 @@ function App() {
                 <Route path="/products/add" element={<AddProducts/>} />
                 <Route path="/requests" element={<ViewSeller/>} />
                 <Route path="/all" element={<ViewUsers/>} />
+                <Route path="/sellerR" element={<ReportSeller/>} />
 
              
                 <Route path="/loan/form_1" element={<RequestForm1 />} />
