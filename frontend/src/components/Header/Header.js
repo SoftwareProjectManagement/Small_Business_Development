@@ -123,6 +123,10 @@ function Header() {
         navigate(`${URL}/profile/`)
     }
 
+    function cart() {
+        navigate(`cart/${user._id}`)
+    }
+
 
     function signin() {
         navigate('/user/signin')
@@ -166,7 +170,7 @@ function Header() {
                 <a href="/" className="home_button">Home</a>
               </button>
               <button className="home_button">
-                <a href="/staff/all" className="home_button">Products</a>
+                <a href="/products/view" className="home_button">Products</a>
               </button>
               <button className="home_button">
                 <a href="/request/add" className="home_button">Requests</a>
@@ -175,10 +179,10 @@ function Header() {
                 <a href="/request/view" className="home_button">About Us</a>
               </button>
               <button className="home_button" >
-              <a href="/module" className="home_button">Contact Us</a>
+              <a href="/workshops" className="home_button">WorkShop</a>
               </button>
               <button className="home_button" >
-              <a href="/cart/6316f563912fd0f1eb0ef876" className="home_button">Cart</a>
+              <a onClick={cart} className="home_button">Cart</a>
               </button>
                         </div>
                         {isSignedIn && (
