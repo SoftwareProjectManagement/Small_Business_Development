@@ -1,0 +1,28 @@
+.paymentContainer{
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    padding: 20px 60px;
+    margin-top: 150px;
+}
+
+.paymentHeader h1{
+    font-weight: 700;
+    font-size: 35px;
+    color: #000000;
+    text-align: center;
+    width: 100%;
+    height: 50px;
+}
+
+.paymentDetailsHeader{
+    margin-top: 1%;
+    width: 100%;
+    height: 5px;
+    background-color: #FF4F00;
+}
+
+.Payment-product-Img {
+    width: 100px;
+    height:100px;
+    border-radius: 25px;
+   }
