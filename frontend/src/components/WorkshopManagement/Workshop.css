@@ -1,5 +1,5 @@
 .workshopMainContainer{
-    min-height: 1200px;
+    min-height: 800px;
     font-family: 'Roboto', sans-serif;
     margin-top: 130px;
 }
@@ -133,4 +133,8 @@
 
 .workshopAddBtn:hover{
     transform: scale(1.02);
+}
+
+.workshopAddBtn{
+    width: 250px;
 }
