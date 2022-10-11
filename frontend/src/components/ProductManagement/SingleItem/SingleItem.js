@@ -133,11 +133,11 @@ function SingleItem(props) {
 
                     <div className='blabla'>
                         <div className='RelatedimageContainer'>
-                            <img src={`${imgUrl}`} alt="productImg" />
+                            <img src={`https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fliveblogspot.com%2Fwp-content%2Fuploads%2F2020%2F03%2Freusable-grocery-bags.jpg&f=1&nofb=1&ipt=64b1e0ad35c7f568a8d452227642cda29ef1255932a6d7d00a5890de9f559051&ipo=images`} alt="productImg" />
                         </div>
                         <div className='RelatedDescriptionContainer'>
-                            <h2>{name}</h2>
-                            <h5>Price : {' '}{' '} Rs.{price}.00</h5>
+                            <h2>Kraft Grocery Bag</h2>
+                            <h5>Price : {' '}{' '} Rs.250.00</h5>
                         </div>
                     </div>
                     
