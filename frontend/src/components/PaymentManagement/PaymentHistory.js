@@ -39,7 +39,9 @@ function PaymentHistory(props) {
     getAllProducts();
   }, []);
 
-  console.log(products);
+  async function GenerateReport(){
+    alert("hello");
+  }
 
   return (
     <div className="paymentContainer">
@@ -47,31 +49,65 @@ function PaymentHistory(props) {
         <h1>Payment History</h1>
       </div>
 
-      <div className="paymentDetailsHeader"></div>
+      <div className="paymentDetailsHeader">
+        <h3>
+          <b>Product</b>
+        </h3>
+        <h3>
+          <b>Quantity</b>
+        </h3>
+        <h3>
+          <b>Sub Total</b>
+        </h3>
+      </div>
 
-      <div className="">
-        {products.map((Products, key) => (
-          <div key={key}>
-            <div>
-              <h3>{`${Products.itemid.name}`}</h3>
-            </div>
-            <div className="col-sm-2">
-              <div>
-                <img
-                  className="Payment-product-Img"
-                  src={Products.itemid.imgUrl}
-                  alt="product"
-                ></img>
+      <div className="paymentProductBox">
+        <div className="row">
+          <div className="col-xl-12">
+            {/* map */}
+            {products.map((Products, key) => (
+              <div key={key}>
+                <div className="payment-box">
+                  <div className="row align-items-center ">
+                    <div className="col-sm-2">
+                      <img
+                        className="Payment-product-Img"
+                        src={Products.itemid.imgUrl}
+                        alt="product"
+                      ></img>
+                    </div>
+
+                    <div className="col-sm-4">
+                      <div>
+                        <h5>
+                          <b>{Products.itemid.name}</b>
+                        </h5>
+                        <h6>Rs.{Products.itemid.price}.00</h6>
+                      </div>
+                    </div>
+
+                    <div className="col-sm-4">
+                      <h5>
+                        <b>{Products.quantity}</b>
+                      </h5>
+                    </div>
+
+                    <div className="col-sm-2">
+                      <h5>
+                        <b>Rs.{Products.itemid.price * Products.quantity}.00</b>
+                      </h5>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div>
-              <h3>{`${Products.itemid.price}`}</h3>
-            </div>
-            <div>
-              <h3>{`${Products.quantity}`}</h3>
-            </div>
+            ))}
           </div>
-        ))}
+        </div>
+      </div>
+      <div className="PaymentButtonContainer">
+        <button onClick={() => GenerateReport()}>
+          Generate Report
+        </button>
       </div>
     </div>
   );
