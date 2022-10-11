@@ -15,6 +15,8 @@ import ViewCategory from "./components/CategoryManagement/ViewCategory/ViewCateg
 import ViewProdcuts from "./components/ProductManagement/ViewAllProdcuts/ViewProducts";
 //import ViewLoans from "./components/LoanManagement/ViewLoans/ViewLoans";
 import AddProducts from "./components/ProductManagement/AddProducts/AddProducts";
+import Workshop from "./components/WorkshopManagement/Workshop"
+import PaymentHistory from "./components/PaymentManagement/PaymentHistory"
 
 function App() {
     return (
@@ -37,6 +39,8 @@ function App() {
                 {/* <Route path="/loan/view_loan" element={<ViewLoans />} /> */}
                 <Route path="/loan/form_1" element={<RequestForm1 />} />
                 <Route path="/products/add" element={<AddProducts/>} />
+                <Route path="/workshops" element={<Workshop />}/>
+                <Route path="/viewPayments" element={<PaymentHistory />}/>
             </Routes>
             <Footer/>
         </Router>
