@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router';
-import './ViewLoans.css'
+import './ViewLoans2.css'
 import axios from 'axios'
 
-function ViewLoans() {
+function ViewLoans2() {
 
     const [isAdmin, setIsAdmin] = useState(false);
     const [loans, setLoans] = useState([])
@@ -21,7 +21,7 @@ function ViewLoans() {
         }
 
         async function getAllRequests() {
-            axios.get(`http://localhost:8070/loan`).then((res) => {
+            axios.get(`http://localhost:8070/loan2`).then((res) => {
                 setLoans(res.data)
             }).catch((error) => {
                 alert("Failed to fetch document")
@@ -51,16 +51,16 @@ function ViewLoans() {
         navigate(`/`)
     }
 
-    const setData = async (tstatus, id) => {
+    const setData = async (loanStatus, id) => {
 
         const value = {
-            tstatus,
+            loanStatus,
         };
 
         await axios
-            .put(`http://localhost:8070/loan/${id}`, value)
+            .put(`http://localhost:8070/loan2/${id}`, value)
             .then(() => {
-                alert(`Loan is ${tstatus}ed`);
+                alert(`Loan is ${loanStatus}ed`);
                 window.location.reload(false);
             })
             .catch((err) => {
@@ -68,16 +68,16 @@ function ViewLoans() {
             });
     };
 
-    const setEvaluate = async (tstatus, id) => {
+    const setEvaluate = async (loanStatus, id) => {
 
         const value = {
-            tstatus,
+            loanStatus,
         };
 
         await axios
             .put(`http://localhost:8070/loan/${id}`, value)
             .then(() => {
-                alert(`Loan is ${tstatus}ed`);
+                alert(`Loan is ${loanStatus}ed`);
                 window.location.reload(false);
             })
             .catch((err) => {
@@ -117,9 +117,9 @@ function ViewLoans() {
                                         <thead className="table-head">
                                             <tr>
                                                 <th className="table-head-title th-border">Name</th>
-                                                <th className="table-head-title th-border">Seller ID</th>
-                                                <th className="table-head-title th-border">Email</th>
+                                                <th className="table-head-title th-border">NIC</th>
                                                 <th className="table-head-title th-border">Mobile</th>
+                                                <th className="table-head-title th-border">Email</th>
                                                 <th className="table-head-title th-border">Status</th>
                                                 {isAdmin === true ?
                                                         <th className="table-head-title th-border">Action</th>
@@ -132,17 +132,17 @@ function ViewLoans() {
                                         {loans.map((Loan, key) => (
                                             <tr key={key} className="table-body">
                                                 <td className="text-l tb-border" style={{ width: 400, padding: '5px 15px'}}>{Loan.name}</td>
-                                                <td className="text-l tb-border" style={{ width: 260, padding: '5px 15px' }}>{Loan.sellerID}</td>
+                                                <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>{Loan.nic}</td>
                                                 <td className="text-l tb-border" style={{ width: 400, padding: '5px 15px' }}>{Loan.email}</td>
                                                 <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>{Loan.mobile}</td>
-                                                <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>{Loan.tstatus}</td>
+                                                <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>{Loan.loanStatus}</td>
                                                 <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>
                                                 {isAdmin === true ?
                                                         <div style={{width:180}}>
                                                             <button
                                                                 className="btn btn-success"
                                                                 disabled={
-                                                                    Loan.tstatus === "Accepted" 
+                                                                    Loan.loanStatus === "Accepted" 
                                                                 }
                                                                 onClick={() => setData("Accepted", Loan._id)}
                                                             >
@@ -152,7 +152,7 @@ function ViewLoans() {
                                                             <button
                                                                 class="btn btn-danger"
                                                                 disabled={
-                                                                    Loan.tstatus === "Rejected" 
+                                                                    Loan.loanStatus === "Rejected" 
                                                                 }
                                                                 onClick={() => setEvaluate("Rejected", Loan._id)}
                                                             >
@@ -164,8 +164,8 @@ function ViewLoans() {
                                                             
                                                             {/* <button
                                                                 disabled={
-                                                                    Loan.tstatus === "Submitted for grading" ||
-                                                                    Loan.tstatus === "Rejected"
+                                                                    Loan.loanStatus === "Submitted for grading" ||
+                                                                    Loan.loanStatus === "Rejected"
                                                                 }
                                                                 className="btn btn-warning ms-3"
                                                                 onClick={() => add()}
@@ -188,4 +188,4 @@ function ViewLoans() {
     )
 }
 
-export default ViewLoans
+export default ViewLoans2

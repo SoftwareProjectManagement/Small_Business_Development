@@ -9,6 +9,7 @@ import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import axios from 'axios';
 import './SignUp.css';
+import Swal from 'sweetalert2';
 
 function SignUp() {
     const [firstname,setFirstName] = useState("");
@@ -88,7 +89,11 @@ function SignUp() {
 
             try {
                 await axios.post("http://localhost:8070/user/signup", newUser , config)
-                    alert("Registration Successful")
+                Swal.fire({
+                    icon: 'success',
+                    text: 'Registration Successful',
+                    showConfirmButton: false,
+                  })
                     navigate('/user/signin')
             } catch (error) {
                 if(error.response.status === 409){

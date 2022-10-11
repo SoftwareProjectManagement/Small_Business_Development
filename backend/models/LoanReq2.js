@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
  
-const LoanSchemaReq1 = new Schema({      
+const LoanSchemaReq2 = new Schema({      
     name : {
         type : String,
         required : true
@@ -13,22 +13,17 @@ const LoanSchemaReq1 = new Schema({
         required : true
     },
 
-    email : {
-        type : String,
-        required : true
-    },
-    
     nic : {
         type : String,
         required : true
     },
-
+    
     mobile : {
         type : String,
         required : true
     },
 
-    sellerID : {
+    email : {
         type : String,
         required : true
     },
@@ -38,7 +33,17 @@ const LoanSchemaReq1 = new Schema({
         required : true
     },
 
-    tstatus: {
+    incomeReport : {
+        type : String,
+        required : false
+    },
+
+    businessRegistration : {
+        type : String,
+        required : false
+    },
+
+    loanStatus: {
         type : String,
         default: 'Pending'
     }
@@ -46,5 +51,5 @@ const LoanSchemaReq1 = new Schema({
     
 });
 
-const LoanReq1 = mongoose.model("req1",LoanSchemaReq1) 
-module.exports = LoanReq1
+const LoanReq2 = mongoose.model("req2",LoanSchemaReq2) 
+module.exports = LoanReq2
