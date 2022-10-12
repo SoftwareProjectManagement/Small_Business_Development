@@ -135,10 +135,8 @@ function ViewLoans() {
                 </div>
             </div>
             <div className="row">
-                <div className="col-md-12">
-                    <div className="productGrid"  >
-                            <div>
-                                <div className="p-2">
+                <div className="col-xl-12">
+                                <div className="p-5">
                                     <table>
                                         <thead className="table-head">
                                             <tr>
@@ -209,8 +207,6 @@ function ViewLoans() {
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>
-                    </div>
                 </div>
             </div>
         </div>
