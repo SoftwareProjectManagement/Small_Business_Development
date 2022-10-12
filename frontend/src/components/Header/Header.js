@@ -80,7 +80,7 @@ function Header() {
           },
         {
           title: 'Payments',
-          path: `/tdocView`,
+          path: `/viewPayments`,
           icon: <InsertCommentIcon/>,
           cName: 'nav-text'
         },
