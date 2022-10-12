@@ -21,6 +21,7 @@ import ViewSeller from "./components/SellerManagement/ViewSeller";
 import ViewUsers from "./components/UserManagement/AllUsers/AllUsers";
 import ReportSeller from "./components/SellerManagement/ReportSeller";
 import Home from "./components/Home/Home";
+import Tips from "./components/TipsManagement/Tips";
 
 
 
@@ -58,6 +59,7 @@ function App() {
                 <Route path="/all" element={<ViewUsers/>} />
                 <Route path="/sellerR" element={<ReportSeller/>} />
                 <Route path="/" element={<Home/>} />
+                <Route path="/tips" element={<Tips/>} />
 
 
             </Routes>
