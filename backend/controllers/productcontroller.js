@@ -35,7 +35,7 @@ exports.deleteProduct = async (req, res) => {
   await Product.findByIdAndDelete(productId)
     .then((product) => {
       console.log("gona");
-      res.status(200).json({ status: "Product Deleted", product });
+      res.status(200).json({ message: "Product Deleted", product });
     })
     .catch((error) => {
       res
