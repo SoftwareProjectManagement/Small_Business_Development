@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate,useLocation  } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./AddCategory.css";
 import Button from "@material-ui/core/Button";
@@ -8,7 +8,6 @@ import OutlinedInput from "@material-ui/core/OutlinedInput";
 import Swal from "sweetalert2";
 
 function AddCategory() {
-
   const navigate = useNavigate();
   const [categoryname, setCategoryName] = useState("");
   const [previewSource, setPreviewSource] = useState();
@@ -82,7 +81,11 @@ function AddCategory() {
   }
 
   return (
-    <div className="container" align="center"><br/><br/><br/><br/>
+    <div className="container" align="center">
+      <br />
+      <br />
+      <br />
+      <br />
       <form onSubmit={add} className="addProduct">
         <h1 className="headText">Add category</h1>
         <div className="row">
@@ -103,47 +106,46 @@ function AddCategory() {
               </div>
             </div>
           </div>
-          
+
           <div className="col-8">
             <div className="row">
               <div className="col-md-8 mb-4">
-          <div className="col-4 d-flex justify-content-center">
-            <div>
-              {previewSource ? (
-                <img
-                  src={previewSource}
-                  alt="preview"
-                  className="previewImgProduct"
-                />
-              ) : (
-                <img
-                  src="/images/imageIcon.png"
-                  className="previewImgProduct"
-                  alt="Image"
-                />
-              )}
-              <div className="form-group">
-                <label htmlFor="profilepic">
-                  <input
-                    style={{ display: "none" }}
-                    id="profilepic"
-                    name="profilepic"
-                    type="file"
-                    onChange={handleFileInputChange}
-                    value={fileInputState}
-                    required
-                  />
+                <div className="col-4 d-flex justify-content-center">
+                  <div>
+                    {previewSource ? (
+                      <img
+                        src={previewSource}
+                        alt="preview"
+                        className="previewImgProduct"
+                      />
+                    ) : (
+                      <img src="/images/imageIcon.png" className="previewImgProduct"  alt="Image"/>
+                    )}
+                    <div className="form-group">
+                      <label htmlFor="profilepic">
+                        <input
+                          style={{ display: "none" }}
+                          id="profilepic"
+                          name="profilepic"
+                          type="file"
+                          onChange={handleFileInputChange}
+                          value={fileInputState}
+                          required
+                        />
 
-                  <Button className="image_upload_button" variant="contained" component="span">
-                    <AddAPhotoIcon /> &nbsp; Upload Image
-                  </Button>
-                </label>
+                        <Button
+                          className="image_upload_button"
+                          variant="contained"
+                          component="span"
+                        >
+                          <AddAPhotoIcon /> &nbsp; Upload Image
+                        </Button>
+                      </label>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-
-          </div>
-          </div>
           </div>
         </div>
         <div className="row">
@@ -157,7 +159,11 @@ function AddCategory() {
             </div>
           </div>
         </div>
-      </form><br/><br/><br/><br/>
+      </form>
+      <br />
+      <br />
+      <br />
+      <br />
     </div>
   );
 }
