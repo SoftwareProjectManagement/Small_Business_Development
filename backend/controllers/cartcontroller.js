@@ -39,6 +39,23 @@ exports.viewCart = async(req,res) => {
     }
 }
 
+//View Products in the Cart
+exports.viewCart1 = async(req,res) => {
+    //get product id
+    let userID = req.params.id;
+
+    try {
+        //Find cart by product id and cart
+        const cart = await Cart.findById(userID).populate(
+            {path:'itemid', select:['name','category','price','description','total','imgUrl']});
+        //success message
+        res.status(200).json({success: true,result:cart})
+    }catch(error){
+        //error message
+        res.status(500).json({message: "Error with fetching product", error: error.message})
+    }
+}
+
 //View one Cart
 exports.viewOneCart = async(req,res) => {
     //get cart id

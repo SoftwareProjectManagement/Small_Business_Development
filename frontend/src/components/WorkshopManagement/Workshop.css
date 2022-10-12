@@ -1,0 +1,140 @@
+.workshopMainContainer{
+    min-height: 800px;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 130px;
+}
+
+.workshopHeadercontainer{
+    margin: 15px;
+    height: 70px;
+    width: 95vw;
+    float: left;
+    position:absolute;
+}
+
+.workshopHeadercontainer h5{
+    padding: 20px;
+    font-weight: 600;
+    font-size: 23px;
+    float: left;
+}
+
+.workshopHeadercontainer button{
+    margin-right: 0%;
+    margin-top: 0.7%;
+    padding: 5px;
+    float: right;
+    width: 150px;
+    height: 50px;
+    font-weight: 700;
+    font-size: 20px;
+    background: #FF4F00;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 4px 0px 4px rgba(0, 0, 0, 0.25);
+}
+
+.workshopHeadercontainer button:hover{
+    transform: scale(1.05);
+}
+
+.workshopContainer{
+    margin-top: 100px;
+    margin-left: 30px;
+    width: 95vw;
+    height: 650px;
+    float: left;
+}
+
+.workshopContainer h1{
+    font-size: 40px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.workshopContainer h1 hr{
+    border: 3px solid #FF4F00;
+}
+
+.workshopGrid{
+    display: grid;
+    grid-gap: 4rem;
+    padding: 1rem;
+    margin-top: 50px;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.workshopCard{  
+    min-height: 400px;
+    width: 350px;
+    background: #ffffff;
+    border-radius: 15px;
+    border: none;
+    overflow: hidden;
+    padding: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 4px 0px 4px rgba(0, 0, 0, 0.25);
+}
+
+.workshopCard:hover{
+    transform: scale(1.02);
+}
+
+.workshopCard .imgBx{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.workshopVideo{
+    height: 170px;
+}
+
+.workshopCard  .workshopBtn{
+    padding: 7px 20px;
+    margin-top: 15px;
+    color:white;
+    border: none;
+    border-radius: 10px;
+    background-color: #FF4F00 !important;
+    font-size: 18px;
+}
+
+.workshopCard  .workshopBtn:hover{
+    transform: scale(1.05);
+}
+
+.addButtonContainer{
+    height: 60px;
+    width: 89vw;
+    margin: auto;
+    margin-top: 25px;
+}
+
+.addButtonContainer button{
+    padding: 5px;
+    float: left;
+    width: 200px;
+    height: 55px;
+    font-weight: 700;
+    font-size: 20px;
+    background: #FF4F00;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 4px 0px 4px rgba(0, 0, 0, 0.25);
+}
+
+.addButtonContainer button:hover{
+    transform: scale(1.05);
+}
+
+.workshopAddBtn:hover{
+    transform: scale(1.02);
+}
+
+.workshopAddBtn{
+    width: 250px;
+}

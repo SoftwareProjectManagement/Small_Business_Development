@@ -73,9 +73,12 @@ function SingleItem(props) {
   }
 
   async function deleteProduct() {
-    await axios.delete(`http://localhost:8070/product/delete/${productId.id}`,config).then((res) => {
-      console.log(res.status);
-      alert("Item deleted successfully")
+    await axios.delete(`http://localhost:8070/product/delete/${productId.id}`,config).then(() => {
+
+      Swal.fire({
+        icon: "delete",
+        title: "Category Delete Successfully!",
+      });
       navigate(`/category/view`);
   }).catch((error) => {
       alert(`Failed to delete the product\n${error.message}`)
