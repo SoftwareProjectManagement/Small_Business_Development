@@ -97,9 +97,11 @@ function Loan() {
 
                 <div className="row mt-3" style={{ textAlign: 'center' }}>
                     <p style={{ fontSize:'35px', fontWeight:'bold',fontFamily:'Quicksand' }}>Loan Schema</p>
-                    <p style={{ color: '#7c7c7c', fontSize: '30px', lineHeight: '28px' }}>Grow better in providing
-                    <br/> consumer-assured nutritional values in a 
-                    <br/>socially acceptable manner.</p>
+                    <div style={{ width:'300px', float:'center', background: 'red' }}>
+                        <p style={{ color: '#7c7c7c', fontSize: '30px', lineHeight: '28px' }}>
+                            Grow better in providing consumer-assured nutritional values in a socially acceptable manner.
+                        </p>
+                    </div>
                 </div>
                 <div className="row" align="center">
                 {isAdmin === true?
