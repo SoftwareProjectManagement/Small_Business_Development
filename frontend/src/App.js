@@ -24,8 +24,12 @@ import DocumentSubmission from "./components/LoanManagement/DocumentSubmission/D
 import AddProducts from "./components/ProductManagement/AddProducts/AddProducts";
 import ViewSeller from "./components/SellerManagement/ViewSeller";
 import ViewUsers from "./components/UserManagement/AllUsers/AllUsers";
+import ReportSeller from "./components/SellerManagement/ReportSeller";
+import Home from "./components/Home/Home";
+import Tips from "./components/TipsManagement/Tips";
 import Workshop from "./components/WorkshopManagement/Workshop"
 import PaymentHistory from "./components/PaymentManagement/PaymentHistory"
+
 
 function App() {
   return (
@@ -55,9 +59,13 @@ function App() {
                 <Route path="/products/add" element={<AddProducts/>} />
                 <Route path="/requests" element={<ViewSeller/>} />
                 <Route path="/all" element={<ViewUsers/>} />
-                <Route path="/loan/form_1" element={<RequestForm1 />} />
+
+                <Route path="/sellerR" element={<ReportSeller/>} />
+                <Route path="/" element={<Home/>} />
+                <Route path="/tips" element={<Tips/>} />
                 <Route path="/workshops" element={<Workshop />}/>
                 <Route path="/viewPayments" element={<PaymentHistory />}/>
+
 
             </Routes>
             <Footer/>
