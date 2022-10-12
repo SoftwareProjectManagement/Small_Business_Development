@@ -93,7 +93,25 @@ navigate("/add")
     };
 
 
+    function Pdf(proof) {
+        window.open(proof);
+    }
 
+    async function deleteSeller(id) {
+        await axios
+          .delete(`http://localhost:8070/request/${id}`)
+          .then(() => {
+            alert("Request deleted successfully");
+            window.location.reload(false);
+          })
+          .catch((error) => {
+            alert(`Failed to delete the request\n${error.message}`);
+          });
+      }
+      
+      function generate(){
+        navigate("/sellerR")
+      }
 
     return (
         <div className="container">
@@ -116,14 +134,34 @@ navigate("/add")
                         /><div style={{ position: 'relative', right: '10px', top: '-35px' }}><SearchIcon /></div>
                     </div>
                 </div>
+                {isAdmin == true?
+                <div>
+                <button style={{padding:"10px 15px",background:"orange",width:200,borderRadius:"10px",border:"2px solid white",fontWeight:500}} onClick={()=>generate()}>Genarate Report</button>
+                </div>
+                :
+                <div></div>
+}
             </div>
 
-            <br /><br /><br />
+            <br />
             <div className="product"  >
                 {sellers.map((Seller, key) => (
                     <div key={key}>
-                        <div className="p-3" style={{ overflowX: 'auto', width: 1500,marginLeft:-70 }}>
-                            <table>
+                        <div className="p-3" style={{ overflowX: 'auto', width: 1600,marginLeft:-100 }}>
+                            <table  style={{ border: "2px solid black"}}>
+                            <thead style={{height:70,background:"rgb(82, 82, 82)",color:"white"}}>
+                                    <tr>
+                                        <td>Full Name</td>
+                                        <td>Address</td>
+                                        <td>NIC Number</td>
+                                        <td>Mobile</td>
+                                        <td>E-mail</td>
+                                        <td>Registration ID</td>
+                                        <td>Certificate</td>
+                                        <td>Status</td>
+                                        <td>Actions</td>
+                                    </tr>
+                                </thead>
                                 <tbody>
                                     <tr>
                                         <td style={{ width: 560 }}>{Seller.name}</td>
@@ -131,15 +169,15 @@ navigate("/add")
                                         <td style={{ width: 400 }}>{Seller.nic}</td>
                                         <td style={{ width: 400 }}>{Seller.mobile}</td>
                                         <td style={{ width: 400 }}>{Seller.email}</td>
-                                        <td style={{ width: 400 }}>{Seller.reg}</td>
+                                        <td style={{ width: 500 }}>{Seller.reg}</td>
                                         
-                                        <td style={{ width: 300 }}> <IconButton>
+                                        <td style={{ width: 300 }}> <IconButton onClick={() => Pdf(`${Seller.proof}`)}>
                     <PictureAsPdfIcon style={{ color: red[500], backgroundPosition: 'center' }} ></PictureAsPdfIcon>
                   </IconButton></td>
                                         <td style={{ width: 450, color: blue[300] }}>{Seller.jstatus}</td>
                                         <div>
                                             {isAdmin === true ?
-                                                <div style={{width:180}}>
+                                                <div style={{width:280}}>
                                                     <button
                                                         className="btn btn-success"
                                                         disabled={
@@ -159,6 +197,14 @@ navigate("/add")
                                                         onClick={() => setEvaluate("Rejected", Seller._id)}
                                                     >
                                                         &nbsp;Reject
+                                                    </button>
+
+                                                    &nbsp;&nbsp;&nbsp;
+                                                    <button style={{fontSize:15,fontWeight:"500",borderRadius:"50%",border:"none",backgroundColor:"red",width:40,height:40,color:"white"}}
+                                                       
+                                                        onClick={() => deleteSeller(Seller._id)}
+                                                    >
+                                                        &nbsp;X
                                                     </button>
                                                 </div>
                                                 :

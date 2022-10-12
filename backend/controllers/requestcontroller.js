@@ -57,6 +57,20 @@ exports.addRequest = async (req, res) => {
     }
 
 }
+
+exports.deleteSeller = async (req, res) => {
+  let sellerID = req.params.id;
+
+  try {
+      //find seller by sellerID and delete it
+      await Request.findByIdAndDelete(sellerID);
+
+      //sending the status message successful
+      res.status(200).json({ success: true, message: "Seller deleted" })
+  } catch (error) {
+      res.status(500).json({ message: "Something went wrong", error: error.message });
+  }
+}
   
   
   
