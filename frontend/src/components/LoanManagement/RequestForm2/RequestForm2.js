@@ -16,7 +16,6 @@ function RequestForm2() {
     const [email, setEmail] = useState("");
     const [description, setDescription] = useState("");
     const [incomeReport, setIncomeReport] = useState("");
-    const [businessRegistration, setBusinessRegistration] = useState("");
     const navigate = useNavigate();
 
     const [previewSource, setPreviewSource] = useState();
@@ -47,6 +46,23 @@ function RequestForm2() {
                 "content-Type": "application/json"
             }
         };
+
+        let businessRegistration
+
+        if (previewSource) {
+            const formData = new FormData();
+            formData.append("file", selectedFile)
+            formData.append("upload_preset", "topic_doc")
+
+
+            try {
+                await axios.post("https://api.cloudinary.com/v1_1/movie-reservation/image/upload", formData).then((res) => {
+                    businessRegistration = res.data.secure_url
+                })
+            } catch (error) {
+                alert(error)
+            }
+        }
 
         const newFormRequest = { name, address,email, nic, mobile, description, incomeReport, businessRegistration}
 
@@ -161,11 +177,11 @@ function RequestForm2() {
 
                                             <label className='label11'>BUSINESS REGISTRATION</label><br />
 
-                                        <label htmlFor="profilepic">
+                                        <label htmlFor="businessRegistration">
                                             <input
                                                 style={{ display: 'none' }}
-                                                id="profilepic"
-                                                name="profilepic"
+                                                id="businessRegistration"
+                                                name="businessRegistration"
                                                 type="file"
                                                 accept=".pdf"
                                                 onChange={handleFileInputChange}
