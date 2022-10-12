@@ -68,14 +68,14 @@ function ViewLoans2() {
             });
     };
 
-    const setEvaluate = async (loanStatus, id) => {
+    const setStatus = async (loanStatus, id) => {
 
         const value = {
             loanStatus,
         };
 
         await axios
-            .put(`http://localhost:8070/loan/${id}`, value)
+            .put(`http://localhost:8070/loan2/${id}`, value)
             .then(() => {
                 alert(`Loan is ${loanStatus}ed`);
                 window.location.reload(false);
@@ -110,9 +110,7 @@ function ViewLoans2() {
             </div>
             <div className="row">
                 <div className="col-md-12">
-                    <div className="productGrid"  >
-                            <div>
-                                <div className="p-2">
+                                <div className="p-5">
                                     <table>
                                         <thead className="table-head">
                                             <tr>
@@ -120,7 +118,7 @@ function ViewLoans2() {
                                                 <th className="table-head-title th-border">NIC</th>
                                                 <th className="table-head-title th-border">Mobile</th>
                                                 <th className="table-head-title th-border">Email</th>
-                                                <th className="table-head-title th-border">Status</th>
+                                                <th className="table-head-title th-border" style={{ textAlign:'center' }}>Status</th>
                                                 {isAdmin === true ?
                                                         <th className="table-head-title th-border">Action</th>
                                                         :
@@ -135,7 +133,14 @@ function ViewLoans2() {
                                                 <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>{Loan.nic}</td>
                                                 <td className="text-l tb-border" style={{ width: 400, padding: '5px 15px' }}>{Loan.email}</td>
                                                 <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>{Loan.mobile}</td>
-                                                <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>{Loan.loanStatus}</td>
+                                                <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px', textAlign:'center' }}>
+                                                {
+                                                Loan.loanStatus === "Rejected" ? <span className="bg-danger rounded text-white p-1">Rejected</span>:
+                                                Loan.loanStatus === "Accepted" ? <span className="bg-success rounded text-white p-1">Accepted</span>
+                                                :
+                                                <span className="bg-warning rounded text-black p-1">Pending</span>
+                                                }
+                                                </td>
                                                 <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>
                                                 {isAdmin === true ?
                                                         <div style={{width:180}}>
@@ -154,7 +159,7 @@ function ViewLoans2() {
                                                                 disabled={
                                                                     Loan.loanStatus === "Rejected" 
                                                                 }
-                                                                onClick={() => setEvaluate("Rejected", Loan._id)}
+                                                                onClick={() => setStatus("Rejected", Loan._id)}
                                                             >
                                                                 &nbsp;Reject
                                                             </button>
@@ -162,16 +167,16 @@ function ViewLoans2() {
                                                         :
                                                         <div>
                                                             
-                                                            {/* <button
+                                                            <button
                                                                 disabled={
                                                                     Loan.loanStatus === "Submitted for grading" ||
-                                                                    Loan.loanStatus === "Rejected"
+                                                                    Loan.loanStatus === "Accepted"
                                                                 }
-                                                                className="btn btn-warning ms-3"
+                                                                className="btn btn-warning"
                                                                 onClick={() => add()}
                                                             >
                                                                 &nbsp;Document Upload
-                                                            </button> */}
+                                                            </button>
                                                         </div>
                                                     }
                                                 </td>
@@ -180,8 +185,6 @@ function ViewLoans2() {
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>
-                    </div>
                 </div>
             </div>
         </div>

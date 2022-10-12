@@ -24,6 +24,10 @@ function Loan() {
       navigate('/loan/view_loan');
     };
 
+    const navigateToView2 = () => {
+      navigate('/loan/view_loan2');
+    }
+
     useEffect(() => {
         if (localStorage.getItem("user")) {
             setUser(JSON.parse(localStorage.getItem('user')))
@@ -45,8 +49,14 @@ function Loan() {
     }, [location, isAdmin])
 
     return (
-            <div className="container pt-3 pb-3">
-                    <div id="carouselExampleDark" className="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div className="row" style={{ 
+            background:'rgb(229 221 221)' 
+            // background:'#ffffff' 
+
+            }}>
+            <div className="col-xl-12">
+            <div className="pt-2 pb-3">
+                    <div  id="carouselExampleDark" className="carousel carousel-dark slide" data-bs-ride="carousel">
                     <div className="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -86,14 +96,18 @@ function Loan() {
                     </div>
 
                 <div className="row mt-3" style={{ textAlign: 'center' }}>
-                    <p style={{ fontSize:'35px', fontWeight:'bold' }}>Loan Schema</p>
+                    <p style={{ fontSize:'35px', fontWeight:'bold',fontFamily:'Quicksand' }}>Loan Schema</p>
+                    <div style={{ width:'300px', float:'center', background: 'red' }}>
+                        <p style={{ color: '#7c7c7c', fontSize: '30px', lineHeight: '28px' }}>
+                            Grow better in providing consumer-assured nutritional values in a socially acceptable manner.
+                        </p>
+                    </div>
                 </div>
                 <div className="row" align="center">
                 {isAdmin === true?
                 <div>
-                    <button className="btn btn-success"
-                    onClick={navigateToView}>View Loan Request List</button>
-                    <button>Accepted Loan Requests</button>
+                    <button className="btn btn-info" style={{ marginRight:'5px',fontSize:'18px' }} onClick={navigateToView}>Stage 1</button>
+                    <button className="btn btn-success" style={{ marginRight:'5px',fontSize:'18px' }} onClick={navigateToView2}>Stage 2</button>
                 </div>
                     :
                 <div>
@@ -103,6 +117,8 @@ function Loan() {
                 }
                 </div>
             </div>
+            </div>
+        </div>
     )
 }
 
