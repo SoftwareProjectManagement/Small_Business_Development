@@ -55,7 +55,7 @@ function App() {
                 <Route path="/product/item/:id" element={<SingleItem/>}/>
                 <Route path="/category/add" element={<AddCategory/>}/>
                 <Route path="/category/view" element={<ViewCategory/>}/>
-                <Route path="/products/view" element={<ViewProdcuts/>}/>
+                <Route path="/products/view/:id" element={<ViewProdcuts/>}/>
                 <Route path="/products/add" element={<AddProducts/>} />
                 <Route path="/requests" element={<ViewSeller/>} />
                 <Route path="/all" element={<ViewUsers/>} />

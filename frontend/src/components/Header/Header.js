@@ -180,7 +180,7 @@ function Header() {
                 <a href="/" className="home_button">Home</a>
               </button>
               <button className="home_button">
-                <a href="/products/view" className="home_button">Products</a>
+                <a href="/category/view" className="home_button">Category</a>
               </button>
               <button className="home_button">
                 <a href="/request/add" className="home_button">Requests</a>
