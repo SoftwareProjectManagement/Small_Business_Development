@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { useHistory, useLocation,Link, useNavigate } from 'react-router-dom';
-import { IconButton } from '@material-ui/core';
+import { IconButton, ListItemIcon } from '@material-ui/core';
 import DehazeIcon from '@material-ui/icons/Dehaze';
 import HomeIcon from '@material-ui/icons/Home';
 import PersonIcon from '@material-ui/icons/Person';
@@ -42,46 +42,49 @@ function Header() {
           icon: <PersonIcon/>,
           cName: 'nav-text'
         },
-        {
-            title: 'Supervisours',
-            path: '/staff/all',
-            icon: <PeopleIcon/>,
-            cName: 'nav-text'
-        },
 
         {
-            title: 'Register Groups',
-            path: `/request/view`,
-            icon: <GroupsIcon/>,
+            title: 'Make Requests',
+            path: `/request/add`,
+            icon: <AssignmentIcon/>,
             cName: 'nav-text'
           },
 
+          {
+            title: 'My Requests',
+            path: `/requests`,
+            icon: <AssignmentIcon/>,
+            cName: 'nav-text'
+          },
+
+          {
+            title: 'Business Tips',
+            path: `/tips`,
+            icon: <HelpIcon/>,
+            cName: 'nav-text'
+          },
+  
+
         {
-            title: 'Register Topics',
+            title: 'Loan Scheme',
             path: `/topic/add`,
             icon: <InsertCommentIcon/>,
             cName: 'nav-text'
           },
 
         {
-            title: 'Research Topics',
+            title: 'Categories',
             path: `/topic/view`,
-            icon: <TopicIcon/>,
+            icon: <InsertCommentIcon/>,
             cName: 'nav-text'
           },
         {
-          title: 'Topic Doc',
+          title: 'Payments',
           path: `/tdocView`,
-          icon: <ArticleIcon/>,
+          icon: <InsertCommentIcon/>,
           cName: 'nav-text'
         },
-        {
-          title: 'View Requests',
-          path: `/request/view`,
-          icon: <AssignmentIcon/>,
-          cName: 'nav-text'
-        },
-
+       
         
 
           {
@@ -166,14 +169,14 @@ function Header() {
                             }      
                         </ul>
                         <div className="header-title">
-                            <h3 onClick={home}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DIHP &nbsp; Capital &nbsp; Corp</h3>
+                            <h3 onClick={home}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ceylon &nbsp; Capital &nbsp; Corp</h3>
 
                             <button className="home_button">
                 {" "}
                 <a href="/" className="home_button">Home</a>
               </button>
               <button className="home_button">
-                <a href="/staff/all" className="home_button">Products</a>
+                <a href="/category/view" className="home_button">Category</a>
               </button>
               <button className="home_button">
                 <a href="/request/add" className="home_button">Requests</a>
@@ -209,10 +212,10 @@ function Header() {
                                 </div>
                                 :
                                 <div>
-                                    <button className="signing" style={{position :'relative',top:40,right:-40}} onClick={signin}>
+                                    <button className="signing" style={{position :'relative',top:10,right:-40}} onClick={signin}>
                                         Sign In
                                     </button>
-                                    <button className="signing" style={{position :'relative',right:90}} onClick={signup}>
+                                    <button className="signing" style={{position :'relative',top:-28,right:90}} onClick={signup}>
                                         Sign Up
                                     </button>
                                 </div>
