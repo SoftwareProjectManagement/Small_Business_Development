@@ -52,7 +52,6 @@ function ViewProdcuts() {
   );
 
 
-
   return (
     <div className="container">
       <br />

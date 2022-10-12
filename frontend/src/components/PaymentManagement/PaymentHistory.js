@@ -43,6 +43,7 @@ function PaymentHistory(props) {
     alert("hello");
   }
 
+  console.log(userID.firstname)
   return (
     <div className="paymentContainer">
       <div className="paymentHeader">
