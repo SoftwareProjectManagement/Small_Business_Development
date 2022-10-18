@@ -85,8 +85,8 @@ function SingleItem(props) {
   }) 
   }
 
-  function editProduct() {
-    navigate(`/products/add`);
+  function editProduct(id) {
+    navigate(`/products/update/${id}`);
   }
 
   const [openModal, setOpenModal] = useState(false);
@@ -156,7 +156,7 @@ function SingleItem(props) {
             <Button
               className="mx-2 productBtn1"
               style={{ backgroundColor: orange[400], color: "white" }}
-              onClick={() => editProduct()}
+              onClick={() => editProduct(id)}
             >
               Edit Product <EditIcon />
             </Button>

@@ -34,7 +34,7 @@ exports.deleteProduct = async (req, res) => {
 
   await Product.findByIdAndDelete(productId)
     .then((product) => {
-      console.log("gona");
+      console.log("delete product");
       res.status(200).json({ message: "Product Deleted", product });
     })
     .catch((error) => {
@@ -43,6 +43,33 @@ exports.deleteProduct = async (req, res) => {
         .json({ status: "Error with Deleting Product", error: error.message });
     });
 };
+
+//update Product
+exports.updateProduct = async (req, res) => { 
+  //fetch id from url
+  let productId = req.params.id;
+ 
+  const {name, category, price,description,imgUrl} = req.body;
+ 
+  const updateProduct = {
+    name,
+    category,
+    price,
+    description,
+    imgUrl
+  }
+
+  //check whether there's a product for the ID
+  try {
+    await Product.findByIdAndUpdate(productId, updateProduct);
+
+    //sending the successful status
+    res.status(200).json({ success: true, message: "Product Updated" })
+  } catch (error) {
+    res.status(500).json({ message: "Error with Updating Product", error: error.message });
+  }
+}
+
 
 //view one product
 exports.viewOneProduct = async (req, res) => {
