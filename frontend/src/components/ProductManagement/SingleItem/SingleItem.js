@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams ,useLocation} from "react-router-dom";
 import "./SingleItem.css";
 import axios from "axios";
 import StarIcon from "@mui/icons-material/Star";
@@ -23,8 +23,11 @@ function SingleItem(props) {
   const [imgUrl, setImgUrl] = useState("");
   const navigate = useNavigate();
   const [user, setUser] = useState("");
-  const [product, setProduct] = useState();
   const productId = useParams();
+  const {state} = useLocation();
+  const {cname} = state;
+
+  console.log(cname);
 
   const config = {
     headers: {
@@ -86,7 +89,7 @@ function SingleItem(props) {
   }
 
   function editProduct(id) {
-    navigate(`/products/update/${id}`);
+    navigate(`/products/update/${id}`,{ state: { cname:cname } });
   }
 
   const [openModal, setOpenModal] = useState(false);
@@ -95,9 +98,9 @@ function SingleItem(props) {
     <div className="Maincontainer">
       <div className="Headercontainer">
         <h5>
-          Products {">"} {category} {">"} {name}
+          Products {">"} {cname} {">"} {name}
         </h5>
-        <button>Back</button>
+        <button onClick={() => navigate(-1)}>Back</button>
       </div>
       <div className="Productcontainer">
         <div className="imageContainer">
@@ -126,7 +129,7 @@ function SingleItem(props) {
             </span>
           </div>
           <h4>
-            <span className="bold">Category :</span> {category}
+            <span className="bold">Category :</span> {cname}
           </h4>
           <h5>
             <span className="bold">Price :</span> Rs.{price}.00
@@ -154,7 +157,7 @@ function SingleItem(props) {
 
           {isAdmin && (
             <Button
-              className="mx-2 productBtn1"
+              className="mx-2 productBtn2"
               style={{ backgroundColor: orange[400], color: "white" }}
               onClick={() => editProduct(id)}
             >
@@ -163,7 +166,7 @@ function SingleItem(props) {
           )}
           {isAdmin && (
             <Button
-              className="mx-2 productBtn1"
+              className="mx-2 productBtn2"
               style={{ backgroundColor: orange[400], color: "white" }}
               onClick={() => deleteProduct()}
             >
