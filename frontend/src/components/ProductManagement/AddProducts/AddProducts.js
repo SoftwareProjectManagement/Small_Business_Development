@@ -195,7 +195,7 @@ function AddProducts() {
                     input={<Input id="select-multiple-chip" />}
                   >
                     {categoryList.map((category) => (
-                      <MenuItem key={category._id} value={category._id}>
+                      <MenuItem key={category._id} value={category.categoryname}>
                         {category.categoryname}
                       </MenuItem>
                     ))}
