@@ -43,7 +43,7 @@ function Footer() {
                         <p><EmailIcon fontSize="small"/>&nbsp; info.smallbusiness@gmail.com</p>
                         <p><PhoneIcon fontSize="small"/>&nbsp;011 - 277202099</p>
                     </div>
-                    <div className="col-xl-3"align="center">
+                    <div className="col-xl-2"align="center">
                         <h5> We value your feedback</h5>    
                         <Rating name="size-large" defaultValue={5} size="large"  />
                         <br/><br/>

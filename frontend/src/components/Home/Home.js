@@ -15,7 +15,7 @@ return(
 
     <div>
         <div className='home'>
-        <img src="/images/home.jpeg" style={{backgroundSize:"cover",width:1798,height:900}}/>
+        <img src="/images/home.jpeg" className='background'/>
         <div className='head' style={{width:600,height:500,position:'absolute',top:200,right:120,color:"white"}}>
         <h1>Welcome to Ceylon Capital Crop</h1><br/><br/>
         <p style={{fontSize:19,fontWeight:500}}>Ceylon Capital Crop is a system of inter-related practical management-skills training package for small-scale enterprise owners and managers. It encompasses a range of cost-effective and practical training, monitoring and evaluation methodologies and instruments which were designed to meet the management training needs of potential and existing small business persons.</p>

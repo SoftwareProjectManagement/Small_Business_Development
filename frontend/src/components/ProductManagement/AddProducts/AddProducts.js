@@ -123,7 +123,7 @@ function AddProducts() {
       <br />
       <br />
       <br />
-      <form onSubmit={add} className="addProduct">
+      <form onSubmit={add} className="addProduct12">
         <h1 className="headText">Add Product</h1>
         <div className="row">
           <div className="">
@@ -195,7 +195,7 @@ function AddProducts() {
                     input={<Input id="select-multiple-chip" />}
                   >
                     {categoryList.map((category) => (
-                      <MenuItem key={category._id} value={category.categoryname}>
+                      <MenuItem key={category._id} value={category._id}>
                         {category.categoryname}
                       </MenuItem>
                     ))}

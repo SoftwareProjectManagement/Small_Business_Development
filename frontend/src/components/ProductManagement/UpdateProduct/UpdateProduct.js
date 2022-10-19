@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 import "./UpdateProduct.css";
 import Button from "@material-ui/core/Button";
 import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import { TextField } from "@material-ui/core";
+import Swal from "sweetalert2";
 
 function UpdateProduct(props) {
   const [name, setName] = useState("");
@@ -19,6 +20,8 @@ function UpdateProduct(props) {
   const [selectedFile, setSelectedFile] = useState();
   const [previewSource, setPreviewSource] = useState();
   const productId = useParams();
+  const { state } = useLocation();
+  const { cname } = state;
 
   useEffect(() => {
     async function fetchproduct() {
@@ -92,13 +95,19 @@ function UpdateProduct(props) {
     };
 
     try {
-      await axios.put(
+      const res= await axios.put(
         `http://localhost:8070/product/update/${productId.id}`,
         updatedproduct,
         config
       );
-      alert("Product Updated Successfully");
-      navigate(`/product/item/${productId.id}`);
+      if (res.status === 200) {
+        Swal.fire({
+          icon: "success",
+          title: "Product Update Successfully!",
+        });
+        //navigate(`/product/item/${productId.id}`);
+        navigate(-1);
+      }
     } catch (error) {
       alert("Product Updating Failed");
     }
@@ -106,19 +115,23 @@ function UpdateProduct(props) {
 
   return (
     <div className="container" align="center">
-      <div className="row">
+      <br/><br/>
+      <div className="update_product">
+        <form onSubmit={Update} className="updateProduct">
+        <div className="row">
         <div className="col-12">
-          <div className="pb-2 px-3 d-flex flex-wrap align-items-center justify-content-between">
+          <div align="center" className="">
             <h2>Update Product</h2>
           </div>
         </div>
       </div>
-      <div className="update_product">
-        <form onSubmit={Update} className="updateProduct">
-          <div className="row">
-            <div className="col-8">
+          <div className="">
+            <div className="">
               <div className="row">
-                <div className="col-md-8 mb-4">
+                <div className="col-md-12 mb-4">
+                  <label style={{ fontWeight: "bold" }}>Product Name</label>
+                  <br />
+                  <br />
                   <div className="form-name">
                     <OutlinedInput
                       type="text"
@@ -134,27 +147,37 @@ function UpdateProduct(props) {
                     />
                   </div>
                 </div>
+                <br />
+                <br />
                 <div>
-                  <div className="col-md-8 mb-4">
-                    <div className="form-price">
+                  <br></br>
+                  <div className="col-md-12 mb-4">
+                    <label style={{ fontWeight: "bold" }}>Category</label>
+                    <br />
+                    <br />
+                    <div className="form-name">
                       <OutlinedInput
                         type="price"
                         id="price"
                         placeholder="Product Price"
                         required
                         fullWidth
-                        value={price}
+                        value={cname}
                         onChange={(event) => {
                           setPrice(event.target.value);
                         }}
                         inputProps={{ style: { padding: 12 } }}
+                        disabled
                       />
                     </div>
                   </div>
                 </div>
                 <div>
                   <br></br>
-                  <div className="col-md-10 mb-4">
+                  <div className="col-md-12 mb-4">
+                    <label style={{ fontWeight: "bold" }}>Description</label>
+                    <br />
+                    <br />
                     <div className="form-description">
                       <TextField
                         multiline
@@ -173,6 +196,32 @@ function UpdateProduct(props) {
                     </div>
                   </div>
                 </div>
+
+                <div>
+                  <br></br>
+                  <div className="col-md-12 mb-4">
+                    <label style={{ fontWeight: "bold" }}>Price</label>
+                    <br />
+                    <br />
+                    <div className="form-name">
+                      <OutlinedInput
+                        type="price"
+                        id="price"
+                        placeholder="Product Price"
+                        required
+                        fullWidth
+                        value={price}
+                        onChange={(event) => {
+                          setPrice(event.target.value);
+                        }}
+                        inputProps={{ style: { padding: 12 } }}
+                        disabled
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                
               </div>
             </div>
             <div className="col-4 d-flex justify-content-center">
@@ -181,12 +230,12 @@ function UpdateProduct(props) {
                   <img
                     src={previewSource}
                     alt="preview"
-                    className="previewImgProduct"
+                    className="previewImgProduct11"
                   />
                 ) : (
                   <img
                     src={`${imgUrl}`}
-                    className="updatePreviewImgProduct"
+                    className="previewImgProduct11"
                     alt="product pic"
                   />
                 )}
@@ -201,7 +250,7 @@ function UpdateProduct(props) {
                       value={fileInputState}
                     />
                     <Button
-                      color="primary"
+                      className="image_upload_button11"
                       variant="contained"
                       component="span"
                     >
@@ -224,7 +273,7 @@ function UpdateProduct(props) {
             </div>
           </div>
         </form>
-      </div>
+      </div><br/><br/><br/>
     </div>
   );
 }

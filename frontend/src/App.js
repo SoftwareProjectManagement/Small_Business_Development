@@ -20,15 +20,17 @@ import ViewLoans from "./components/LoanManagement/ViewLoans/ViewLoans";
 import Loan from "./components/LoanManagement/LoanInterface/Loan";
 import RequestForm2 from "./components/LoanManagement/RequestForm2/RequestForm2";
 import ViewLoans2 from "./components/LoanManagement/ViewLoans2/ViewLoans2";
+import DocumentSubmission from "./components/LoanManagement/DocumentSubmission;
 import AddProducts from "./components/ProductManagement/AddProducts/AddProducts";
 import ViewSeller from "./components/SellerManagement/ViewSeller";
 import ViewUsers from "./components/UserManagement/AllUsers/AllUsers";
 import ReportSeller from "./components/SellerManagement/ReportSeller";
 import Home from "./components/Home/Home";
 import Tips from "./components/TipsManagement/Tips";
-import Workshop from "./components/WorkshopManagement/Workshop"
-import PaymentHistory from "./components/PaymentManagement/PaymentHistory"
-
+import Workshop from "./components/WorkshopManagement/Workshop";
+import PaymentHistory from "./components/PaymentManagement/PaymentHistory";
+import UpdateProduct from "./components/ProductManagement/UpdateProduct/UpdateProduct";
+import ReportsProducts from "./components/ProductManagement/ReportProducts/ReportsProducts";
 
 function App() {
   return (
@@ -65,10 +67,32 @@ function App() {
                 <Route path="/viewPayments" element={<PaymentHistory />}/>
 
 
-            </Routes>
-            <Footer/>
-        </Router>
-    );
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/loan" element={<Loan />} />
+        <Route path="/loan/form1" element={<RequestForm1 />} />
+        {/* <Route path="/loan/view_loan" element={<ViewLoans />} /> */}
+        <Route path="/loan/form2" element={<RequestForm2 />} />
+        {/* <Route path="/loan/view_loan2" element={<ViewLoans2 />} /> */}
+        <Route path="/loan/doc" element={<DocumentSubmission />} />
+        <Route path="/product/item/:id" element={<SingleItem />} />
+        <Route path="/category/add" element={<AddCategory />} />
+        <Route path="/category/view" element={<ViewCategory />} />
+        <Route path="/products/view/:id" element={<ViewProdcuts />} />
+        <Route path="/products/add" element={<AddProducts />} />
+        <Route path="/requests" element={<ViewSeller />} />
+        <Route path="/all" element={<ViewUsers />} />
+
+        <Route path="/sellerR" element={<ReportSeller />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/tips" element={<Tips />} />
+        <Route path="/workshops" element={<Workshop />} />
+        <Route path="/viewPayments" element={<PaymentHistory />} />
+        <Route path="/products/update/:id" element={<UpdateProduct />} />
+        <Route path="/products/reports" element={<ReportsProducts />} />
+      </Routes>
+      <Footer />
+    </Router>
+  );
 }
 
 export default App;

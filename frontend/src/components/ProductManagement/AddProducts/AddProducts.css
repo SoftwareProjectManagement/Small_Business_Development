@@ -1,5 +1,6 @@
-.addProduct {
+.addProduct12 {
     width: 50%;
+    height: 950px !important;
     text-align: center;
     padding: 40px;
     background: rgb(255, 255, 255);
@@ -12,7 +13,7 @@
     border-style: none;
     position: relative;
     width: 180px;
-    height: 160px;
+    height: 160px !important;
     opacity: 0.8;
     margin-bottom: 20px;
     left:92%;
