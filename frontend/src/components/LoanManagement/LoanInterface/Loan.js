@@ -97,22 +97,22 @@ function Loan() {
                 <div className="row mt-3" style={{ textAlign: 'center' }}>
                     <p style={{ fontSize:'40px', fontWeight:'bold',fontFamily:'Quicksand', letterSpacing: '2.5px' }}>Loan Schema</p>
                     <div className="col-md-4">
-                        <div className="ml-2" style={{ width:'auto', padding: '25px', float:'center', background: 'rgb(229 221 221)' }}>
-                            <p style={{ color: 'rgb(108 106 106)', fontSize: '30px', lineHeight: '25px', lineHeight: '1.3' }}>
+                        <div className="ml-2 guidance-div">
+                            <p className="guidance-p">
                             01. You have to fill the <br/>'Loan Request 1' form and get in touch with us  to check whether your request is accepted or rejected.
                             </p>
                         </div>
                     </div>
                     <div className="col-md-4">
-                        <div className="ml-2" style={{ width:'auto', padding: '25px', float:'center', background: 'rgb(229 221 221)' }}>
-                            <p style={{ color: 'rgb(108 106 106)', fontSize: '30px', lineHeight: '25px', lineHeight: '1.3' }}>
+                        <div className="ml-2 guidance-div">
+                            <p className="guidance-p">
                                 02. If 'Loan Request 1' is accepted, you have to submit 'Loan Request 2' with business registration document. Be sure to keep in touch!
                             </p>
                         </div>
                     </div>
                     <div className="col-md-4">
-                        <div className="ml-2" style={{ width:'auto', padding: '25px', float:'center', background: 'rgb(229 221 221)' }}>
-                            <p style={{ color: 'rgb(108 106 106)', fontSize: '30px', lineHeight: '25px', lineHeight: '1.3' }}>
+                        <div className="ml-2 guidance-div">
+                            <p className="guidance-p">
                             03. If 'Loan Request 2' is accepted, you will be notified by our team. Then you can contact us to retrieve your loan request!
                             </p>
                         </div>

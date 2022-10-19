@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router';
 import './ViewLoans.css'
 import axios from 'axios'
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 
 function ViewLoans() {
 
@@ -132,7 +133,7 @@ function ViewLoans() {
                             onChange={handleSearchAll}
                             required
                         /><div style={{ position: 'relative', right: '510px', top: '-35px' }}>
-                            {/* <SearchIcon /> */}
+                            <SearchRoundedIcon />
                             </div>
                     </div>
                 </div>
