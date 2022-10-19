@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router';
 import './ViewLoans2.css'
 import axios from 'axios'
+import Swal from 'sweetalert2';
+import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
 
 function ViewLoans2() {
 
@@ -10,6 +12,12 @@ function ViewLoans2() {
     const navigate = useNavigate()
     const location = useLocation()
     const [user, setUser] = useState("");
+
+    const config = {
+        headers: {
+            "content-Type": "application/json"
+        }
+    };
 
     useEffect(() => {
         if (localStorage.getItem("user")) {
@@ -60,7 +68,11 @@ function ViewLoans2() {
         await axios
             .put(`http://localhost:8070/loan2/${id}`, value)
             .then(() => {
-                alert(`Loan is ${loanStatus}ed`);
+                Swal.fire({
+                    icon: 'success',
+                    text: `Loan is ${loanStatus}`,
+                    showConfirmButton: false,
+                  })
                 window.location.reload(false);
             })
             .catch((err) => {
@@ -77,13 +89,31 @@ function ViewLoans2() {
         await axios
             .put(`http://localhost:8070/loan2/${id}`, value)
             .then(() => {
-                alert(`Loan is ${loanStatus}ed`);
+                Swal.fire({
+                    icon: 'success',
+                    text: `Loan is ${loanStatus}`,
+                    showConfirmButton: false,
+                  })
                 window.location.reload(false);
             })
             .catch((err) => {
                 alert(`Something went to wrong !!!`);
             });
     };
+
+    async function deleteRequest(id) {
+        console.log(id);
+        await axios.delete(`http://localhost:8070/loan2/delete/${id}`, config).then(() => {
+            Swal.fire({
+                icon: 'success',
+                text: 'Successfully Deleted!',
+                showConfirmButton: false,
+              })
+            navigate('/loan/view_loan2')
+        }).catch((error) => {
+            alert(`Cancellation Failed\n${error.message}`)
+        })
+    }
 
     return (
         <div className="container">
@@ -116,8 +146,8 @@ function ViewLoans2() {
                                             <tr>
                                                 <th className="table-head-title th-border">Name</th>
                                                 <th className="table-head-title th-border">NIC</th>
-                                                <th className="table-head-title th-border">Mobile</th>
                                                 <th className="table-head-title th-border">Email</th>
+                                                <th className="table-head-title th-border">Mobile</th>
                                                 <th className="table-head-title th-border" style={{ textAlign:'center' }}>Status</th>
                                                 {isAdmin === true ?
                                                         <th className="table-head-title th-border">Action</th>
@@ -142,29 +172,30 @@ function ViewLoans2() {
                                                 }
                                                 </td>
                                                 {isAdmin === true ?
-                                                <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>
-                                                
-                                                        <div style={{width:180}}>
+                                                <td className="text-l tb-border"  style={{ width: 460 }}>
                                                             <button
+                                                                style={{ margin: '3px 5px 5px 5px' }}
                                                                 className="btn btn-success"
                                                                 disabled={
                                                                     Loan.loanStatus === "Accepted" 
                                                                 }
                                                                 onClick={() => setData("Accepted", Loan._id)}
-                                                            >
-                                                                &nbsp;Approve
+                                                            >Approve
                                                             </button>
-                                                            &nbsp;&nbsp;&nbsp;
                                                             <button
+                                                                style={{ margin: '3px 5px 5px 5px' }}
                                                                 class="btn btn-danger"
                                                                 disabled={
                                                                     Loan.loanStatus === "Rejected" 
                                                                 }
                                                                 onClick={() => setStatus("Rejected", Loan._id)}
-                                                            >
-                                                                &nbsp;Reject
+                                                            >Reject
                                                             </button>
-                                                        </div>                                               
+                                                            <button
+                                                                style={{ margin: '3px 5px 5px 5px', padding: '2px 0px' }}
+                                                                className="btn btn-danger"
+                                                                onClick={() => deleteRequest(Loan._id)}
+                                                            ><DeleteRoundedIcon/></button>                                              
                                                 </td>
                                                 :
                                                 <></>

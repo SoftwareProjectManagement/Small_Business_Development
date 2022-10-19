@@ -96,6 +96,8 @@ function Loan() {
 
                 <div className="row mt-3" style={{ textAlign: 'center' }}>
                     <p style={{ fontSize:'40px', fontWeight:'bold',fontFamily:'Quicksand', letterSpacing: '2.5px' }}>Loan Schema</p>
+                    {isAdmin === true? <></> 
+                    : <>
                     <div className="col-md-4">
                         <div className="ml-2 guidance-div">
                             <p className="guidance-p">
@@ -117,18 +119,21 @@ function Loan() {
                             </p>
                         </div>
                     </div>
+                    </>}
                 </div>
                 {isAdmin === true?
                 <div className="row mt-3" style={{ textAlign: 'center' }}>
-                    <div className="col-md-6">
+                    <div className="col-md-2"></div>
+                    <div className="col-md-8">
                         <div className="ml-2" style={{ width:'auto', padding: '25px', float:'center', background: 'rgb(28 25 25 / 93%)', borderRadius:'10px', }}>
-                            <p style={{ color: '#ffffff', fontSize: '30px', lineHeight: '25px', lineHeight: '1' }}>
-                               Admin Admin Admin Admin Admin Admin Admin Admin Admin Admin Admin Admin Admin Admin Admin Admin Admin Admin
+                            <p style={{ color: '#ffffff', fontSize: '30px', lineHeight: '25px', lineHeight: '1', marginBottom: '20px' }}>
+                               You can view loans list and give better action for those requests.
                             </p>
-                            <button className="btn btn-info" style={{ marginRight:'5px',fontSize:'18px' }} onClick={navigateToView}>Stage 1</button>
-                            <button className="btn btn-success" style={{ marginRight:'5px',fontSize:'18px' }} onClick={navigateToView2}>Stage 2</button>
+                            <button className="btn btn-info" style={{ marginRight:'30px',fontSize:'25px' }} onClick={navigateToView}>Stage 1</button>
+                            <button className="btn btn-success" style={{ marginRight:'5px',fontSize:'25px' }} onClick={navigateToView2}>Stage 2</button>
                         </div>
                     </div>
+                    <div className="col-md-2"></div>
                 </div>
                     :
                 <div className="row mt-3" style={{ textAlign: 'center' }}>

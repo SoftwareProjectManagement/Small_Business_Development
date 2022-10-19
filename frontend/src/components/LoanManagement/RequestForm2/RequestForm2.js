@@ -6,6 +6,7 @@ import LoanImage from './loan_req2.jpg';
 import { useNavigate } from 'react-router-dom';
 import Button from "@material-ui/core/Button";
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
+import Swal from 'sweetalert2';
 
 function RequestForm2() {
 
@@ -68,7 +69,11 @@ function RequestForm2() {
 
         try {
             await axios.post("http://localhost:8070/loan2/add", newFormRequest, config)
-            alert("Request Sent Successfully!")
+            Swal.fire({
+                icon: 'success',
+                text: 'Request Added Successfuly',
+                showConfirmButton: false,
+              })
             event.target.reset();
             navigate('/loan/view_loan2')
         } catch (error) {
