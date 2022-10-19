@@ -22,7 +22,7 @@ function RequestForm2() {
     const [selectedFile, setSelectedFile] = useState();
     const [fileInputState, setFileInputState] = useState('');
 
-    //handling the image uploading
+    //handling the file uploading
         const handleFileInputChange = (event) => {
             const file = event.target.files[0];
             previewFile(file);

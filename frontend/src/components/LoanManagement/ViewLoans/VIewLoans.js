@@ -50,7 +50,7 @@ function ViewLoans() {
 
     function handleSearchAll(event) {
         const searchTerm = event.currentTarget.value
-        axios.get(`http://localhost:8070/topic`).then((res) => {
+        axios.get(`http://localhost:8070/loan`).then((res) => {
             filterContent(res.data, searchTerm.toLowerCase())
         }).catch((error) => {
             alert("Failed to fetch documents")

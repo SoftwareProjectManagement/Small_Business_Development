@@ -20,7 +20,6 @@ import ViewLoans from "./components/LoanManagement/ViewLoans/ViewLoans";
 import Loan from "./components/LoanManagement/LoanInterface/Loan";
 import RequestForm2 from "./components/LoanManagement/RequestForm2/RequestForm2";
 import ViewLoans2 from "./components/LoanManagement/ViewLoans2/ViewLoans2";
-import DocumentSubmission from "./components/LoanManagement/DocumentSubmission/DocumentSubmission";
 import AddProducts from "./components/ProductManagement/AddProducts/AddProducts";
 import ViewSeller from "./components/SellerManagement/ViewSeller";
 import ViewUsers from "./components/UserManagement/AllUsers/AllUsers";
@@ -51,7 +50,6 @@ function App() {
                 <Route path="/loan/view_loan" element={<ViewLoans />} />
                 <Route path="/loan/form2" element={<RequestForm2 />} />
                 <Route path="/loan/view_loan2" element={<ViewLoans2 />} />
-                <Route path="/loan/doc" element={<DocumentSubmission />} />
                 <Route path="/product/item/:id" element={<SingleItem/>}/>
                 <Route path="/category/add" element={<AddCategory/>}/>
                 <Route path="/category/view" element={<ViewCategory/>}/>
