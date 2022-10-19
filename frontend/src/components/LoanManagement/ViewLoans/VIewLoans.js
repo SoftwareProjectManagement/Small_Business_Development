@@ -10,6 +10,9 @@ function ViewLoans() {
     const navigate = useNavigate()
     const location = useLocation()
     const [user, setUser] = useState("");
+    const navigateToForm2 = () => {
+        navigate('/loan/form2');
+    };
 
     const config = {
         headers: {
@@ -140,15 +143,15 @@ function ViewLoans() {
                                     <table>
                                         <thead className="table-head">
                                             <tr>
-                                                <th className="table-head-title th-border">Name</th>
-                                                <th className="table-head-title th-border">Seller ID</th>
-                                                <th className="table-head-title th-border">Email</th>
-                                                <th className="table-head-title th-border">Mobile</th>
-                                                <th className="table-head-title th-border" style={{ textAlign:'center' }}>Status</th>
+                                                <th width="15%" className="table-head-title th-border">Name</th>
+                                                <th width="15%" className="table-head-title th-border">Seller ID</th>
+                                                <th width="15%" className="table-head-title th-border">Email</th>
+                                                <th width="15%" className="table-head-title th-border">Mobile</th>
+                                                <th width="15%" className="table-head-title th-border" style={{ textAlign:'center' }}>Status</th>
                                                 {isAdmin === true ?
                                                         <th className="table-head-title th-border" style={{ textAlign:'center' }}>Action</th>
                                                         :
-                                                        <div></div>
+                                                        <th className="table-head-title th-border" style={{ textAlign:'center' }}>Availability</th>
                                                     }
                                             </tr>
                                         </thead>
@@ -159,23 +162,23 @@ function ViewLoans() {
                                                 <td className="text-l tb-border" style={{ width: 260, padding: '5px 15px' }}>{Loan.sellerID}</td>
                                                 <td className="text-l tb-border" style={{ width: 400, padding: '5px 15px' }}>{Loan.email}</td>
                                                 <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>{Loan.mobile}</td>
-                                                <td className="text-l tb-border" align="center"  style={{ width: 260, padding: '5px 15px',textAlign:'center' }}>{
+                                                <td className="text-l tb-border" align="center"  style={{ width: 260, padding: '5px 15px',textAlign:'center' }}>
+                                                {
                                                 Loan.tstatus === "Rejected" ? <span className="bg-danger rounded text-white p-1">Rejected</span>:
-                                                Loan.tstatus === "Accepted" ? <span className="bg-success rounded text-white p-1">Accepted</span>
+                                                Loan.tstatus === "Accepted" ? 
+                                                <div>
+                                                    <span className="bg-success rounded text-white p-1">Accepted</span>
+                                                </div>
                                                 :
                                                 <div>
-                                                <span className="bg-warning rounded text-black p-1" style={{ marginRight: '5px' }}>Pending</span>
-                                                <button
-                                                className="btn btn-danger"
-                                                onClick={() => deleteRequest(Loan._id)}
-                                            >Delete</button>
-                                            </div>
+                                                    <span className="bg-warning rounded text-black p-1" style={{ marginRight: '5px' }}>Pending</span>
+                                                </div>
                                                 }
                                                 </td>
                                                 {isAdmin === true ?
-                                                <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px', textAlign:'center' }}>
+                                                <td className="text-l tb-border"  style={{ width: 300, textAlign:'center' }}>
                                                 
-                                                        <div style={{width:180}}>
+                                                        <div style={{width:200}}>
                                                             <button
                                                                 className="btn btn-success"
                                                                 disabled={
@@ -195,12 +198,21 @@ function ViewLoans() {
                                                             >
                                                                 &nbsp;Reject
                                                             </button>
+                                                            &nbsp;&nbsp;&nbsp;
+                                                            <button
+                                                                className="btn btn-danger"
+                                                                onClick={() => deleteRequest(Loan._id)}
+                                                            >Delete</button>
                                                         </div>
                                                 </td>
-                                                        :
-                                                        <div>
-
-                                                        </div>                                        
+                                                :
+                                                <td className="text-l tb-border"  style={{ width: 300, textAlign:'center' }}>
+                                                <button className="btn btn-primary p-1 m-1"
+                                                    disabled={
+                                                        Loan.tstatus === "Rejected" || Loan.tstatus === "Pending"
+                                                    }
+                                                    onClick={navigateToForm2}>Loan Request 2</button>    
+                                                </td>                                     
                                                 }
                                             </tr>
                                             ))} 

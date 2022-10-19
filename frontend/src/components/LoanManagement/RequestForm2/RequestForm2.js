@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import './RequestForm2.css'
 import OutlinedInput from "@material-ui/core/OutlinedInput";
-import LoanImage from './loan.jpg';
+import LoanImage from './loan_req2.jpg';
 import { useNavigate } from 'react-router-dom';
 import Button from "@material-ui/core/Button";
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
@@ -15,7 +15,7 @@ function RequestForm2() {
     const [mobile, setMobile] = useState("");
     const [email, setEmail] = useState("");
     const [description, setDescription] = useState("");
-    const [incomeReport, setIncomeReport] = useState("");
+    const [amount, setAmount] = useState("");
     const navigate = useNavigate();
 
     const [previewSource, setPreviewSource] = useState();
@@ -64,7 +64,7 @@ function RequestForm2() {
             }
         }
 
-        const newFormRequest = { name, address,email, nic, mobile, description, incomeReport, businessRegistration}
+        const newFormRequest = { name, address,email, nic, mobile, description, amount, businessRegistration}
 
         try {
             await axios.post("http://localhost:8070/loan2/add", newFormRequest, config)
@@ -81,10 +81,10 @@ function RequestForm2() {
                     <div className="row">
                         <div className="col-12">
                             <div className="pb-2" style={{ textAlign: 'center' }}>
-                                <p style={{ fontSize: '28px', fontWeight: 'bold' }}>Welcome To The Loan Schema</p>
+                                <p style={{ fontSize: '28px', fontWeight: 'bold' }}>Congratulations! You Can Apply For a Loan</p>
                                 <p style={{ fontSize: '20px'}}>
                                 Simply fill the below form details to get a loan. Once you get the loan approval, 
-                                you will be able to get the loan from us.</p>
+                                you will be able to get the loan from us. We will contact you as soon as possible.</p>
                             </div>
                         </div>
                     </div>
@@ -164,12 +164,12 @@ function RequestForm2() {
                                                 </div>
                                             </div>
 
-                                            <label className='label11'>INCOME REPORT</label><br />
+                                            <label className='label11'>Expected Amount</label><br />
                                             <div className="col-md-10 mb-4">
                                                 <div className="form-group30">
                                                     <OutlinedInput
-                                                        type="incomeReport" id="incomeReport" placeholder="Income Report" required fullWidth
-                                                        onChange={(e) => setIncomeReport(e.target.value)}
+                                                        type="number" id="amount" placeholder="Enter your loan amount" required fullWidth
+                                                        onChange={(e) => setAmount(e.target.value)}
                                                         inputProps={{ style: { padding: 12 } }}
                                                     />
                                                 </div>

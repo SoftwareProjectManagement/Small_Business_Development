@@ -4,7 +4,7 @@ const LoanReq2 = require("../models/LoanReq2");
 exports.addRequest = async (req, res) => {
  
     //constant variables for the attributes
-    const {name,address,nic,mobile,email,description,incomeReport,businessRegistration,loanStatus} = req.body;
+    const {name,address,nic,mobile,email,description,amount,businessRegistration,loanStatus} = req.body;
    
     //object
     const newLoanRequest= new LoanReq2({
@@ -14,7 +14,7 @@ exports.addRequest = async (req, res) => {
       mobile,
       email,
       description,
-      incomeReport,
+      amount,
       businessRegistration,
       loanStatus
     })
