@@ -11,13 +11,23 @@ import { Category } from "@material-ui/icons";
 
 function ViewProdcuts() {
   const [isAdmin, setIsAdmin] = useState(false);
-  const [products, setProducts] = useState([]);
   const [category, setCategory] = useState([]);
+  const categoryId = useParams();
+  const [categoryName, setCategoryName] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
   const [user, setUser] = useState("");
-  const categoryId = useParams();
-  const [categoryName, setCategoryName] = useState("");
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    getAllCategories();
+  }, [products]);
+  
+  useEffect(() => {
+    getAllCategories();
+    getAllProducts();
+  }, [isAdmin]);
+
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
@@ -27,44 +37,39 @@ function ViewProdcuts() {
     if (localStorage.getItem("adminAuthToken")) {
       setIsAdmin(true);
     }
+    
+  }, [products]);
 
-    async function getAllProducts() {
-      axios
-        .get(`http://localhost:8070/product/`)
-        .then(({ data }) => {
-          setProducts(data);
-        })
-        .catch((error) => {
-          alert("Failed to fetch Category");
-        });
-    }
-
-    async function getAllCategories() {
-      axios
-        .get(`http://localhost:8070/category/`)
-        .then(({ data }) => {
-          setCategory(data);
-          
-          for(let i=0; i<category.length; i++) {
-            //console.log("hello");
-            //console.log(category.categoryName);
-
-            if (products.category == category.categoryName[i]) {
-              //setCategoryName(category.categoryName[i]);
-              //console.log(category.categoryName[i]);
-            }
+  async function getAllCategories() {
+    axios
+      .get(`http://localhost:8070/category/`)
+      .then(({ data }) => {
+        setCategory(data);
+        
+        for(let i=0; i<category.length; i++) {
+          if (categoryId.id == category[i]._id) {
+            setCategoryName(category[i].categoryname);
           }
-        })
-        .catch((error) => {
-          alert("Failed to fetch Category");
-        });
-    }
-    getAllProducts();
-    getAllCategories();
-  }, [location, isAdmin]);
+        }
+      })
+      .catch((error) => {
+        alert("Failed to fetch Category");
+      });
+  }
+
+  async function getAllProducts() {
+    axios
+      .get(`http://localhost:8070/product/`)
+      .then(({ data }) => {
+        setProducts(data);
+      })
+      .catch((error) => {
+        alert("Failed to fetch Products");
+      });
+  }
 
   function view(id) {
-    navigate(`/product/item/${id}`);
+    navigate(`/product/item/${id}`,{ state: { cname:categoryName} });
   }
 
   function addProduct() {
@@ -83,6 +88,7 @@ function ViewProdcuts() {
       .get(`http://localhost:8070/product`)
       .then((res) => {
         filterContent(res.data, searchTerm.toLowerCase());
+        
       })
       .catch((error) => {
         alert("Admin Failed to fetch products");
@@ -101,21 +107,21 @@ function ViewProdcuts() {
       <div className="row">
         <div className="col-4">
           <div className="pb-2 px-3 d-flex flex-wrap align-items-center justify-content-between">
-            <h2 className="header_topic">Products</h2>
+            <h2 className="header_topic"> {categoryName} Products</h2>
+
+            <div className="px-1 search" align="right">
+            <input
+                className="searchBox"
+                type="text"
+                name="search"
+                id="search"
+                placeholder="Search"
+                onChange={handleSearchAll}
+                required
+              />
+        </div>
           </div>
         </div>
-
-        <div className="px-3 search" align="right">
-          <input
-            type="text"
-            name="search"
-            id="search"
-            placeholder="Search"
-            onChange={handleSearchAll}
-            required
-          />
-        </div>
-
         <div className="col-3"></div>
         <div className="col-5">
           {isAdmin === true ? (
@@ -149,10 +155,8 @@ function ViewProdcuts() {
                 <div className="p-3 text_data">
                   <h7>{Products.name}</h7>
                   <br />
-                  <h7>{Products.category}</h7>
-                  <br />
                   <h7>{Products.price}</h7> <br />
-                  <h7>{Products.description}</h7> <br />
+                  <h7>{Products.description}</h7>
                   <div align="right">
                     <span>
                       &nbsp;&nbsp;&nbsp;
