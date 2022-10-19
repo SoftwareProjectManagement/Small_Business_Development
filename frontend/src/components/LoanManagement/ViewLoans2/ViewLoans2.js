@@ -122,7 +122,7 @@ function ViewLoans2() {
                                                 {isAdmin === true ?
                                                         <th className="table-head-title th-border">Action</th>
                                                         :
-                                                        <th className="table-head-title th-border"></th>
+                                                        <div></div>
                                                     }
                                             </tr>
                                         </thead>
@@ -141,8 +141,9 @@ function ViewLoans2() {
                                                 <span className="bg-warning rounded text-black p-1">Pending</span>
                                                 }
                                                 </td>
-                                                <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>
                                                 {isAdmin === true ?
+                                                <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>
+                                                
                                                         <div style={{width:180}}>
                                                             <button
                                                                 className="btn btn-success"
@@ -163,23 +164,11 @@ function ViewLoans2() {
                                                             >
                                                                 &nbsp;Reject
                                                             </button>
-                                                        </div>
-                                                        :
-                                                        <div>
-                                                            
-                                                            <button
-                                                                disabled={
-                                                                    Loan.loanStatus === "Submitted for grading" ||
-                                                                    Loan.loanStatus === "Accepted"
-                                                                }
-                                                                className="btn btn-warning"
-                                                                onClick={() => add()}
-                                                            >
-                                                                &nbsp;Document Upload
-                                                            </button>
-                                                        </div>
-                                                    }
+                                                        </div>                                               
                                                 </td>
+                                                :
+                                                <></>
+                                                }
                                             </tr>
                                             ))} 
                                         </tbody>
