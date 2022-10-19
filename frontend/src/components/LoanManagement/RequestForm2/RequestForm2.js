@@ -123,7 +123,10 @@ function RequestForm2() {
                                                 <div className="form-group30">
                                                     <OutlinedInput
                                                         type="nic" id="nic" placeholder="Enter Your NIC Number" required fullWidth
-                                                        onChange={(e) => setNic(e.target.value)}
+                                                        value={nic}
+                                                        onChange={(e) => {
+                                                            const limitOfNic = 12;
+                                                            setNic(e.target.value.slice(0,limitOfNic));}}
                                                         inputProps={{ style: { padding: 12 } }}
                                                         length={ 12 }
                                                     />
@@ -134,8 +137,11 @@ function RequestForm2() {
                                             <div className="col-md-10 mb-4">
                                                 <div className="form-group30">
                                                     <OutlinedInput
-                                                        type="mobile" id="mobile" placeholder="Enter Your Mobile Number" required fullWidth
-                                                        onChange={(e) => setMobile(e.target.value)}
+                                                        type="text" id="mobile" placeholder="Enter Your Mobile Number" required fullWidth
+                                                        value={mobile}
+                                                        onChange={(e) => {
+                                                            const limit = 10;
+                                                            setMobile(e.target.value.slice(0,limit))}}
                                                         inputProps={{ style: { padding: 12 } }}
                                                     />
                                                 </div>
@@ -168,7 +174,7 @@ function RequestForm2() {
                                             <div className="col-md-10 mb-4">
                                                 <div className="form-group30">
                                                     <OutlinedInput
-                                                        type="number" id="amount" placeholder="Enter your loan amount" required fullWidth
+                                                        type="any" id="amount" placeholder="Enter your loan amount" required fullWidth
                                                         onChange={(e) => setAmount(e.target.value)}
                                                         inputProps={{ style: { padding: 12 } }}
                                                     />
@@ -188,7 +194,7 @@ function RequestForm2() {
                                                 value={fileInputState}
                                             />
 
-                                            <Button color="primary" variant="contained" component="span">
+                                            <Button style={{position:"relative",top:-25,right:-260,width:220,fontSize:13}} variant="contained" component="span">
                                                 < FileUploadOutlinedIcon/> Upload document
                                             </Button>
                                         </label>
