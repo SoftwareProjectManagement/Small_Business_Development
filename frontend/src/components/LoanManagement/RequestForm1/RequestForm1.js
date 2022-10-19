@@ -4,6 +4,7 @@ import './RequestForm1.css'
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import LoanImage from './loan.jpg';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 function RequestForm1() {
 
@@ -29,7 +30,11 @@ function RequestForm1() {
 
         try {
             await axios.post("http://localhost:8070/loan/add", newFormRequest, config)
-            alert("Request Sent Successfully!")
+            Swal.fire({
+                icon: 'success',
+                text: 'Request Added Successfuly',
+                showConfirmButton: false,
+              })
             event.target.reset();
             navigate('/loan/view_loan')
         } catch (error) {

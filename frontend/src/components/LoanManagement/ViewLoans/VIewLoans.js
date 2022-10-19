@@ -3,6 +3,8 @@ import { useNavigate, useLocation } from 'react-router';
 import './ViewLoans.css'
 import axios from 'axios'
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
+import Swal from 'sweetalert2';
 
 function ViewLoans() {
 
@@ -53,7 +55,7 @@ function ViewLoans() {
         axios.get(`http://localhost:8070/loan`).then((res) => {
             filterContent(res.data, searchTerm.toLowerCase())
         }).catch((error) => {
-            alert("Failed to fetch documents")
+            alert("Failed to fetch documents with ".error)
         })
     }
 
@@ -70,7 +72,11 @@ function ViewLoans() {
         await axios
             .put(`http://localhost:8070/loan/${id}`, value)
             .then(() => {
-                alert(`Loan is ${tstatus}ed`);
+                Swal.fire({
+                    icon: 'success',
+                    text: `Loan is ${tstatus}ed`,
+                    showConfirmButton: false,
+                  })
                 window.location.reload(false);
             })
             .catch((err) => {
@@ -87,7 +93,11 @@ function ViewLoans() {
         await axios
             .put(`http://localhost:8070/loan/${id}`, value)
             .then(() => {
-                alert(`Loan is ${tstatus}ed`);
+                Swal.fire({
+                    icon: 'success',
+                    text: `Loan is ${tstatus}ed`,
+                    showConfirmButton: false,
+                  })
                 window.location.reload(false);
             })
             .catch((err) => {
@@ -98,7 +108,11 @@ function ViewLoans() {
     async function deleteRequest(id) {
         console.log(id);
         await axios.delete(`http://localhost:8070/loan/delete/${id}`, config).then(() => {
-            alert("Successfully Deleted")
+            Swal.fire({
+                icon: 'success',
+                text: 'Successfully Deleted!',
+                showConfirmButton: false,
+              })
             navigate('/loan/view_loan')
         }).catch((error) => {
             alert(`Cancellation Failed\n${error.message}`)
@@ -177,10 +191,9 @@ function ViewLoans() {
                                                 }
                                                 </td>
                                                 {isAdmin === true ?
-                                                <td className="text-l tb-border"  style={{ width: 300, textAlign:'center' }}>
-                                                
-                                                        <div style={{width:200}}>
+                                                <td className="text-l tb-border"  style={{ width: 250, textAlign:'center' }}>
                                                             <button
+                                                                style={{ margin: '3px 5px 5px 5px' }}
                                                                 className="btn btn-success"
                                                                 disabled={
                                                                     Loan.tstatus === "Accepted" 
@@ -189,9 +202,9 @@ function ViewLoans() {
                                                             >
                                                                 &nbsp;Approve
                                                             </button>
-                                                            &nbsp;&nbsp;&nbsp;
                                                             <button
-                                                                class="btn btn-danger"
+                                                                style={{ margin: '3px 5px 5px 5px' }}
+                                                                className="btn btn-danger"
                                                                 disabled={
                                                                     Loan.tstatus === "Rejected" 
                                                                 }
@@ -199,12 +212,11 @@ function ViewLoans() {
                                                             >
                                                                 &nbsp;Reject
                                                             </button>
-                                                            &nbsp;&nbsp;&nbsp;
                                                             <button
+                                                                style={{ margin: '3px 5px 5px 5px', padding: '2px 0px' }}
                                                                 className="btn btn-danger"
                                                                 onClick={() => deleteRequest(Loan._id)}
-                                                            >Delete</button>
-                                                        </div>
+                                                            ><DeleteRoundedIcon/></button>
                                                 </td>
                                                 :
                                                 <td className="text-l tb-border"  style={{ width: 300, textAlign:'center' }}>

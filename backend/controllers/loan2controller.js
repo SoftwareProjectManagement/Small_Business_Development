@@ -58,6 +58,17 @@ exports.addRequest = async (req, res) => {
     }
 
 }
+
+//delete request
+exports.deleteRequest = async (req, res) => {
+  let loanID = req.params.id;
+ 
+  await LoanReq2.findByIdAndDelete(loanID).then(() => {
+    res.status(200).json({ status: "Request Deleted" });
+  }).catch((error) => {
+    res.status(500).json({ status: "Error with Deleting Request", error: error.message });
+  })
+}
   
   
   
