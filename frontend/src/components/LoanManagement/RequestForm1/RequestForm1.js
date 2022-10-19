@@ -94,10 +94,13 @@ function RequestForm1() {
                                             <div className="col-md-10 mb-4">
                                                 <div className="form-group30">
                                                     <OutlinedInput
-                                                        type="nic" id="nic" placeholder="Enter Your NIC Number" required fullWidth
-                                                        onChange={(e) => setNic(e.target.value)}
+                                                        type="text" 
+                                                        id="nic" placeholder="Enter Your NIC Number" required fullWidth
+                                                        value={nic}
+                                                        onChange={(e) => {
+                                                            const limitOfNic = 12;
+                                                            setNic(e.target.value.slice(0,limitOfNic));}}
                                                         inputProps={{ style: { padding: 12 } }}
-                                                        length={ 12 }
                                                     />
                                                 </div>
                                             </div>
@@ -106,8 +109,12 @@ function RequestForm1() {
                                             <div className="col-md-10 mb-4">
                                                 <div className="form-group30">
                                                     <OutlinedInput
-                                                        type="mobile" id="mobile" placeholder="Enter Your Mobile Number" required fullWidth
-                                                        onChange={(e) => setMobile(e.target.value)}
+                                                        type="text" id="mobile" placeholder="Enter Your Mobile Number" required fullWidth
+                                                        maxLength={10}
+                                                        value={mobile}
+                                                        onChange={(e) => {
+                                                            const limit = 10;
+                                                            setMobile(e.target.value.slice(0,limit))}}
                                                         inputProps={{ style: { padding: 12 } }}
                                                     />
                                                 </div>

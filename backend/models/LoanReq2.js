@@ -33,7 +33,7 @@ const LoanSchemaReq2 = new Schema({
         required : true
     },
 
-    incomeReport : {
+    amount : {
         type : String,
         required : false
     },
