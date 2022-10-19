@@ -16,11 +16,10 @@ import AddCategory from "./components/CategoryManagement/AddCategory/AddCategory
 import ViewCategory from "./components/CategoryManagement/ViewCategory/ViewCategory";
 import ViewProdcuts from "./components/ProductManagement/ViewAllProdcuts/ViewProducts";
 import RequestForm1 from "./components/LoanManagement/RequestForm1/RequestForm1";
-import ViewLoans from "./components/LoanManagement/ViewLoans/ViewLoans";
+import ViewLoans from "./components/LoanManagement/ViewLoans/VIewLoans";
 import Loan from "./components/LoanManagement/LoanInterface/Loan";
 import RequestForm2 from "./components/LoanManagement/RequestForm2/RequestForm2";
 import ViewLoans2 from "./components/LoanManagement/ViewLoans2/ViewLoans2";
-import DocumentSubmission from "./components/LoanManagement/DocumentSubmission;
 import AddProducts from "./components/ProductManagement/AddProducts/AddProducts";
 import ViewSeller from "./components/SellerManagement/ViewSeller";
 import ViewUsers from "./components/UserManagement/AllUsers/AllUsers";
@@ -45,43 +44,15 @@ function App() {
         <Route path="/product/item/:id" element={<SingleItem />} />
         <Route path="/loan/form1" element={<RequestForm1 />} />
         <Route path="/loan/view_loan" element={<ViewLoans />} />
-
-                <Route path="/cart" element={<Cart/>} />
-                <Route path="/loan" element={<Loan />} />
-                <Route path="/loan/form1" element={<RequestForm1 />} />
-                <Route path="/loan/view_loan" element={<ViewLoans />} />
-                <Route path="/loan/form2" element={<RequestForm2 />} />
-                <Route path="/loan/view_loan2" element={<ViewLoans2 />} />
-                <Route path="/product/item/:id" element={<SingleItem/>}/>
-                <Route path="/category/add" element={<AddCategory/>}/>
-                <Route path="/category/view" element={<ViewCategory/>}/>
-                <Route path="/products/view/:id" element={<ViewProdcuts/>}/>
-                <Route path="/products/add" element={<AddProducts/>} />
-                <Route path="/requests" element={<ViewSeller/>} />
-                <Route path="/all" element={<ViewUsers/>} />
-
-                <Route path="/sellerR" element={<ReportSeller/>} />
-                <Route path="/" element={<Home/>} />
-                <Route path="/tips" element={<Tips/>} />
-                <Route path="/workshops" element={<Workshop />}/>
-                <Route path="/viewPayments" element={<PaymentHistory />}/>
-
-
-        <Route path="/cart" element={<Cart />} />
         <Route path="/loan" element={<Loan />} />
-        <Route path="/loan/form1" element={<RequestForm1 />} />
-        {/* <Route path="/loan/view_loan" element={<ViewLoans />} /> */}
         <Route path="/loan/form2" element={<RequestForm2 />} />
-        {/* <Route path="/loan/view_loan2" element={<ViewLoans2 />} /> */}
-        <Route path="/loan/doc" element={<DocumentSubmission />} />
-        <Route path="/product/item/:id" element={<SingleItem />} />
+        <Route path="/loan/view_loan2" element={<ViewLoans2 />} />
         <Route path="/category/add" element={<AddCategory />} />
         <Route path="/category/view" element={<ViewCategory />} />
         <Route path="/products/view/:id" element={<ViewProdcuts />} />
         <Route path="/products/add" element={<AddProducts />} />
         <Route path="/requests" element={<ViewSeller />} />
         <Route path="/all" element={<ViewUsers />} />
-
         <Route path="/sellerR" element={<ReportSeller />} />
         <Route path="/" element={<Home />} />
         <Route path="/tips" element={<Tips />} />
