@@ -88,6 +88,7 @@ function SingleItem(props) {
   }) 
   }
 
+  
   function editProduct(id) {
     navigate(`/products/update/${id}`,{ state: { cname:cname } });
   }
