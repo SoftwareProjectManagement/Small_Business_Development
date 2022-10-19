@@ -4,7 +4,7 @@ const LoanReq2 = require("../models/LoanReq2");
 exports.addRequest = async (req, res) => {
  
     //constant variables for the attributes
-    const {name,address,nic,mobile,email,description,incomeReport,businessRegistration,loanStatus} = req.body;
+    const {name,address,nic,mobile,email,description,amount,businessRegistration,loanStatus} = req.body;
    
     //object
     const newLoanRequest= new LoanReq2({
@@ -14,7 +14,7 @@ exports.addRequest = async (req, res) => {
       mobile,
       email,
       description,
-      incomeReport,
+      amount,
       businessRegistration,
       loanStatus
     })
@@ -57,6 +57,17 @@ exports.addRequest = async (req, res) => {
         res.status(500).json({message:"Error With Updating Details",error:error.message});
     }
 
+}
+
+//delete request
+exports.deleteRequest = async (req, res) => {
+  let loanID = req.params.id;
+ 
+  await LoanReq2.findByIdAndDelete(loanID).then(() => {
+    res.status(200).json({ status: "Request Deleted" });
+  }).catch((error) => {
+    res.status(500).json({ status: "Error with Deleting Request", error: error.message });
+  })
 }
   
   

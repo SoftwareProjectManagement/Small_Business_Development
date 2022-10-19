@@ -17,7 +17,7 @@ function Loan() {
     const navigate = useNavigate();
 
     const navigateToForm1 = () => {
-      navigate('/loan/form1');
+        navigate('/loan/form1');
     };
   
     const navigateToView = () => {
@@ -49,10 +49,9 @@ function Loan() {
     }, [location, isAdmin])
 
     return (
-        <div className="row" style={{ 
-            background:'rgb(229 221 221)' 
+        <div className="row" style={{
+            // background:'rgb(229 221 221)' 
             // background:'#ffffff' 
-
             }}>
             <div className="col-xl-12">
             <div className="pt-2 pb-3">
@@ -96,26 +95,74 @@ function Loan() {
                     </div>
 
                 <div className="row mt-3" style={{ textAlign: 'center' }}>
-                    <p style={{ fontSize:'35px', fontWeight:'bold',fontFamily:'Quicksand' }}>Loan Schema</p>
-                    <div style={{ width:'300px', float:'center', background: 'red' }}>
-                        <p style={{ color: '#7c7c7c', fontSize: '30px', lineHeight: '28px' }}>
-                            Grow better in providing consumer-assured nutritional values in a socially acceptable manner.
-                        </p>
+                    <p style={{ fontSize:'40px', fontWeight:'bold',fontFamily:'Quicksand', letterSpacing: '2.5px' }}>Loan Schema</p>
+                    {isAdmin === true? <></> 
+                    : <>
+                    <div className="col-md-4">
+                        <div className="ml-2 guidance-div">
+                            <p className="guidance-p">
+                            01. You have to fill the <br/>'Loan Request 1' form and get in touch with us  to check whether your request is accepted or rejected.
+                            </p>
+                        </div>
                     </div>
+                    <div className="col-md-4">
+                        <div className="ml-2 guidance-div">
+                            <p className="guidance-p">
+                                02. If 'Loan Request 1' is accepted, you have to submit 'Loan Request 2' with business registration document. Be sure to keep in touch!
+                            </p>
+                        </div>
+                    </div>
+                    <div className="col-md-4">
+                        <div className="ml-2 guidance-div">
+                            <p className="guidance-p">
+                            03. If 'Loan Request 2' is accepted, you will be notified by our team. Then you can contact us to retrieve your loan request!
+                            </p>
+                        </div>
+                    </div>
+                    </>}
                 </div>
-                <div className="row" align="center">
                 {isAdmin === true?
-                <div>
-                    <button className="btn btn-info" style={{ marginRight:'5px',fontSize:'18px' }} onClick={navigateToView}>Stage 1</button>
-                    <button className="btn btn-success" style={{ marginRight:'5px',fontSize:'18px' }} onClick={navigateToView2}>Stage 2</button>
+                <div className="row mt-3" style={{ textAlign: 'center' }}>
+                    <div className="col-md-2"></div>
+                    <div className="col-md-8">
+                        <div className="ml-2" style={{ width:'auto', padding: '25px', float:'center', background: 'rgb(28 25 25 / 93%)', borderRadius:'10px', }}>
+                            <p style={{ color: '#ffffff', fontSize: '30px', lineHeight: '25px', lineHeight: '1', marginBottom: '20px' }}>
+                               You can view loans list and give better action for those requests.
+                            </p>
+                            <button className="btn btn-info" style={{ marginRight:'30px',fontSize:'25px' }} onClick={navigateToView}>Stage 1</button>
+                            <button className="btn btn-success" style={{ marginRight:'5px',fontSize:'25px' }} onClick={navigateToView2}>Stage 2</button>
+                        </div>
+                    </div>
+                    <div className="col-md-2"></div>
                 </div>
                     :
-                <div>
-                        <button className="btn btn-primary" style={{ marginRight:'5px',fontSize:'18px' }} onClick={navigateToForm1}>Request Loan</button>
-                        <button className="btn btn-warning" style={{ marginLeft:'5px',fontSize:'18px' }} onClick={navigateToView}>View Requested Loans</button>
+                <div className="row mt-3" style={{ textAlign: 'center' }}>
+                    <div className="col-md-6">
+                        <div style={{ width:'auto', padding: '25px 0 30px 0', float:'center', background: 'rgb(28 25 25 / 93%)', borderRadius:'10px', }}>
+                            <p style={{ color: '#ffffff', fontSize: '30px', lineHeight: '25px', lineHeight: '1.4' }}>
+                                " Grow your business by requesting 
+                                <br/>for a loan. When you providing your details, 
+                                <br/>be sure to give description about request 
+                                <br/>in acceptable manner. "
+                            </p>
+                        <button className="btn btn-primary mt-2" style={{ marginRight:'12px',fontSize:'25px' }} onClick={navigateToForm1}>Loan Request 1</button>
+                        </div>
+                    </div>
+                    <div className="col-md-6">
+                        <div className="ml-1" style={{ width:'auto', padding: '25px', float:'center', background: 'rgb(28 25 25 / 93%)', borderRadius:'10px', }}>
+                            <p style={{ color: '#ffffff', fontSize: '30px', lineHeight: '25px', lineHeight: '1.4' }}>
+                                " Keep in touch with your loan request
+                                <br/>until you retrieve the response 
+                                <br/>from our team. Please be patient 
+                                <br/>if your request status is still in 'pending'! "
+                            </p>
+                            <button className="btn btn-warning mt-2" style={{ fontSize:'25px' }} onClick={navigateToView}>Request 1 Status</button>
+                            <button className="btn btn-warning mt-2" style={{ marginLeft:'12px',fontSize:'25px' }} onClick={navigateToView2}>Request 2 Status</button>
+                        </div>
+                    </div>
                 </div>
+
                 }
-                </div>
             </div>
             </div>
         </div>

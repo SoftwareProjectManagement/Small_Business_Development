@@ -7,6 +7,7 @@ import PersonIcon from '@material-ui/icons/Person';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import FeedbackIcon from '@material-ui/icons/Feedback';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import Avatar from '@material-ui/core/Avatar';
 import HelpIcon from '@mui/icons-material/Help';
 import GroupsIcon from '@mui/icons-material/Groups';
@@ -67,8 +68,8 @@ function Header() {
 
         {
             title: 'Loan Scheme',
-            path: `/topic/add`,
-            icon: <InsertCommentIcon/>,
+            path: `/loan`,
+            icon: <AttachMoneyIcon/>,
             cName: 'nav-text'
           },
 
@@ -100,13 +101,6 @@ function Header() {
             icon: <FeedbackIcon />,
             cName: 'nav-text'
         },
-
-        {
-            title: 'Loan Service',
-            path: `/loan`,
-            icon: <HelpIcon/>,
-            cName: 'nav-text'
-          },
     ];
 
     useEffect(() => {
