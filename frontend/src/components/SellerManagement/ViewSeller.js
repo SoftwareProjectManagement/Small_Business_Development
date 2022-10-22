@@ -145,8 +145,8 @@ navigate("/add")
 
             <br />
             <div className="product"  >
-                {sellers.map((Seller, key) => (
-                    <div key={key}>
+                
+                    <div >
                         <div className="p-3" style={{ overflowX: 'auto', width: 1600,marginLeft:-100 }}>
                             <table  style={{ border: "2px solid black"}}>
                             <thead style={{height:70,background:"rgb(82, 82, 82)",color:"white"}}>
@@ -163,7 +163,8 @@ navigate("/add")
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                {sellers.map((Seller, key) => (
+                                    <tr key={key}>
                                         <td style={{ width: 560 }}>{Seller.name}</td>
                                         <td style={{ width: 400 }}>{Seller.address}</td>
                                         <td style={{ width: 400 }}>{Seller.nic}</td>
@@ -228,11 +229,12 @@ navigate("/add")
                                             }</div>
 
                                     </tr>
+                                    ))}
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                ))}
+                
             </div>
         </div>
     )

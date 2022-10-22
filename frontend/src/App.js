@@ -26,10 +26,13 @@ import ViewUsers from "./components/UserManagement/AllUsers/AllUsers";
 import ReportSeller from "./components/SellerManagement/ReportSeller";
 import Home from "./components/Home/Home";
 import Tips from "./components/TipsManagement/Tips";
-import Workshop from "./components/WorkshopManagement/Workshop";
-import PaymentHistory from "./components/PaymentManagement/PaymentHistory";
+import Workshop from "./components/WorkshopManagement/Workshop"
+import PaymentHistory from "./components/PaymentManagement/PaymentHistory"
+import History from "./components/PaymentManagement/History"
 import UpdateProduct from "./components/ProductManagement/UpdateProduct/UpdateProduct";
 import ReportsProducts from "./components/ProductManagement/ReportProducts/ReportsProducts";
+import LoanReport from "./components/LoanManagement/ViewLoans/ReportPage";
+import LoanReport2 from "./components/LoanManagement/ViewLoans2/ReportPage";
 
 function App() {
   return (
@@ -54,6 +57,9 @@ function App() {
                 <Route path="/tips" element={<Tips/>} />
                 <Route path="/workshops" element={<Workshop />}/>
                 <Route path="/viewPayments" element={<PaymentHistory />}/>
+                <Route path="/history" element={<History />}/>
+
+           
                 <Route path="/product/item/:id" element={<SingleItem />} />
                 <Route path="/category/add" element={<AddCategory />} />
                 <Route path="/category/view" element={<ViewCategory />} />
@@ -63,10 +69,18 @@ function App() {
                 <Route path="/all" element={<ViewUsers />} />
                 <Route path="/products/update/:id" element={<UpdateProduct />} />
                 <Route path="/products/reports" element={<ReportsProducts />} />
+                <Route path="/loan/view_loan2" element={<ViewLoans2 />} />
+
+
+
+                <Route path="/loan/view_loan/report" element={<LoanReport />} />
+                <Route path="/loan/view_loan2/report" element={<LoanReport2 />} />
+
       </Routes>
       <Footer />
     </Router>
   );
+
 }
 
 export default App;

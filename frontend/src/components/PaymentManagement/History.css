@@ -1,0 +1,86 @@
+.paymentContainer{
+    min-height: 950px;
+    font-family: 'Roboto', sans-serif;
+    padding: 20px 60px;
+    margin-top: 150px;
+    z-index: 1;
+}
+
+.paymentHeader h1{
+    font-weight: 700;
+    font-size: 35px;
+    color: #000000;
+    text-align: center;
+    width: 100%;
+    height: 50px;
+}
+
+.paymentDetailsHeader{
+    margin-top: 4%;
+    margin-bottom: 3%;
+    width: 100%;
+    height: 5px;
+    background-color: #FF4F00;
+}
+
+.paymentDetailsHeader h3{
+    color: #fff;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.Payment-product-Img {
+    width: 100px;
+    height:100px;
+    border-radius: 25px;
+}
+
+.payment-box{
+    width: 100%;
+    border-bottom: 2px solid #000;
+ }
+
+ .paymentProductBox{
+    width: 80%;
+    margin: auto;
+ }
+
+ .PaymentButtonContainer{
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    margin: auto;
+ }
+
+ .PaymentButtonContainer button{
+    width: 200px;
+    height: 50px;
+    font-weight: 700;
+    font-size: 20px;
+    background: #FF4F00;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    margin-left: 14%;
+    margin-top: 2%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 4px 0px 4px rgba(0, 0, 0, 0.25);
+}
+
+.PaymentButtonContainer button:hover{
+    transform: scale(1.05);
+}
+
+.detailsUser{
+    margin-top: 1%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
+}
+
+.item-center{
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

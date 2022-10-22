@@ -1,35 +1,37 @@
 import { useReactToPrint } from "react-to-print";
-import {useRef} from 'react'
-import React, { useEffect, useState } from 'react'
-import { useNavigate, useLocation } from 'react-router';
-import './ReportSeller.css'
-import axios from 'axios'
+import {useRef} from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router';
+import './ViewLoans2.css';
+import axios from 'axios';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import Button from '@material-ui/core/Button';
 import { green} from '@material-ui/core/colors';
 
 
-function ReportSeller() {
-    const [sellers, setSellers] = useState([])
-    const navigate = useNavigate()
-    const location = useLocation()
+function ReportPage() {
+    const location = useLocation();
 
     let newDate = new Date()
     let date = newDate.getDate();
     let month = newDate.getMonth() + 1;
     let year = newDate.getFullYear();
 
+    const [isAdmin, setIsAdmin] = useState(false);
+    const [user, setUser] = useState("");
+    const [loans, setLoans] = useState([]);
+
     useEffect(() => {
 
-        async function getAllSellers() {
-            axios.get(`http://localhost:8070/request`).then((res) => {
-                setSellers(res.data)
+        async function getAllRequests() {
+            axios.get(`http://localhost:8070/loan`).then((res) => {
+                setLoans(res.data)
             }).catch((error) => {
-                alert("Failed to fetch the details")
+                alert("Failed to fetch document")
             })
         }
 
-        getAllSellers();
+        getAllRequests();
     }, [location])
 
     const componentRef = useRef();
@@ -49,7 +51,7 @@ function ReportSeller() {
                                         </div>
                                         <div className="col-xl-8" align='center'>
                                             <h3>Ceylon Capital Crop</h3>
-                                            <h6 >Digitally Generated Seller Details Report</h6>
+                                            <h6 >Digitally Generated Loan Request 1 Report</h6>
                                         </div>
                                         <div className="col-xl-2" align='right'>
                                             <p>{date}/{month}/{year}</p>
@@ -57,38 +59,32 @@ function ReportSeller() {
                                     </div>
             <div className="product"  >
                 
-                    <div >
+                    <div>
                         <div className="p-3" align="center" style={{ overflowX: 'auto' }}>
                             <table style={{ border: "4px solid black"}}>
                                 <thead align="center" style={{height:70,background:"black",color:"white"}}>
                                     <tr>
-                                        <td>Full Name</td>
-                                        <td>Permenet Address</td>
-                                        <td>NIC Number</td>
-                                        <td>Mobile Number</td>
-                                        <td>Email Address</td>
-                                        <td>Business Registration Number</td>
-
+                                        <td>Name</td>
+                                        <td>NIC</td>
+                                        <td>Email</td>
+                                        <td>Mobile</td>
+                                        <td>Status</td>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                {sellers.map((Seller, key) => (
+                                    {loans.map((Loan, key) => (
                                     <tr key={key}>
-                                        <td style={{ width: 560 }}>{Seller.name}</td>
-                                        <td style={{ width: 800 }}>{Seller.address}</td>
-                                        <td style={{ width: 400 }}>{Seller.nic}</td>
-                                        <td style={{ width: 400 }}>{Seller.mobile}</td>
-                                        <td style={{ width: 400 }}>{Seller.email}</td>
-                                        <td style={{ width: 600 }}>{Seller.reg}</td>
-
-
+                                        <td style={{ width: 400, padding: '5px 15px'}}>{Loan.name}</td>
+                                        <td style={{ width: 400, padding: '5px 15px'}}>{Loan.nic}</td>
+                                        <td style={{ width: 400, padding: '5px 15px'}}>{Loan.email}</td>
+                                        <td style={{ width: 400, padding: '5px 15px'}}>{Loan.mobile}</td>
+                                        <td style={{ width: 400, padding: '5px 15px'}}>{Loan.loanStatus}</td>
                                     </tr>
-                                      ))}
+                                    ))}
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-              
+                    </div>   
             </div>
             </div>
             <center><div className="w-25 p-3" align='center'>
@@ -110,4 +106,4 @@ function ReportSeller() {
     )
 }
 
-export default ReportSeller
+export default ReportPage
