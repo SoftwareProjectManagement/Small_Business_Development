@@ -29,6 +29,7 @@ import Home from "./components/Home/Home";
 import Tips from "./components/TipsManagement/Tips";
 import Workshop from "./components/WorkshopManagement/Workshop"
 import PaymentHistory from "./components/PaymentManagement/PaymentHistory"
+import History from "./components/PaymentManagement/History"
 
 
 function App() {
@@ -65,7 +66,7 @@ function App() {
                 <Route path="/tips" element={<Tips/>} />
                 <Route path="/workshops" element={<Workshop />}/>
                 <Route path="/viewPayments" element={<PaymentHistory />}/>
-
+                <Route path="/history" element={<History />}/>
 
             </Routes>
             <Footer/>
