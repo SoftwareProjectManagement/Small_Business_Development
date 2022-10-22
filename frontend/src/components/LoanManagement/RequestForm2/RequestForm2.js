@@ -132,7 +132,8 @@ function RequestForm2() {
                                                         onChange={(e) => {
                                                             const limitOfNic = 12;
                                                             setNic(e.target.value.slice(0,limitOfNic));}}
-                                                        inputProps={{ style: { padding: 12 } }}
+                                                        inputProps={{ style: { padding: 12 }, 
+                                                        pattern:"[1-9]{1}[0-9]{10}[vV0-9]{1}"}}
                                                         length={ 12 }
                                                     />
                                                 </div>
@@ -147,7 +148,9 @@ function RequestForm2() {
                                                         onChange={(e) => {
                                                             const limit = 10;
                                                             setMobile(e.target.value.slice(0,limit))}}
-                                                        inputProps={{ style: { padding: 12 } }}
+                                                        inputProps={{ style: { padding: 12,
+                                                            pattern:"[0]{1}[0-9]{9}"
+                                                         } }}
                                                     />
                                                 </div>
                                             </div>
