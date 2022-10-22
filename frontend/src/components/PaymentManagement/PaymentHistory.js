@@ -10,7 +10,6 @@ import "./PaymentHistory.css";
 function PaymentHistory(props) {
   const [isAdmin, setIsAdmin] = useState(false);
   const [payments, setPayments] = useState([]);
-  const [products, setProducts] = useState([]);
   const [user, setUser] = useState("");
   const params = useParams();
 
@@ -25,25 +24,24 @@ function PaymentHistory(props) {
       setIsAdmin(true);
     }
     //Fetch Payments
-    async function getAllProducts() {
+    async function getAllPayments() {
       axios
         .get(`http://localhost:8070/payment/viewPayments/${userID._id}`)
         .then((res) => {
-          setProducts(res.data.payment[0].itemList);
+          setPayments(res.data.payment[0].itemList);
           console.log(res.data.payment[0].itemList);
         })
         .catch((error) => {
           alert("Failed to fetch Category");
         });
     }
-    getAllProducts();
+    getAllPayments();
   }, []);
 
   async function GenerateReport(){
     alert("hello");
   }
 
-  console.log(userID.firstname)
   return (
     <div className="paymentContainer">
       <div className="paymentHeader">
@@ -66,14 +64,14 @@ function PaymentHistory(props) {
         <div className="row">
           <div className="col-xl-12">
             {/* map */}
-            {products.map((Products, key) => (
+            {payments.map((Payments, key) => (
               <div key={key}>
                 <div className="payment-box">
                   <div className="row align-items-center ">
                     <div className="col-sm-2">
                       <img
                         className="Payment-product-Img"
-                        src={Products.itemid.imgUrl}
+                        src={Payments.itemid.imgUrl}
                         alt="product"
                       ></img>
                     </div>
@@ -81,21 +79,21 @@ function PaymentHistory(props) {
                     <div className="col-sm-4">
                       <div>
                         <h5>
-                          <b>{Products.itemid.name}</b>
+                          <b>{Payments.itemid.name}</b>
                         </h5>
-                        <h6>Rs.{Products.itemid.price}.00</h6>
+                        <h6>Rs.{Payments.itemid.price}.00</h6>
                       </div>
                     </div>
 
                     <div className="col-sm-4">
                       <h5>
-                        <b>{Products.quantity}</b>
+                        <b>{Payments.quantity}</b>
                       </h5>
                     </div>
 
                     <div className="col-sm-2">
                       <h5>
-                        <b>Rs.{Products.itemid.price * Products.quantity}.00</b>
+                        <b>Rs.{Payments.itemid.price * Payments.quantity}.00</b>
                       </h5>
                     </div>
                   </div>

@@ -26,8 +26,9 @@ import ViewUsers from "./components/UserManagement/AllUsers/AllUsers";
 import ReportSeller from "./components/SellerManagement/ReportSeller";
 import Home from "./components/Home/Home";
 import Tips from "./components/TipsManagement/Tips";
-import Workshop from "./components/WorkshopManagement/Workshop";
-import PaymentHistory from "./components/PaymentManagement/PaymentHistory";
+import Workshop from "./components/WorkshopManagement/Workshop"
+import PaymentHistory from "./components/PaymentManagement/PaymentHistory"
+import History from "./components/PaymentManagement/History"
 import UpdateProduct from "./components/ProductManagement/UpdateProduct/UpdateProduct";
 import ReportsProducts from "./components/ProductManagement/ReportProducts/ReportsProducts";
 
@@ -54,6 +55,9 @@ function App() {
                 <Route path="/tips" element={<Tips/>} />
                 <Route path="/workshops" element={<Workshop />}/>
                 <Route path="/viewPayments" element={<PaymentHistory />}/>
+                <Route path="/history" element={<History />}/>
+
+           
                 <Route path="/product/item/:id" element={<SingleItem />} />
                 <Route path="/category/add" element={<AddCategory />} />
                 <Route path="/category/view" element={<ViewCategory />} />
@@ -67,6 +71,7 @@ function App() {
       <Footer />
     </Router>
   );
+
 }
 
 export default App;
