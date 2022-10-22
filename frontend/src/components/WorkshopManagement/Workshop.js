@@ -8,6 +8,7 @@ import AddIcon from "@material-ui/icons/Add";
 import { Button } from "@material-ui/core";
 import GetAppIcon from "@material-ui/icons/GetApp";
 import WorkshopModal from "./WorkshopAddModal";
+import SearchIcon from '@mui/icons-material/Search';
 
 function ViewProdcuts() {
   const [openWorkshopModal, setOpenWorkshopModal] = useState(false);
@@ -40,6 +41,23 @@ function ViewProdcuts() {
     getAllWorkshops();
   }, [location, isAdmin]);
 
+  function filterContent(data, searchTerm) {
+    const result = data.filter((workshop) =>
+        workshop.title.toLowerCase().includes(searchTerm)
+    )
+    setWorkshops(result)
+}
+
+
+function handleSearchAll(event) {
+    const searchTerm = event.currentTarget.value
+    axios.get(`http://localhost:8070/workshop`).then((res) => {
+        filterContent(res.data, searchTerm.toLowerCase())
+    }).catch((error) => {
+        alert("Failed to fetch the details")
+    })
+}
+
   return (
     <div className="workshopMainContainer">
       <div className="workshopHeadercontainer">
@@ -51,6 +69,17 @@ function ViewProdcuts() {
           Workshops
           <hr />
         </h1>
+
+        <div className="px-3 search" align="right" style={{ top: '60px', position: 'relative', right: '0px' }}>
+                        <input style={{ color: "black", fontWeight: "500", borderRadius: "8px", border: "2px solid grey", padding: '6px 123px' }}
+                            type="text"
+                            name="search"
+                            id="search"
+                            placeholder="Search for something?"
+                            onChange={handleSearchAll}
+                            required
+                        /><div style={{ position: 'relative', right: '10px', top: '-35px' }}><SearchIcon /></div>
+                    </div>
         <div className="workshopGrid">
           {isAdmin && (
             <Button

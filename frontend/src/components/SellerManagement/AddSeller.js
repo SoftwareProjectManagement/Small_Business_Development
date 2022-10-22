@@ -130,9 +130,16 @@ function AddSeller() {
                                     <div className="col-md-10 mb-4">
                                         <div className="form-group3">
                                             <OutlinedInput
-                                                type="leader" id="leader" placeholder="NIC Number" required fullWidth
-                                                onChange={(e) => setNIC(e.target.value)}
-                                                inputProps={{ style: { padding: 12 } }}
+                                                type="leader" id="nic" placeholder="NIC Number" required fullWidth
+                                                value={nic}
+                                                onChange={(e) => {
+                                                    const limitOfNic = 12;
+                                                    setNIC(e.target.value.slice(0,limitOfNic));
+                                                }}
+                                                
+                                                inputProps={{ style: { padding: 12 },
+                                                pattern:"[1-9]{1}[0-9]{10}[vV0-9]{1}"
+                                            }}
                                             />
                                         </div>
                                     </div>
@@ -140,9 +147,14 @@ function AddSeller() {
                                     <div className="col-md-14 mb-4">
                                         <div className="form-group3">
                                             <OutlinedInput
-                                                type="details" id="details" placeholder="Mobile Number" required fullWidth
-                                                onChange={(e) => setMobile(e.target.value)}
-                                                inputProps={{ style: { padding: 12 } }}
+                                                type="tel" id="phone" placeholder="Mobile Number" required fullWidth
+                                                value={mobile}
+                                                onChange={(e) => {
+                                                    const limitOfNic = 12;
+                                                    setMobile(e.target.value.slice(0,limitOfNic))}}
+                                                inputProps={{ style: { padding: 12 } ,
+                                                pattern:"[0]{1}[0-9]{9}"
+                                                }}
                                             />
                                         </div>
                                     </div>
