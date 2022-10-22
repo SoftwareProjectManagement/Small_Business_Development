@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router';
 import './ViewLoans.css'
 import axios from 'axios'
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
+import Swal from 'sweetalert2';
 
 function ViewLoans() {
 
@@ -10,6 +13,9 @@ function ViewLoans() {
     const navigate = useNavigate()
     const location = useLocation()
     const [user, setUser] = useState("");
+    const navigateToForm2 = () => {
+        navigate('/loan/form2');
+    };
 
     const config = {
         headers: {
@@ -46,10 +52,10 @@ function ViewLoans() {
 
     function handleSearchAll(event) {
         const searchTerm = event.currentTarget.value
-        axios.get(`http://localhost:8070/topic`).then((res) => {
+        axios.get(`http://localhost:8070/loan`).then((res) => {
             filterContent(res.data, searchTerm.toLowerCase())
         }).catch((error) => {
-            alert("Failed to fetch documents")
+            alert("Failed to fetch documents with ".error)
         })
     }
 
@@ -66,7 +72,11 @@ function ViewLoans() {
         await axios
             .put(`http://localhost:8070/loan/${id}`, value)
             .then(() => {
-                alert(`Loan is ${tstatus}ed`);
+                Swal.fire({
+                    icon: 'success',
+                    text: `Loan is ${tstatus}ed`,
+                    showConfirmButton: false,
+                  })
                 window.location.reload(false);
             })
             .catch((err) => {
@@ -83,7 +93,11 @@ function ViewLoans() {
         await axios
             .put(`http://localhost:8070/loan/${id}`, value)
             .then(() => {
-                alert(`Loan is ${tstatus}ed`);
+                Swal.fire({
+                    icon: 'success',
+                    text: `Loan is ${tstatus}ed`,
+                    showConfirmButton: false,
+                  })
                 window.location.reload(false);
             })
             .catch((err) => {
@@ -94,7 +108,11 @@ function ViewLoans() {
     async function deleteRequest(id) {
         console.log(id);
         await axios.delete(`http://localhost:8070/loan/delete/${id}`, config).then(() => {
-            alert("Successfully Deleted")
+            Swal.fire({
+                icon: 'success',
+                text: 'Successfully Deleted!',
+                showConfirmButton: false,
+              })
             navigate('/loan/view_loan')
         }).catch((error) => {
             alert(`Cancellation Failed\n${error.message}`)
@@ -129,7 +147,7 @@ function ViewLoans() {
                             onChange={handleSearchAll}
                             required
                         /><div style={{ position: 'relative', right: '510px', top: '-35px' }}>
-                            {/* <SearchIcon /> */}
+                            <SearchRoundedIcon />
                             </div>
                     </div>
                 </div>
@@ -140,15 +158,15 @@ function ViewLoans() {
                                     <table>
                                         <thead className="table-head">
                                             <tr>
-                                                <th className="table-head-title th-border">Name</th>
-                                                <th className="table-head-title th-border">Seller ID</th>
-                                                <th className="table-head-title th-border">Email</th>
-                                                <th className="table-head-title th-border">Mobile</th>
-                                                <th className="table-head-title th-border" style={{ textAlign:'center' }}>Status</th>
+                                                <th width="15%" className="table-head-title th-border">Name</th>
+                                                <th width="15%" className="table-head-title th-border">Seller ID</th>
+                                                <th width="15%" className="table-head-title th-border">Email</th>
+                                                <th width="15%" className="table-head-title th-border">Mobile</th>
+                                                <th width="15%" className="table-head-title th-border" style={{ textAlign:'center' }}>Status</th>
                                                 {isAdmin === true ?
                                                         <th className="table-head-title th-border" style={{ textAlign:'center' }}>Action</th>
                                                         :
-                                                        <div></div>
+                                                        <th className="table-head-title th-border" style={{ textAlign:'center' }}>Availability</th>
                                                     }
                                             </tr>
                                         </thead>
@@ -159,24 +177,23 @@ function ViewLoans() {
                                                 <td className="text-l tb-border" style={{ width: 260, padding: '5px 15px' }}>{Loan.sellerID}</td>
                                                 <td className="text-l tb-border" style={{ width: 400, padding: '5px 15px' }}>{Loan.email}</td>
                                                 <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>{Loan.mobile}</td>
-                                                <td className="text-l tb-border" align="center"  style={{ width: 260, padding: '5px 15px',textAlign:'center' }}>{
+                                                <td className="text-l tb-border" align="center"  style={{ width: 260, padding: '5px 15px',textAlign:'center' }}>
+                                                {
                                                 Loan.tstatus === "Rejected" ? <span className="bg-danger rounded text-white p-1">Rejected</span>:
-                                                Loan.tstatus === "Accepted" ? <span className="bg-success rounded text-white p-1">Accepted</span>
+                                                Loan.tstatus === "Accepted" ? 
+                                                <div>
+                                                    <span className="bg-success rounded text-white p-1">Accepted</span>
+                                                </div>
                                                 :
                                                 <div>
-                                                <span className="bg-warning rounded text-black p-1" style={{ marginRight: '5px' }}>Pending</span>
-                                                <button
-                                                className="btn btn-danger"
-                                                onClick={() => deleteRequest(Loan._id)}
-                                            >Delete</button>
-                                            </div>
+                                                    <span className="bg-warning rounded text-black p-1" style={{ marginRight: '5px' }}>Pending</span>
+                                                </div>
                                                 }
                                                 </td>
                                                 {isAdmin === true ?
-                                                <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px', textAlign:'center' }}>
-                                                
-                                                        <div style={{width:180}}>
+                                                <td className="text-l tb-border"  style={{ width: 250, textAlign:'center' }}>
                                                             <button
+                                                                style={{ margin: '3px 5px 5px 5px' }}
                                                                 className="btn btn-success"
                                                                 disabled={
                                                                     Loan.tstatus === "Accepted" 
@@ -185,9 +202,9 @@ function ViewLoans() {
                                                             >
                                                                 &nbsp;Approve
                                                             </button>
-                                                            &nbsp;&nbsp;&nbsp;
                                                             <button
-                                                                class="btn btn-danger"
+                                                                style={{ margin: '3px 5px 5px 5px' }}
+                                                                className="btn btn-danger"
                                                                 disabled={
                                                                     Loan.tstatus === "Rejected" 
                                                                 }
@@ -195,12 +212,20 @@ function ViewLoans() {
                                                             >
                                                                 &nbsp;Reject
                                                             </button>
-                                                        </div>
+                                                            <button
+                                                                style={{ margin: '3px 5px 5px 5px', padding: '2px 0px' }}
+                                                                className="btn btn-danger"
+                                                                onClick={() => deleteRequest(Loan._id)}
+                                                            ><DeleteRoundedIcon/></button>
                                                 </td>
-                                                        :
-                                                        <div>
-
-                                                        </div>                                        
+                                                :
+                                                <td className="text-l tb-border"  style={{ width: 300, textAlign:'center' }}>
+                                                <button className="btn btn-primary p-1 m-1"
+                                                    disabled={
+                                                        Loan.tstatus === "Rejected" || Loan.tstatus === "Pending"
+                                                    }
+                                                    onClick={navigateToForm2}>Loan Request 2</button>    
+                                                </td>                                     
                                                 }
                                             </tr>
                                             ))} 

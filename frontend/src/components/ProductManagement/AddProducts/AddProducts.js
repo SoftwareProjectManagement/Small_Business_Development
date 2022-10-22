@@ -123,7 +123,7 @@ function AddProducts() {
       <br />
       <br />
       <br />
-      <form onSubmit={add} className="addProduct">
+      <form onSubmit={add} className="addProduct12">
         <h1 className="headText">Add Product</h1>
         <div className="row">
           <div className="">

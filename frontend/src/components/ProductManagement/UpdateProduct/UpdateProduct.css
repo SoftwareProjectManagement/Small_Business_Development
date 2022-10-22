@@ -1,0 +1,36 @@
+.updateProduct {
+    width: 60%;
+    text-align: left;
+    padding: 40px;
+    background: rgb(255, 255, 255);
+    border-radius: 15px;
+    box-shadow:0px 24px 48px 0 rgba(0,0,0,0.1);
+}
+
+.updatePreviewImgProduct {
+    border-radius: 10px;
+    border-style: none;
+    position: relative;
+    max-width: 110%;
+    margin-bottom: 20px;
+}   
+
+.previewImgProduct11 {
+    border-radius: 5px;
+    vertical-align: middle;
+    border-style: none;
+    position: relative;
+    width: 180px;
+    height: 160px !important;
+    opacity: 0.8;
+    margin-bottom: 20px;
+    left:118%;
+}
+
+.image_upload_button11{
+    background-color: #FF4F00 !important;
+    width: 200px !important;
+    height: 40px !;
+    color: #ffffff !important;
+    left:115%;
+}

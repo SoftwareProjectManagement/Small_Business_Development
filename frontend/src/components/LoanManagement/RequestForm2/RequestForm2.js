@@ -2,10 +2,11 @@ import { useState } from 'react';
 import axios from 'axios';
 import './RequestForm2.css'
 import OutlinedInput from "@material-ui/core/OutlinedInput";
-import LoanImage from './loan.jpg';
+import LoanImage from './loan_req2.jpg';
 import { useNavigate } from 'react-router-dom';
 import Button from "@material-ui/core/Button";
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
+import Swal from 'sweetalert2';
 
 function RequestForm2() {
 
@@ -15,15 +16,14 @@ function RequestForm2() {
     const [mobile, setMobile] = useState("");
     const [email, setEmail] = useState("");
     const [description, setDescription] = useState("");
-    const [incomeReport, setIncomeReport] = useState("");
-    const [businessRegistration, setBusinessRegistration] = useState("");
+    const [amount, setAmount] = useState("");
     const navigate = useNavigate();
 
     const [previewSource, setPreviewSource] = useState();
     const [selectedFile, setSelectedFile] = useState();
     const [fileInputState, setFileInputState] = useState('');
 
-    //handling the image uploading
+    //handling the file uploading
         const handleFileInputChange = (event) => {
             const file = event.target.files[0];
             previewFile(file);
@@ -48,11 +48,32 @@ function RequestForm2() {
             }
         };
 
-        const newFormRequest = { name, address,email, nic, mobile, description, incomeReport, businessRegistration}
+        let businessRegistration
+
+        if (previewSource) {
+            const formData = new FormData();
+            formData.append("file", selectedFile)
+            formData.append("upload_preset", "topic_doc")
+
+
+            try {
+                await axios.post("https://api.cloudinary.com/v1_1/movie-reservation/image/upload", formData).then((res) => {
+                    businessRegistration = res.data.secure_url
+                })
+            } catch (error) {
+                alert(error)
+            }
+        }
+
+        const newFormRequest = { name, address,email, nic, mobile, description, amount, businessRegistration}
 
         try {
             await axios.post("http://localhost:8070/loan2/add", newFormRequest, config)
-            alert("Request Sent Successfully!")
+            Swal.fire({
+                icon: 'success',
+                text: 'Request Added Successfuly',
+                showConfirmButton: false,
+              })
             event.target.reset();
             navigate('/loan/view_loan2')
         } catch (error) {
@@ -65,10 +86,10 @@ function RequestForm2() {
                     <div className="row">
                         <div className="col-12">
                             <div className="pb-2" style={{ textAlign: 'center' }}>
-                                <p style={{ fontSize: '28px', fontWeight: 'bold' }}>Welcome To The Loan Schema</p>
+                                <p style={{ fontSize: '28px', fontWeight: 'bold' }}>Congratulations! You Can Apply For a Loan</p>
                                 <p style={{ fontSize: '20px'}}>
                                 Simply fill the below form details to get a loan. Once you get the loan approval, 
-                                you will be able to get the loan from us.</p>
+                                you will be able to get the loan from us. We will contact you as soon as possible.</p>
                             </div>
                         </div>
                     </div>
@@ -107,7 +128,10 @@ function RequestForm2() {
                                                 <div className="form-group30">
                                                     <OutlinedInput
                                                         type="nic" id="nic" placeholder="Enter Your NIC Number" required fullWidth
-                                                        onChange={(e) => setNic(e.target.value)}
+                                                        value={nic}
+                                                        onChange={(e) => {
+                                                            const limitOfNic = 12;
+                                                            setNic(e.target.value.slice(0,limitOfNic));}}
                                                         inputProps={{ style: { padding: 12 } }}
                                                         length={ 12 }
                                                     />
@@ -118,8 +142,11 @@ function RequestForm2() {
                                             <div className="col-md-10 mb-4">
                                                 <div className="form-group30">
                                                     <OutlinedInput
-                                                        type="mobile" id="mobile" placeholder="Enter Your Mobile Number" required fullWidth
-                                                        onChange={(e) => setMobile(e.target.value)}
+                                                        type="text" id="mobile" placeholder="Enter Your Mobile Number" required fullWidth
+                                                        value={mobile}
+                                                        onChange={(e) => {
+                                                            const limit = 10;
+                                                            setMobile(e.target.value.slice(0,limit))}}
                                                         inputProps={{ style: { padding: 12 } }}
                                                     />
                                                 </div>
@@ -148,12 +175,12 @@ function RequestForm2() {
                                                 </div>
                                             </div>
 
-                                            <label className='label11'>INCOME REPORT</label><br />
+                                            <label className='label11'>Expected Amount</label><br />
                                             <div className="col-md-10 mb-4">
                                                 <div className="form-group30">
                                                     <OutlinedInput
-                                                        type="incomeReport" id="incomeReport" placeholder="Income Report" required fullWidth
-                                                        onChange={(e) => setIncomeReport(e.target.value)}
+                                                        type="any" id="amount" placeholder="Enter your loan amount" required fullWidth
+                                                        onChange={(e) => setAmount(e.target.value)}
                                                         inputProps={{ style: { padding: 12 } }}
                                                     />
                                                 </div>
@@ -161,18 +188,18 @@ function RequestForm2() {
 
                                             <label className='label11'>BUSINESS REGISTRATION</label><br />
 
-                                        <label htmlFor="profilepic">
+                                        <label htmlFor="businessRegistration">
                                             <input
                                                 style={{ display: 'none' }}
-                                                id="profilepic"
-                                                name="profilepic"
+                                                id="businessRegistration"
+                                                name="businessRegistration"
                                                 type="file"
                                                 accept=".pdf"
                                                 onChange={handleFileInputChange}
                                                 value={fileInputState}
                                             />
 
-                                            <Button color="primary" variant="contained" component="span">
+                                            <Button style={{position:"relative",top:-25,right:-260,width:220,fontSize:13}} variant="contained" component="span">
                                                 < FileUploadOutlinedIcon/> Upload document
                                             </Button>
                                         </label>

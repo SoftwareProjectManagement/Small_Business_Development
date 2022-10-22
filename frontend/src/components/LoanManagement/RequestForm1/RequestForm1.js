@@ -4,6 +4,7 @@ import './RequestForm1.css'
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import LoanImage from './loan.jpg';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 function RequestForm1() {
 
@@ -29,7 +30,11 @@ function RequestForm1() {
 
         try {
             await axios.post("http://localhost:8070/loan/add", newFormRequest, config)
-            alert("Request Sent Successfully!")
+            Swal.fire({
+                icon: 'success',
+                text: 'Request Added Successfuly',
+                showConfirmButton: false,
+              })
             event.target.reset();
             navigate('/loan/view_loan')
         } catch (error) {
@@ -94,10 +99,13 @@ function RequestForm1() {
                                             <div className="col-md-10 mb-4">
                                                 <div className="form-group30">
                                                     <OutlinedInput
-                                                        type="nic" id="nic" placeholder="Enter Your NIC Number" required fullWidth
-                                                        onChange={(e) => setNic(e.target.value)}
+                                                        type="text" 
+                                                        id="nic" placeholder="Enter Your NIC Number" required fullWidth
+                                                        value={nic}
+                                                        onChange={(e) => {
+                                                            const limitOfNic = 12;
+                                                            setNic(e.target.value.slice(0,limitOfNic));}}
                                                         inputProps={{ style: { padding: 12 } }}
-                                                        length={ 12 }
                                                     />
                                                 </div>
                                             </div>
@@ -106,8 +114,12 @@ function RequestForm1() {
                                             <div className="col-md-10 mb-4">
                                                 <div className="form-group30">
                                                     <OutlinedInput
-                                                        type="mobile" id="mobile" placeholder="Enter Your Mobile Number" required fullWidth
-                                                        onChange={(e) => setMobile(e.target.value)}
+                                                        type="text" id="mobile" placeholder="Enter Your Mobile Number" required fullWidth
+                                                        maxLength={10}
+                                                        value={mobile}
+                                                        onChange={(e) => {
+                                                            const limit = 10;
+                                                            setMobile(e.target.value.slice(0,limit))}}
                                                         inputProps={{ style: { padding: 12 } }}
                                                     />
                                                 </div>

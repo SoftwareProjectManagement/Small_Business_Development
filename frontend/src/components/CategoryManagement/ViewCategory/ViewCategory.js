@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./ViewCategory.css";
 import axios from "axios";
-import { orange, red, blue, green } from "@material-ui/core/colors";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import AddIcon from "@material-ui/icons/Add";
 import { Button } from "@material-ui/core";
-import GetAppIcon from "@material-ui/icons/GetApp";
+import PrintIcon from "@mui/icons-material/Print";
 
 function ViewCategory() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -44,6 +42,29 @@ function ViewCategory() {
   function addProduct() {
     navigate(`/category/add`);
   }
+
+  function printProduct() {
+    navigate(`/products/reports`);
+  }
+
+  function filterContent(data, searchTerm) {
+    const result = data.filter((category) =>
+      category.categoryname.toLowerCase().includes(searchTerm)
+    );
+    setCategory(result);
+  }
+  function handleSearchAll(event) {
+    const searchTerm = event.currentTarget.value;
+    axios
+      .get(`http://localhost:8070/category`)
+      .then((res) => {
+        filterContent(res.data, searchTerm.toLowerCase());
+      })
+      .catch((error) => {
+        alert("Admin Failed to fetch products");
+      });
+  }
+
   return (
     <div className="container">
       <br />
@@ -53,8 +74,30 @@ function ViewCategory() {
         <div className="col-4">
           <div className="pb-2 px-3 d-flex flex-wrap align-items-center justify-content-between">
             <h2 className="header_topic">Product Category</h2>
+
+            <div className="px-1 search" align="right">
+              <input
+                className="searchBox"
+                type="text"
+                name="search"
+                id="search"
+                placeholder="Search"
+                onChange={handleSearchAll}
+                required
+              />
+            </div>
           </div>
         </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <Button className="printbtn" onClick={() => printProduct()}>
+          Print All Prodcuts &nbsp;&nbsp;&nbsp;&nbsp;
+          <PrintIcon />
+        </Button>
+        <br />
+
         <div className="col-3"></div>
         <div className="col-5">
           {isAdmin === true ? (
@@ -68,7 +111,7 @@ function ViewCategory() {
         {isAdmin && (
           <Button
             className="mx-2 productBtn1"
-            style={{ backgroundColor: orange[400], color: "white" }}
+            style={{ color: "white" }}
             onClick={() => addProduct()}
           >
             Add Category <AddIcon />
