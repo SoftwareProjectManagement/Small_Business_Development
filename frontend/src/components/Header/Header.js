@@ -81,7 +81,7 @@ function Header() {
           },
         {
           title: 'Payments',
-          path: `/viewPayments`,
+          path: `/history`,
           icon: <InsertCommentIcon/>,
           cName: 'nav-text'
         },
