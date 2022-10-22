@@ -123,16 +123,16 @@ function ViewProdcuts() {
           </div>
         </div>
         <div className="col-3"></div>
-        <div className="col-5">
+        {/* <div className="col-5">
           {isAdmin === true ? (
             <div className="px-3 search" align="right"></div>
           ) : (
             <div className="px-3 search" align="right"></div>
           )}
-        </div>
+        </div> */}
       </div>
       <div className="productGrid">
-        {isAdmin && (
+        
           <Button
             className="mx-2 productBtn1"
             style={{ backgroundColor: orange[400], color: "white" }}
@@ -140,7 +140,7 @@ function ViewProdcuts() {
           >
             Add Product <AddIcon />
           </Button>
-        )}
+   
         {productListByCategory &&
           productListByCategory.map((Products, key) => (
             <div key={key}>

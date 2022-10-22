@@ -35,6 +35,7 @@
     position:relative;
     top:32px;
     left:-201px;
+    white-space: nowrap;
 
 }
 
@@ -113,5 +114,13 @@
   font-size: 19px;
   font-weight: 500;
 
+}
+
+.addSellerSubmitBtn{
+    margin-left: 600px;
+}
+
+.checkboxcss{
+    white-space: nowrap;
 }
 
