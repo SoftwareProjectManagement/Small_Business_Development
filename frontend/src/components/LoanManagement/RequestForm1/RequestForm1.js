@@ -105,7 +105,9 @@ function RequestForm1() {
                                                         onChange={(e) => {
                                                             const limitOfNic = 12;
                                                             setNic(e.target.value.slice(0,limitOfNic));}}
-                                                        inputProps={{ style: { padding: 12 } }}
+                                                        inputProps={{ style: { padding: 12 },
+                                                        pattern:"[1-9]{1}[0-9]{10}[vV0-9]{1}"
+                                                    }}
                                                     />
                                                 </div>
                                             </div>
@@ -114,13 +116,15 @@ function RequestForm1() {
                                             <div className="col-md-10 mb-4">
                                                 <div className="form-group30">
                                                     <OutlinedInput
-                                                        type="text" id="mobile" placeholder="Enter Your Mobile Number" required fullWidth
-                                                        maxLength={10}
+                                                        type="tel" id="mobile" placeholder="Enter Your Mobile Number" required fullWidth
                                                         value={mobile}
                                                         onChange={(e) => {
                                                             const limit = 10;
-                                                            setMobile(e.target.value.slice(0,limit))}}
-                                                        inputProps={{ style: { padding: 12 } }}
+                                                            setMobile(e.target.value.slice(0,limit));
+                                                        }}
+                                                        inputProps={{ style: { padding: 12 },
+                                                        pattern:"[0]{1}[0-9]{9}" }}
+                                                        
                                                     />
                                                 </div>
                                             </div>
