@@ -155,13 +155,18 @@ function AddSeller() {
                       <div className="col-md-10 mb-4">
                         <div className="form-group3">
                           <OutlinedInput
-                            type="leader"
-                            id="leader"
+                            type="nic"
+                            id="nic"
+                            value={nic}
                             placeholder="NIC Number"
                             required
                             fullWidth
-                            onChange={(e) => setNIC(e.target.value)}
-                            inputProps={{ style: { padding: 12 } }}
+                            onChange={(e) =>{
+                              const limitOfNic = 12;
+                             setNIC(e.target.value.slice(0,limitOfNic));}}
+                            inputProps={{ style: { padding: 12 },
+                            pattern:"[1-9]{1}[0-9]{10}[vV0-9]{1}"
+                          }}
                           />
                         </div>
                       </div>
@@ -170,13 +175,19 @@ function AddSeller() {
                       <div className="col-md-14 mb-4">
                         <div className="form-group3">
                           <OutlinedInput
-                            type="details"
-                            id="details"
+                            type="tel"
+                            id="mobile"
+                            value={mobile}
                             placeholder="Mobile Number"
                             required
                             fullWidth
-                            onChange={(e) => setMobile(e.target.value)}
-                            inputProps={{ style: { padding: 12 } }}
+                            onChange={(e) => {
+                              const limit = 10;
+                              setMobile(e.target.value.slice(0,limit));
+                          }}
+                          inputProps={{ style: { padding: 12 },
+                          pattern:"[0]{1}[0-9]{9}" }}
+                            
                           />
                         </div>
                       </div>
