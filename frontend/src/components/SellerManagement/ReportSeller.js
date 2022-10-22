@@ -56,8 +56,8 @@ function ReportSeller() {
                                         </div>
                                     </div>
             <div className="product"  >
-                {sellers.map((Seller, key) => (
-                    <div key={key}>
+                
+                    <div >
                         <div className="p-3" align="center" style={{ overflowX: 'auto' }}>
                             <table style={{ border: "4px solid black"}}>
                                 <thead align="center" style={{height:70,background:"black",color:"white"}}>
@@ -72,7 +72,8 @@ function ReportSeller() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                {sellers.map((Seller, key) => (
+                                    <tr key={key}>
                                         <td style={{ width: 560 }}>{Seller.name}</td>
                                         <td style={{ width: 800 }}>{Seller.address}</td>
                                         <td style={{ width: 400 }}>{Seller.nic}</td>
@@ -82,11 +83,12 @@ function ReportSeller() {
 
 
                                     </tr>
+                                      ))}
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                ))}
+              
             </div>
             </div>
             <center><div className="w-25 p-3" align='center'>
