@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router';
+import { red } from '@material-ui/core/colors';
 import './ViewLoans2.css'
 import axios from 'axios'
 import Swal from 'sweetalert2';
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import IconButton from '@material-ui/core/IconButton';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 
 function ViewLoans2() {
 
@@ -41,14 +45,14 @@ function ViewLoans2() {
 
     function filterContent(data, searchTerm) {
         const result = data.filter((loans) =>
-            loans.group.toLowerCase().includes(searchTerm)
+            loans.name.toLowerCase().includes(searchTerm)
         )
         setLoans(result)
     }
 
     function handleSearchAll(event) {
         const searchTerm = event.currentTarget.value
-        axios.get(`http://localhost:8070/topic`).then((res) => {
+        axios.get(`http://localhost:8070/loan2`).then((res) => {
             filterContent(res.data, searchTerm.toLowerCase())
         }).catch((error) => {
             alert("Failed to fetch documents")
@@ -115,6 +119,14 @@ function ViewLoans2() {
         })
     }
 
+    function Pdf(businessRegistration) {
+        window.open(businessRegistration);
+    }
+
+    const navigateToReport = () => {
+        navigate('/loan/view_loan/report');
+      }
+
     return (
         <div className="container">
             <div className="row">
@@ -123,6 +135,17 @@ function ViewLoans2() {
                 </div>
             </div>
             <div className="row">
+            {isAdmin === true ?
+                <div>
+                    <button
+                        className="btn btn-warning ms-3"
+                        onClick={navigateToReport}>
+                        &nbsp;Generate Report
+                    </button>
+                </div>
+                :
+                <div></div>}
+
                 <div className="col-xl-2 search-box">
                     <div className="px-3 search" align="right" style={{ top: '10px', position: 'relative' }}>
                         <input style={{ color: "black", fontWeight: "500", borderRadius: "8px", border: "2px solid grey", padding: '6px 12px' }}
@@ -133,7 +156,7 @@ function ViewLoans2() {
                             onChange={handleSearchAll}
                             required
                         /><div style={{ position: 'relative', right: '510px', top: '-35px' }}>
-                            {/* <SearchIcon /> */}
+                                <SearchRoundedIcon />
                             </div>
                     </div>
                 </div>
@@ -148,9 +171,10 @@ function ViewLoans2() {
                                                 <th className="table-head-title th-border">NIC</th>
                                                 <th className="table-head-title th-border">Email</th>
                                                 <th className="table-head-title th-border">Mobile</th>
+                                                <th className="table-head-title th-border">Business Registration</th>
                                                 <th className="table-head-title th-border" style={{ textAlign:'center' }}>Status</th>
                                                 {isAdmin === true ?
-                                                        <th className="table-head-title th-border">Action</th>
+                                                        <th className="table-head-title th-border" style={{ textAlign:'center' }}>Action</th>
                                                         :
                                                         <div></div>
                                                     }
@@ -160,9 +184,14 @@ function ViewLoans2() {
                                         {loans.map((Loan, key) => (
                                             <tr key={key} className="table-body">
                                                 <td className="text-l tb-border" style={{ width: 400, padding: '5px 15px'}}>{Loan.name}</td>
-                                                <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>{Loan.nic}</td>
-                                                <td className="text-l tb-border" style={{ width: 400, padding: '5px 15px' }}>{Loan.email}</td>
-                                                <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px' }}>{Loan.mobile}</td>
+                                                <td className="text-l tb-border"  style={{ width: 160, padding: '5px 15px' }}>{Loan.nic}</td>
+                                                <td className="text-l tb-border" style={{ width: 200, padding: '5px 15px' }}>{Loan.email}</td>
+                                                <td className="text-l tb-border"  style={{ width: 160, padding: '5px 15px' }}>{Loan.mobile}</td>
+                                                <td className="text-l tb-border"  style={{ width: 160, padding: '5px 15px', textAlign:'center' }}>
+                                                <IconButton onClick={() => Pdf(`${Loan.businessRegistration}`)}>
+                                                    <PictureAsPdfIcon style={{ color: red[500], backgroundPosition: 'center' }} ></PictureAsPdfIcon>
+                                                </IconButton>
+                                                </td>
                                                 <td className="text-l tb-border"  style={{ width: 260, padding: '5px 15px', textAlign:'center' }}>
                                                 {
                                                 Loan.loanStatus === "Rejected" ? <span className="bg-danger rounded text-white p-1">Rejected</span>:
@@ -174,7 +203,7 @@ function ViewLoans2() {
                                                 {isAdmin === true ?
                                                 <td className="text-l tb-border"  style={{ width: 460 }}>
                                                             <button
-                                                                style={{ margin: '3px 5px 5px 5px' }}
+                                                                style={{ margin: '3px 3px 5px 3px' }}
                                                                 className="btn btn-success"
                                                                 disabled={
                                                                     Loan.loanStatus === "Accepted" 

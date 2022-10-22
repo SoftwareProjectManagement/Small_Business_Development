@@ -45,7 +45,7 @@ function ViewLoans() {
 
     function filterContent(data, searchTerm) {
         const result = data.filter((loans) =>
-            loans.group.toLowerCase().includes(searchTerm)
+            loans.name.toLowerCase().includes(searchTerm)
         )
         setLoans(result)
     }
@@ -119,6 +119,10 @@ function ViewLoans() {
         })
     }
 
+    const navigateToReport = () => {
+        navigate('/loan/view_loan/report');
+      }
+
     return (
         <div className="container">
             <div className="row">
@@ -130,7 +134,8 @@ function ViewLoans() {
                 {isAdmin === true ?
                 <div>
                     <button
-                        className="btn btn-warning ms-3">
+                        className="btn btn-warning ms-3"
+                        onClick={navigateToReport}>
                         &nbsp;Generate Report
                     </button>
                 </div>
