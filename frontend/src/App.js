@@ -16,7 +16,7 @@ import AddCategory from "./components/CategoryManagement/AddCategory/AddCategory
 import ViewCategory from "./components/CategoryManagement/ViewCategory/ViewCategory";
 import ViewProdcuts from "./components/ProductManagement/ViewAllProdcuts/ViewProducts";
 import RequestForm1 from "./components/LoanManagement/RequestForm1/RequestForm1";
-import ViewLoans from "./components/LoanManagement/ViewLoans/VIewLoans";
+import ViewLoans from "./components/LoanManagement/ViewLoans/ViewLoans";
 import Loan from "./components/LoanManagement/LoanInterface/Loan";
 import RequestForm2 from "./components/LoanManagement/RequestForm2/RequestForm2";
 import ViewLoans2 from "./components/LoanManagement/ViewLoans2/ViewLoans2";
@@ -30,6 +30,8 @@ import Workshop from "./components/WorkshopManagement/Workshop";
 import PaymentHistory from "./components/PaymentManagement/PaymentHistory";
 import UpdateProduct from "./components/ProductManagement/UpdateProduct/UpdateProduct";
 import ReportsProducts from "./components/ProductManagement/ReportProducts/ReportsProducts";
+import LoanReport from "./components/LoanManagement/ViewLoans/ReportPage";
+import LoanReport2 from "./components/LoanManagement/ViewLoans2/ReportPage";
 
 function App() {
   return (
@@ -63,6 +65,13 @@ function App() {
                 <Route path="/all" element={<ViewUsers />} />
                 <Route path="/products/update/:id" element={<UpdateProduct />} />
                 <Route path="/products/reports" element={<ReportsProducts />} />
+                <Route path="/loan/view_loan2" element={<ViewLoans2 />} />
+
+
+
+                <Route path="/loan/view_loan/report" element={<LoanReport />} />
+                <Route path="/loan/view_loan2/report" element={<LoanReport2 />} />
+
       </Routes>
       <Footer />
     </Router>
