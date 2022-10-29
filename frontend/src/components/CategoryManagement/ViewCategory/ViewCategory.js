@@ -92,10 +92,12 @@ function ViewCategory() {
         <br />
         <br />
         <br />
+        {isAdmin && (
         <Button className="printbtn" onClick={() => printProduct()}>
           Print All Prodcuts &nbsp;&nbsp;&nbsp;&nbsp;
           <PrintIcon />
         </Button>
+             )}
         <br />
 
         <div className="col-3"></div>

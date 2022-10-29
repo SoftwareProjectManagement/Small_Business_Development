@@ -35,7 +35,7 @@ function AdminLogin() {
             //setting user
             localStorage.setItem("user", JSON.stringify(data.result))
             
-            navigate('/')
+            navigate('/all')
         } catch (error) {
             if(error.response.status === 404){
                 alert("Invalid Email")

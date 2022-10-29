@@ -72,7 +72,7 @@ function ViewSeller() {
     };
 
     function add(){
-navigate("/add")
+navigate("/category/view")
     }
 
     const setEvaluate = async (jstatus, id) => {
